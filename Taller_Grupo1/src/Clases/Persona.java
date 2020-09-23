@@ -7,8 +7,9 @@ package Clases;
 
 /**
  *
- * @author Cristian - Bautista - Aldana
+ * @author cristian - Bautista - Aldana
  */
 public class Persona {
+    private String nombre;
     
 }
