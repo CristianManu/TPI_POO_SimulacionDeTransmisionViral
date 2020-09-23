@@ -7,7 +7,7 @@ package Clases;
 
 /**
  *
- * @author cristian
+ * @author Cristian - Bautista - Aldana
  */
 public class Persona {
     
