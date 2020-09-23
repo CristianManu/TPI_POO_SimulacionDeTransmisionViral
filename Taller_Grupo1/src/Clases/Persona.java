@@ -12,4 +12,5 @@ package Clases;
 public class Persona {
     private String nombre;
     private boolean sano;
+    private String apellido;
 }
