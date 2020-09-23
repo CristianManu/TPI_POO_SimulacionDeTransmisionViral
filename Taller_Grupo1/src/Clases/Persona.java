@@ -10,5 +10,6 @@ package Clases;
  * @author cristian
  */
 public class Persona {
+    private String nombre;
     
 }
