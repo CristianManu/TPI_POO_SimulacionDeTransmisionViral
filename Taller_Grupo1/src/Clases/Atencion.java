@@ -49,5 +49,17 @@ public class Atencion {
         this.hospital = hospital;
     }
     
+    void enviarADomicilio(){}
+    void enviarATerapiaIntensiva(){}
+    void enviarACuidadosModerados(){}
+    void atencionPorCovid(){}
+    void atencionGeneral(){}
+    /**
+     * 
+     * @param persona 
+     */
+    void darDeAlta(Persona persona){}
+    
+    
     
 }
