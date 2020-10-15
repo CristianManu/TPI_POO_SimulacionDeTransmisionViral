@@ -8,6 +8,7 @@ Cristian se ocupa de la clase Persona junto a sus relaciones, Aldana de la clase
 Bautista de la clase Hospitaljunto a sus relaciones.
 
 Charlamos sobre como implementar la clase Cuidado y de que forma implementamos el metodo determinarCalidadCuidado().
+Aclaramos de que forma se implementaria el metodo enviarDomicilio() de la calse Atencion.
 
 Objetivo: Implementar todas las relaciones del UML y realizar una implementacion inicial de los disitintos metodos 
 de cada clase.
