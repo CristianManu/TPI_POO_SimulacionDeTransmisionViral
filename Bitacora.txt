@@ -5,7 +5,11 @@ Nos reunimos todos los integrantes (Cristian,Bautista Y Aldana)
 Organizamos el trabajo de esta manera:
 
 Cristian se ocupa de la clase Persona junto a sus relaciones, Aldana de la clase Atencion junto a sus relaciones y 
-Bautista de la clase Hospitaljunto a sus relaciones:
+Bautista de la clase Hospitaljunto a sus relaciones.
+
+Charlamos sobre como implementar la clase Cuidado y de que forma implementamos el metodo determinarCalidadCuidado().
 
 Objetivo: Implementar todas las relaciones del UML y realizar una implementacion inicial de los disitintos metodos 
 de cada clase.
+
+Concordemos reunirnos el sabado a las 16hs.
