@@ -7,7 +7,7 @@ package Clases;
 
 /**
  *
- * @author Notebook HP
+ * @author Grupo 1
  * @version 
  */
 public class Adulto extends Persona {
