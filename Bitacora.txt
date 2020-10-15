@@ -1,0 +1,11 @@
+15/10/2020 --- 16:00 hs
+Reunion de grupo para coordinar trabajo y futuras implementaciones.
+Nos reunimos todos los integrantes (Cristian,Bautista Y Aldana)
+
+Organizamos el trabajo de esta manera:
+
+Cristian se ocupa de la clase Persona junto a sus relaciones, Aldana de la clase Atencion junto a sus relaciones y 
+Bautista de la clase Hospitaljunto a sus relaciones:
+
+Objetivo: Implementar todas las relaciones del UML y realizar una implementacion inicial de los disitintos metodos 
+de cada clase.
