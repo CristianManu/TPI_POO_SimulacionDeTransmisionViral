@@ -14,3 +14,13 @@ Objetivo: Implementar todas las relaciones del UML y realizar una implementacion
 de cada clase.
 
 Concordemos reunirnos el sabado a las 16hs.
+
+16/10/2020 --- 19:43hs
+
+Bautista:
+
+Realize una implementacion inicial de los distintos metodos en la clase hospital, cuidados moderados y cuidados terapia intensiva.
+Cabe destacar los metodos no estan terminados, falta tener en consideracion algunas relaciones entre clases sobre todo con la clase Atencion.
+Tambien realize los comentarios correspondientes a los metodos implementados.
+Todos los cambios ralizados se reflejaron en la modificiacion del UML.
+
