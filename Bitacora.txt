@@ -57,5 +57,9 @@ Lista de cambios:
 - Se agrego la clase Internacion para facilitar el metodo darDeAlta en la clase Atencion.
 - Se actualizo el UML para reflejar estos cambios
 
+17/10/2020 --- 19:18hs
 
+Bautista:
+
+Actualize los constructores de hospital y cuidados moderados, ademas se actualizo el javadoc correspondiente a las clases Hospital, CuidadosModerados y CuidadosTerapiaIntensiva.
 
