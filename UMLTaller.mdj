@@ -4329,7 +4329,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -2096,
-											"top": 1120,
+											"top": 1248,
 											"height": 13
 										},
 										{
@@ -4340,7 +4340,7 @@
 											},
 											"font": "Arial;13;1",
 											"left": 909,
-											"top": 695,
+											"top": 759,
 											"width": 274.22509765625,
 											"height": 13,
 											"text": "Domicilio"
@@ -4354,7 +4354,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -2096,
-											"top": 1120,
+											"top": 1248,
 											"width": 73.67724609375,
 											"height": 13,
 											"text": "(from Model)"
@@ -4368,14 +4368,14 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -2096,
-											"top": 1120,
+											"top": 1248,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 904,
-									"top": 688,
+									"top": 752,
 									"width": 284.22509765625,
 									"height": 25,
 									"stereotypeLabel": {
@@ -4412,7 +4412,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 909,
-											"top": 718,
+											"top": 782,
 											"width": 274.22509765625,
 											"height": 13,
 											"text": "-nPersonasCuarentena: int",
@@ -4430,18 +4430,35 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 357,
-											"top": 1245,
+											"top": 1373,
 											"width": 190,
 											"height": 13,
 											"text": "-Personas: List<Persona>",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAF1OKd6wxHOIIM=",
+											"_parent": {
+												"$ref": "AAAAAAF0VW00eBKD8q4="
+											},
+											"model": {
+												"$ref": "AAAAAAF1OKd6MRHClgQ="
+											},
+											"font": "Arial;13;0",
+											"left": 909,
+											"top": 797,
+											"width": 274.22509765625,
+											"height": 13,
+											"text": "-personaDom: List<Persona>",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 904,
-									"top": 713,
+									"top": 777,
 									"width": 284.22509765625,
-									"height": 23
+									"height": 38
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -4464,7 +4481,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 909,
-											"top": 741,
+											"top": 820,
 											"width": 274.22509765625,
 											"height": 13,
 											"text": "+agregarPersona(persona: Persona)",
@@ -4481,7 +4498,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 909,
-											"top": 756,
+											"top": 835,
 											"width": 274.22509765625,
 											"height": 13,
 											"text": "+getNPersonasCuarentena(): int",
@@ -4498,7 +4515,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 909,
-											"top": 771,
+											"top": 850,
 											"width": 274.22509765625,
 											"height": 13,
 											"text": "+setNPersonasCuarentena(npersonas: int)",
@@ -4515,18 +4532,35 @@
 											},
 											"font": "Arial;13;0",
 											"left": 909,
-											"top": 786,
+											"top": 865,
 											"width": 274.22509765625,
 											"height": 13,
 											"text": "+mostrarPersonasCuarentena(): List<Persona>",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF1OKSjcg2LZhw=",
+											"_parent": {
+												"$ref": "AAAAAAF0VW00eBKETvU="
+											},
+											"model": {
+												"$ref": "AAAAAAF1OKSjMw1/f8M="
+											},
+											"font": "Arial;13;0",
+											"left": 909,
+											"top": 880,
+											"width": 274.22509765625,
+											"height": 13,
+											"text": "+darDeAltaPersonaDomicilio(Persona persona)",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 904,
-									"top": 736,
+									"top": 815,
 									"width": 284.22509765625,
-									"height": 68
+									"height": 83
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -4540,7 +4574,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -1048,
-									"top": 560,
+									"top": 624,
 									"width": 10,
 									"height": 10
 								},
@@ -4556,7 +4590,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -1048,
-									"top": 560,
+									"top": 624,
 									"width": 10,
 									"height": 10
 								}
@@ -4564,7 +4598,7 @@
 							"font": "Arial;13;0",
 							"containerChangeable": true,
 							"left": 904,
-							"top": 688,
+							"top": 752,
 							"width": 284.22509765625,
 							"height": 200,
 							"nameCompartment": {
@@ -4603,8 +4637,8 @@
 										"$ref": "AAAAAAF0VW1XDhL57SQ="
 									},
 									"font": "Arial;13;0",
-									"left": 1015,
-									"top": 591,
+									"left": 1014,
+									"top": 627,
 									"width": 102.2607421875,
 									"height": 13,
 									"alpha": -1.2379228756842262,
@@ -4626,8 +4660,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 1155,
-									"top": 610,
+									"left": 1156,
+									"top": 640,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -4647,8 +4681,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1114,
-									"top": 591,
+									"left": 1113,
+									"top": 624,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -4668,7 +4702,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1168,
+									"left": 1176,
 									"top": 544,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -4689,8 +4723,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1179,
-									"top": 552,
+									"left": 1188,
+									"top": 551,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -4710,8 +4744,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1145,
-									"top": 529,
+									"left": 1152,
+									"top": 530,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -4731,8 +4765,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1114,
-									"top": 663,
+									"left": 1107,
+									"top": 726,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -4751,8 +4785,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1127,
-									"top": 667,
+									"left": 1120,
+									"top": 728,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -4770,8 +4804,8 @@
 										"$ref": "AAAAAAF0VW1XDxL7NKk="
 									},
 									"font": "Arial;13;0",
-									"left": 1078,
-									"top": 656,
+									"left": 1071,
+									"top": 720,
 									"width": 19.5126953125,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -4822,7 +4856,7 @@
 								"$ref": "AAAAAAF0nZ6wCthJgXo="
 							},
 							"lineStyle": 1,
-							"points": "1166:521;1090:687",
+							"points": "1172:521;1084:751",
 							"nameLabel": {
 								"$ref": "AAAAAAF0VW1XEBL+ch8="
 							},
@@ -9532,6 +9566,16 @@
 							"name": "Personas",
 							"visibility": "private",
 							"type": "List<Persona>"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAF1OKd6MRHClgQ=",
+							"_parent": {
+								"$ref": "AAAAAAF0VW00dxJ7rUI="
+							},
+							"name": "personaDom",
+							"visibility": "private",
+							"type": "List<Persona>"
 						}
 					],
 					"operations": [
@@ -9610,6 +9654,25 @@
 									},
 									"type": "List<Persona>",
 									"direction": "return"
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAF1OKSjMw1/f8M=",
+							"_parent": {
+								"$ref": "AAAAAAF0VW00dxJ7rUI="
+							},
+							"name": "darDeAltaPersonaDomicilio",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF1OKVLtQ5Es2o=",
+									"_parent": {
+										"$ref": "AAAAAAF1OKSjMw1/f8M="
+									},
+									"name": "Persona persona",
+									"type": ""
 								}
 							]
 						}
