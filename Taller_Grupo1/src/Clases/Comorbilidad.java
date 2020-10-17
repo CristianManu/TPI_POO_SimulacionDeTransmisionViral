@@ -16,6 +16,15 @@ public class Comorbilidad {
     
     private String nombre;
     
+    public Comorbilidad (String comor){
+        this.nombre = comor;
+    }
+    
+    
+    /**
+     * 
+     * @return String
+     */
     public String getNombre() {
         return nombre;
     }
