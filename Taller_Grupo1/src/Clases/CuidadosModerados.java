@@ -5,6 +5,7 @@
  */
 package Clases;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,15 +18,26 @@ public class CuidadosModerados {
     private List<Persona> pacientes;
     private int nPacientes;
     
+    /**
+     * Constructor que Inicializa la cant de pacientes y crea el arrayList
+     */
+    public CuidadosModerados(){
+        pacientes = new ArrayList();
+        nPacientes = 0;
+    }
     
+    /**
+     * 
+     * @return cantidad de camaras 
+     */
     public int getNumeroDeCamas() {
         return NUMEROCAMAS;
     }
   
     /**
      * Agrega un Paciente a la sala, si la sala esta llena devuelve false y no lo agrega.De lo contrario devuelve true.
-     * @param p
-     * @return 
+     * @param p un objeto Persona
+     * @return Retorna false en caso de no poder realizar la operacion y true en caso contrario
      */
     public boolean agregarPaciente(Persona p){
         if (nPacientes < NUMEROCAMAS){
@@ -39,8 +51,8 @@ public class CuidadosModerados {
     
     /**
      * Da de alta un paciente eliminandolo de la lista.Si no hay pacientes que eliminar lanza una excepcion.
-     * @param p
-     * @throws java.lang.Exception
+     * @param p un objeto Persona
+     * @throws java.lang.Exception lanza excepcion si no hay pacientes para dar de alta.
      */
     public void darDeAlta(Persona p) throws Exception{
         if (nPacientes >= 0){
@@ -52,7 +64,7 @@ public class CuidadosModerados {
     }
     /**
      * Devuelve la lista con los pacientes en la sala.
-     * @return 
+     * @return Lista de pacientes
      */
     public List<Persona> mostrarPacientes(){
         return pacientes;

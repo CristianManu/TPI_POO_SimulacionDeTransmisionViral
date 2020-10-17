@@ -18,6 +18,9 @@ public class CuidadosTerapiaIntensiva {
     private List<Persona> pacientes;
     private int nPacientes;
     
+    /**
+     * Constructor que incializa el contador de pacientes y crea el arrayList
+     */
     public CuidadosTerapiaIntensiva(){
         pacientes = new ArrayList();
         nPacientes = 0;
@@ -25,15 +28,15 @@ public class CuidadosTerapiaIntensiva {
    
     /**
      * 
-     * @return 
+     * @return el numero de camas en terapia intensiva
      */
     public int getNumeroDeCamas() {
         return NUMEROCAMAS;
     }
     /**
      * Agrega un Paciente a la sala, si la sala esta llena devuelve false y no lo agrega.De lo contrario devuelve true.
-     * @param p
-     * @return 
+     * @param p un objeto persona
+     * @return Retorna false en caso de no poder realizar la operacion y true en caso contrario
      */
     public boolean agregarPaciente(Persona p){
         if (nPacientes < NUMEROCAMAS){
@@ -47,8 +50,8 @@ public class CuidadosTerapiaIntensiva {
     
     /**
      * Da de alta un paciente eliminandolo de la lista.Si no hay pacientes que eliminar lanza una excepcion.
-     * @param p
-     * @throws java.lang.Exception
+     * @param p un objeto persona
+     * @throws java.lang.Exception lanza excepcion si no hay pacientes que dar de alta.
      */
     public void darDeAlta(Persona p) throws Exception{
         if (nPacientes >= 0){
@@ -61,7 +64,7 @@ public class CuidadosTerapiaIntensiva {
     
     /**
      * Devuelve la lista con los pacientes en la sala.
-     * @return 
+     * @return Lista de Pacientes
      */
     public List<Persona> mostrarPacientes(){
         return pacientes;
