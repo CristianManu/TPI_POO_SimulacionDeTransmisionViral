@@ -6,6 +6,7 @@
 package Clases;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
 /**
  *
  * @author cristian - Bautista - Aldana
@@ -33,7 +34,7 @@ public class Persona {
      * @param cuidado
      * @param estado 
      */
-    public Persona(String nombre, boolean sano, String apellido, int dni, boolean cuarentena, String cuidado, Estado estado) {
+    public Persona(String nombre, boolean sano, String apellido, int dni, boolean cuarentena, String cuidado) {
         this.nombre = nombre;
         this.sano = sano;
         this.apellido = apellido;
@@ -41,8 +42,29 @@ public class Persona {
         this.cuarentena = cuarentena;
         this.comorlist = new ArrayList<>();
         this.cuidado = new Cuidado(cuidado);
-        this.estado = estado;
+        this.estado = null;
         this.internacion = null;
+    }
+    
+    public String getEstado(){
+        return this.estado.getDescripcion();
+    }
+    /**
+     * Funcion que asigna un estado aleatorio a una Persona cuando esta se contagia.
+     */
+    public void setEstado(){
+        Random r1 = new Random();
+        int ran = r1.nextInt(3);
+        switch(ran){
+            case 0: this.estado = Estado.Asintomatico;
+            break;
+            case 1: this.estado = Estado.Leve;
+            break;
+            case 2: this.estado = Estado.Moderado;
+            break;
+            case 3: this.estado = Estado.Grave;
+            break;
+        }
     }
 
     public Internacion getInternacion() {
@@ -156,10 +178,33 @@ public class Persona {
     public List<Comorbilidad> getComorbilidad(){
         return comorlist;
     }
- 
+    
     /**
-     * 
+     * Muestra la informacion de la persona.
+     * @return String
      */
-    public void mostrarInformacion(){}
+    public String mostrarInformacion(){
+        String estado;
+        String comorbolidades = "";
+        
+        if (this.comorlist.isEmpty()) {
+            comorbolidades = "Ninguna";
+        } else{
+            for (int i = 0; i < this.comorlist.size(); i++) {
+                comorbolidades += this.comorlist.get(i).getNombre() + "\n";
+            }
+        }
+        
+        if (this.isSano()) {
+            estado = "Sano";
+        }else{
+            estado = "Infectado " + "\n" + "Gravedad: " + this.getEstado();
+        }
+        
+        return "Nombre: " + this.getNombre() + " " + this.getApellido() + "\n" +
+                "DNI: " + this.getDni() + "\n" + "Estado: " + estado + "\n" + 
+                "Cuidados: " + this.cuidado.getCalidadCuidado() + "\n" + 
+                "Comorbolidad: " + comorbolidades;
+    }
     
 }
