@@ -5,18 +5,41 @@
  */
 package Clases;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
- * @author Notebook HP
+ * @author Grupo1
  */
 public class Domicilio {
     //Atributo
     private int nPersonasCuarentena;
+    private List<Persona> personaDom;
     
-    public void agregarPersona(Persona persona){}
-
+    /*Constructor por defecto*/
+    public Domicilio() {
+        nPersonasCuarentena = 0;
+        personaDom = new ArrayList();
+    }
+    
+     /**Añade una persona a la lista de personas en domicilio
+     * @param persona
+     */
+    public void agregarPersona(Persona persona){
+        personaDom.add(persona);
+        nPersonasCuarentena++;
+        persona.setInternacion(Internacion.DOM);
+    }
+    
+    /**
+     * Se elimina a la persona de la lista, dandola de alta
+     * @param persona
+     */
+    public void darDeAltaPacienteDomicilio(Persona persona){
+        personaDom.remove(persona);
+        nPersonasCuarentena--;
+    }
     /*
         Metodos de acceso
         Getter y setter
@@ -33,6 +56,7 @@ public class Domicilio {
         this.nPersonasCuarentena = nPersonasCuarentena;
     }
     
-    public List<Persona> mostrarPersonasCuarentena(){return null;}
+    //Muestra una lista actual de personas en cuarentena
+    public List<Persona> mostrarPersonasCuarentena(){return personaDom;}
     
 }
