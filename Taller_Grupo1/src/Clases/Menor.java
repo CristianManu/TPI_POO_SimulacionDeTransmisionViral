@@ -17,12 +17,11 @@ public class Menor extends Persona{
      * @param apellido
      * @param dni
      * @param cuarentena
-     * @param comorbilidad
      * @param cuidado
      * @param estado 
      */
-    public Menor(String nombre, boolean sano, String apellido, int dni, boolean cuarentena, Comorbilidad comorbilidad, Cuidado cuidado, Estado estado) {
-        super(nombre, sano, apellido, dni, cuarentena, comorbilidad, cuidado, estado);
+    public Menor(String nombre, boolean sano, String apellido, int dni, boolean cuarentena, String cuidado, Estado estado) {
+        super(nombre, sano, apellido, dni, cuarentena, cuidado, estado);
     }
     
     
