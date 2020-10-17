@@ -33,3 +33,25 @@ Realizadas todas las relaciones de clase Persona, tambien he hecho cambios al UM
 17/10/2020 --- 15:27 hs
 
 Mas cambios a las clases relacionadas con Persona.
+
+17/10/2020 --- 16:00hs
+
+Reunion de Grupo (Cristian,Aldana y Bautista).
+
+Cambios realizados en la reunion de grupo del sabado, se implementaron
+las derivaciones a otra sala/domicilio en caso de sala llena.Cambios a 
+metodos de hospital.
+Se agrego la clase internacion para poder consultar donde esta
+internado el paciente para poder dar de alta correctamente en atencion.
+
+Se consultaron dudas y se programo el trabajo futuro, mejorar los metodos y la forma de relacionarse de las clases
+
+Lista de cambios:
+- Se modificaron las clases agregarPacienteGrave y agregarPacienteModerado para que devuelvan un booleano dependiendo si se pudo realizar la operacion.
+- Se modifico la clase darDeAltaPacienteGrave y darDeAltaPacienteModerado para que concordaran con los darDeAlta de cuidadosModerados y cuidadosTerapiaIntensiva.
+- Se hizo una implementacion inicial de las llamadas a agregarPacientes a las salas/domicilio  de la clase atencion para reflejar la derivacion en caso de sala llena.
+- Se agrego la clase Internacion para facilitar el metodo darDeAlta en la clase Atencion.
+- Se actualizo el UML para reflejar estos cambios
+
+
+
