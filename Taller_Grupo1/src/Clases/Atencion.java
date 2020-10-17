@@ -50,7 +50,14 @@ public class Atencion {
     }
     
     void enviarADomicilio(){}
-    void enviarATerapiaIntensiva(){}
+    
+    public void enviarATerapiaIntensiva(){     
+        if (!hospital.agregarPacienteGrave(persona)){
+            if (!hospital.agregarPacienteModerado(persona)){
+                this.enviarADomicilio();
+            }
+        }
+    }
     void enviarACuidadosModerados(){}
     void atencionPorCovid(){}
     void atencionGeneral(){}
@@ -58,7 +65,11 @@ public class Atencion {
      * 
      * @param persona 
      */
-    void darDeAlta(Persona persona){}
+    void darDeAlta(Persona persona){
+        if (persona.getInternacion().equals(Internacion.DOM)){
+        
+        }
+    }
     
     
     

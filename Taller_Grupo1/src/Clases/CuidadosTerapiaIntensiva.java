@@ -39,6 +39,7 @@ public class CuidadosTerapiaIntensiva {
         if (nPacientes < NUMEROCAMAS){
             pacientes.add(p);
             nPacientes++;
+            p.setInternacion(Internacion.CTI);
             return true;
         }
         return false;

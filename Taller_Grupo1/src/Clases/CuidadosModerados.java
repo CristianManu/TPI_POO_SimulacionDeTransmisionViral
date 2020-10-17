@@ -31,6 +31,7 @@ public class CuidadosModerados {
         if (nPacientes < NUMEROCAMAS){
             pacientes.add(p);
             nPacientes++;
+            p.setInternacion(Internacion.CM);
             return true;
         }
         return false;

@@ -20,6 +20,7 @@ public class Persona {
     private List<Comorbilidad> comorlist;
     private Cuidado cuidado;
     private Estado estado;
+    private Internacion internacion;
 
     /**
      * 
@@ -41,10 +42,17 @@ public class Persona {
         this.comorlist = new ArrayList<>();
         this.cuidado = new Cuidado(cuidado);
         this.estado = estado;
+        this.internacion = null;
     }
-    
-    
-    
+
+    public Internacion getInternacion() {
+        return internacion;
+    }
+
+    public void setInternacion(Internacion internacion) {
+        this.internacion = internacion;
+    }
+ 
     public void toser(){}
     
     public void llamarAlMedico(){}

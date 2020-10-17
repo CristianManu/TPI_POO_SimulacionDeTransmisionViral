@@ -49,30 +49,36 @@ public class Hospital {
     * Tambien agrega la persona indicada por parametro a la lista.
     * @param p
     */
-    public void agregarPacienteModerado(Persona p){
+    public boolean agregarPacienteModerado(Persona p){
+        if(!cuidadosModerados.agregarPaciente(p)){
+           return false;
+       } else {
         nPacientesModerados++;
         nPacientesTotal++;
         personasInternadas.add(p);
+        return true;
+        } 
     }
     
     /**
-    * Disminuye la cantidad de pacientes moderados y la cantidad total de pacientes.
-    * Se elimina a la persona de la lista indicada por parametro.
-    * @param p 
+    * Disminuye la cantidad de pacientes moderados y la cantidad total de pacientes.Se elimina a la persona de la lista indicada por parametro.
+    * @param p
+     * @throws java.lang.Exception 
     */
-    public void darDeAltaPacienteModerado(Persona p){
+    public void darDeAltaPacienteModerado(Persona p) throws Exception{
+        cuidadosModerados.darDeAlta(p);
         nPacientesModerados--;
         nPacientesTotal--;
-        personasInternadas.remove(p);
-        cuidadosModerados.agregarPaciente(p);
+        personasInternadas.remove(p);    
     }
     
     /**
-    * Disminuye la cantidad de pacientes graves y la cantidad total de pacientes.
-    * Se elimina a la persona de la lista indicada por parametro.
-    * @param p 
+    * Disminuye la cantidad de pacientes graves y la cantidad total de pacientes.Se elimina a la persona de la lista indicada por parametro.
+    * @param p
+     * @throws java.lang.Exception 
     */
-    public void darDeAltaPacienteGrave(Persona p){
+    public void darDeAltaPacienteGrave(Persona p) throws Exception{
+        cuidadosTerapiaIntensiva.darDeAlta(p);
         nPacientesGraves--;
         nPacientesTotal--;
         personasInternadas.remove(p);
@@ -83,12 +89,15 @@ public class Hospital {
     * Tambien agrega la persona indicada por parametro a la lista.
     * Si esta no se pudo agregar debido al cupo de camas, se agrega a cuidados moderados.
     */
-    public void agregarPacienteGrave(Persona p){
-        nPacientesGraves++;
-        nPacientesTotal++;
-        personasInternadas.add(p);
+    public boolean agregarPacienteGrave(Persona p){
+        
         if (!cuidadosTerapiaIntensiva.agregarPaciente(p)){
-            this.agregarPacienteModerado(p);
+            return false;
+        } else {
+            nPacientesGraves++;
+            nPacientesTotal++;
+            personasInternadas.add(p);
+            return true;
         }
     }
     
