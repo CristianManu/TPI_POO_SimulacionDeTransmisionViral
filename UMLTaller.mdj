@@ -220,7 +220,7 @@
 											"top": 113,
 											"width": 301,
 											"height": 13,
-											"text": "-comorbilidades: Comorbilidad",
+											"text": "-comorlist: List<Comorbilidad>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -560,24 +560,7 @@
 											"top": 406,
 											"width": 301,
 											"height": 13,
-											"text": "+getComorbilidades(): Comorbilidad",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAF0MBmkX9CACz0=",
-											"_parent": {
-												"$ref": "AAAAAAF0F/3S4na2ze4="
-											},
-											"model": {
-												"$ref": "AAAAAAF0MBmkQ9B3vQ4="
-											},
-											"font": "Arial;13;0",
-											"left": 445,
-											"top": 421,
-											"width": 301,
-											"height": 13,
-											"text": "+setComorbilidades(array: Comorbilidad)",
+											"text": "+getComorbilidad(): List<Comorbilidad>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -591,10 +574,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 445,
-											"top": 436,
+											"top": 421,
 											"width": 301,
 											"height": 13,
-											"text": "+getCuidado(): CalidadDeCuidado",
+											"text": "+getCuidado(): Cuidado",
 											"horizontalAlignment": 0
 										},
 										{
@@ -608,10 +591,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 445,
-											"top": 451,
+											"top": 436,
 											"width": 301,
 											"height": 13,
-											"text": "+setCuidado(cuidado: CalidadDeCuidado)",
+											"text": "+setCuidado(cuidado: Cuidado)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -625,7 +608,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 445,
-											"top": 466,
+											"top": 451,
 											"width": 301,
 											"height": 13,
 											"text": "+getEstado()",
@@ -642,7 +625,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 445,
-											"top": 481,
+											"top": 466,
 											"width": 301,
 											"height": 13,
 											"text": "+setEstado(estado: Estado)",
@@ -659,10 +642,27 @@
 											},
 											"font": "Arial;13;0",
 											"left": 445,
-											"top": 496,
+											"top": 481,
 											"width": 301,
 											"height": 13,
 											"text": "+mostrarInformacion()",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF1N9P5QNDr960=",
+											"_parent": {
+												"$ref": "AAAAAAF0F/3S4na2ze4="
+											},
+											"model": {
+												"$ref": "AAAAAAF1N9P4u9DoL44="
+											},
+											"font": "Arial;13;0",
+											"left": 445,
+											"top": 496,
+											"width": 301,
+											"height": 13,
+											"text": "+añadirComorbilidad(com: Comorbilidad)",
 											"horizontalAlignment": 0
 										}
 									],
@@ -6167,6 +6167,23 @@
 										},
 										{
 											"_type": "UMLOperationView",
+											"_id": "AAAAAAF1OBY9muzMGzQ=",
+											"_parent": {
+												"$ref": "AAAAAAF0qFYizZJnx0g="
+											},
+											"model": {
+												"$ref": "AAAAAAF1OBY9Huy0l4E="
+											},
+											"font": "Arial;13;0",
+											"left": 789,
+											"top": 432,
+											"width": 290.11962890625,
+											"height": 13,
+											"text": "+getPersonasSanas(): List<Persona>",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
 											"_id": "AAAAAAF0qFqv0Kd/5b0=",
 											"_parent": {
 												"$ref": "AAAAAAF0qFYizZJnx0g="
@@ -6176,10 +6193,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 789,
-											"top": 432,
+											"top": 447,
 											"width": 290.11962890625,
 											"height": 13,
-											"text": "+mostrarPersonasContagiadas(): List<Persona>",
+											"text": "+getPersonasContagiadas(): List<Persona>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6193,10 +6210,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 789,
-											"top": 447,
+											"top": 462,
 											"width": 290.11962890625,
 											"height": 13,
-											"text": "+mostrarPersonasCuidadoAlto(): List<Persona>",
+											"text": "+getPersonasCuidadoAlto(): List<Persona>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6210,10 +6227,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 789,
-											"top": 462,
+											"top": 477,
 											"width": 290.11962890625,
 											"height": 13,
-											"text": "+mostrarPersonasCuidadoMedio(): List<Persona>",
+											"text": "+getPersonasCuidadoMedio(): List<Persona>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6227,10 +6244,197 @@
 											},
 											"font": "Arial;13;0",
 											"left": 789,
-											"top": 477,
+											"top": 492,
 											"width": 290.11962890625,
 											"height": 13,
-											"text": "+mostrarPersonasCuidadoBajo(): List<Persona>",
+											"text": "+getPersonasCuidadoBajo(): List<Persona>",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF1N9fx29vUsqs=",
+											"_parent": {
+												"$ref": "AAAAAAF0qFYizZJnx0g="
+											},
+											"model": {
+												"$ref": "AAAAAAF1N9fxUtu83Gg="
+											},
+											"font": "Arial;13;0",
+											"left": 789,
+											"top": 507,
+											"width": 290.11962890625,
+											"height": 13,
+											"text": "+añadirPersonaContagiada(Persona p)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF1N9i0d963bsU=",
+											"_parent": {
+												"$ref": "AAAAAAF0qFYizZJnx0g="
+											},
+											"model": {
+												"$ref": "AAAAAAF1N9iz+96fysM="
+											},
+											"font": "Arial;13;0",
+											"left": 789,
+											"top": 522,
+											"width": 290.11962890625,
+											"height": 13,
+											"text": "+añadirPersonaSana(Persona p)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF1N9jeLN+Y+5k=",
+											"_parent": {
+												"$ref": "AAAAAAF0qFYizZJnx0g="
+											},
+											"model": {
+												"$ref": "AAAAAAF1N9jd29+ADhw="
+											},
+											"font": "Arial;13;0",
+											"left": 789,
+											"top": 537,
+											"width": 290.11962890625,
+											"height": 13,
+											"text": "+añadirPersonaContagiada(Persona p)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF1OBOz8uEA2uE=",
+											"_parent": {
+												"$ref": "AAAAAAF0qFYizZJnx0g="
+											},
+											"model": {
+												"$ref": "AAAAAAF1OBOzW+DoKOg="
+											},
+											"font": "Arial;13;0",
+											"left": 789,
+											"top": 552,
+											"width": 290.11962890625,
+											"height": 13,
+											"text": "+añadirPersonaCuidadoAlto(Persona p)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF1OBQV7OKfWlE=",
+											"_parent": {
+												"$ref": "AAAAAAF0qFYizZJnx0g="
+											},
+											"model": {
+												"$ref": "AAAAAAF1OBQVfuKH5lo="
+											},
+											"font": "Arial;13;0",
+											"left": 789,
+											"top": 567,
+											"width": 290.11962890625,
+											"height": 13,
+											"text": "+añadirPersonaCuidadoMedio(Persona p)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF1OBRMauOAxM8=",
+											"_parent": {
+												"$ref": "AAAAAAF0qFYizZJnx0g="
+											},
+											"model": {
+												"$ref": "AAAAAAF1OBRL++Noocc="
+											},
+											"font": "Arial;13;0",
+											"left": 789,
+											"top": 582,
+											"width": 290.11962890625,
+											"height": 13,
+											"text": "+añadirPersonaCuidadoBajo(Persona p)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF1OBSR4eSyW3Q=",
+											"_parent": {
+												"$ref": "AAAAAAF0qFYizZJnx0g="
+											},
+											"model": {
+												"$ref": "AAAAAAF1OBSRXuSaqgI="
+											},
+											"font": "Arial;13;0",
+											"left": 789,
+											"top": 597,
+											"width": 290.11962890625,
+											"height": 13,
+											"text": "+quitarPersonaSana(Persona p)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF1OBTWiOXkkuI=",
+											"_parent": {
+												"$ref": "AAAAAAF0qFYizZJnx0g="
+											},
+											"model": {
+												"$ref": "AAAAAAF1OBTV9+XMt7w="
+											},
+											"font": "Arial;13;0",
+											"left": 789,
+											"top": 612,
+											"width": 290.11962890625,
+											"height": 13,
+											"text": "+quitarPersonaContagiada(Persona p)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF1OBUNgebFv1M=",
+											"_parent": {
+												"$ref": "AAAAAAF0qFYizZJnx0g="
+											},
+											"model": {
+												"$ref": "AAAAAAF1OBUNHuatY/A="
+											},
+											"font": "Arial;13;0",
+											"left": 789,
+											"top": 627,
+											"width": 290.11962890625,
+											"height": 13,
+											"text": "+quitarPersonaCuidadoAlto(Persona p)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF1OBUuceem86g=",
+											"_parent": {
+												"$ref": "AAAAAAF0qFYizZJnx0g="
+											},
+											"model": {
+												"$ref": "AAAAAAF1OBUuBueOuaA="
+											},
+											"font": "Arial;13;0",
+											"left": 789,
+											"top": 642,
+											"width": 290.11962890625,
+											"height": 13,
+											"text": "+quitarPersonaCuidadoMedio(Persona p)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF1OBVWg+iHipY=",
+											"_parent": {
+												"$ref": "AAAAAAF0qFYizZJnx0g="
+											},
+											"model": {
+												"$ref": "AAAAAAF1OBVWKuhvC/A="
+											},
+											"font": "Arial;13;0",
+											"left": 789,
+											"top": 657,
+											"width": 290.11962890625,
+											"height": 13,
+											"text": "+quitarPersonaCuidadoBajo(Persona p)",
 											"horizontalAlignment": 0
 										}
 									],
@@ -6238,7 +6442,7 @@
 									"left": 784,
 									"top": 412,
 									"width": 300.11962890625,
-									"height": 83
+									"height": 263
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -6278,7 +6482,7 @@
 							"left": 784,
 							"top": 304,
 							"width": 300.11962890625,
-							"height": 216,
+							"height": 371,
 							"nameCompartment": {
 								"$ref": "AAAAAAF0qFYizJJhruQ="
 							},
@@ -7242,11 +7446,9 @@
 							"_parent": {
 								"$ref": "AAAAAAF0F/3S33atJmU="
 							},
-							"name": "comorbilidades",
+							"name": "comorlist",
 							"visibility": "private",
-							"type": {
-								"$ref": "AAAAAAF0GCwCvz3Aa8E="
-							}
+							"type": "List<Comorbilidad>"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -7514,7 +7716,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF0F/3S33atJmU="
 							},
-							"name": "getComorbilidades",
+							"name": "getComorbilidad",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -7522,31 +7724,8 @@
 									"_parent": {
 										"$ref": "AAAAAAF0MBmkQ9B130w="
 									},
-									"type": {
-										"$ref": "AAAAAAF0GCwCvz3Aa8E="
-									},
+									"type": "List<Comorbilidad>",
 									"direction": "return"
-								}
-							]
-						},
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAF0MBmkQ9B3vQ4=",
-							"_parent": {
-								"$ref": "AAAAAAF0F/3S33atJmU="
-							},
-							"name": "setComorbilidades",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAF0MBmkQ9B4TKI=",
-									"_parent": {
-										"$ref": "AAAAAAF0MBmkQ9B3vQ4="
-									},
-									"name": "array",
-									"type": {
-										"$ref": "AAAAAAF0GCwCvz3Aa8E="
-									}
 								}
 							]
 						},
@@ -7565,7 +7744,7 @@
 										"$ref": "AAAAAAF0MBmlLNDkpzg="
 									},
 									"type": {
-										"$ref": "AAAAAAF0GDFEe0zgVjE="
+										"$ref": "AAAAAAF0qGH1msgILk4="
 									},
 									"direction": "return"
 								}
@@ -7587,7 +7766,7 @@
 									},
 									"name": "cuidado",
 									"type": {
-										"$ref": "AAAAAAF0GDFEe0zgVjE="
+										"$ref": "AAAAAAF0qGH1msgILk4="
 									}
 								}
 							]
@@ -7628,6 +7807,27 @@
 								"$ref": "AAAAAAF0F/3S33atJmU="
 							},
 							"name": "mostrarInformacion"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAF1N9P4u9DoL44=",
+							"_parent": {
+								"$ref": "AAAAAAF0F/3S33atJmU="
+							},
+							"name": "añadirComorbilidad",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF1N9TZptHkXiA=",
+									"_parent": {
+										"$ref": "AAAAAAF1N9P4u9DoL44="
+									},
+									"name": "com",
+									"type": {
+										"$ref": "AAAAAAF0GCwCvz3Aa8E="
+									}
+								}
+							]
 						}
 					]
 				},
@@ -9269,11 +9469,30 @@
 						},
 						{
 							"_type": "UMLOperation",
+							"_id": "AAAAAAF1OBY9Huy0l4E=",
+							"_parent": {
+								"$ref": "AAAAAAF0qFYiy5Jevww="
+							},
+							"name": "getPersonasSanas",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF1OBbR3fEd5vY=",
+									"_parent": {
+										"$ref": "AAAAAAF1OBY9Huy0l4E="
+									},
+									"type": "List<Persona>",
+									"direction": "return"
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
 							"_id": "AAAAAAF0qFqvradnXiA=",
 							"_parent": {
 								"$ref": "AAAAAAF0qFYiy5Jevww="
 							},
-							"name": "mostrarPersonasContagiadas",
+							"name": "getPersonasContagiadas",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -9292,7 +9511,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF0qFYiy5Jevww="
 							},
-							"name": "mostrarPersonasCuidadoAlto",
+							"name": "getPersonasCuidadoAlto",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -9311,7 +9530,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF0qFYiy5Jevww="
 							},
-							"name": "mostrarPersonasCuidadoMedio",
+							"name": "getPersonasCuidadoMedio",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -9330,7 +9549,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF0qFYiy5Jevww="
 							},
-							"name": "mostrarPersonasCuidadoBajo",
+							"name": "getPersonasCuidadoBajo",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -9340,6 +9559,215 @@
 									},
 									"type": "List<Persona>",
 									"direction": "return"
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAF1N9fxUtu83Gg=",
+							"_parent": {
+								"$ref": "AAAAAAF0qFYiy5Jevww="
+							},
+							"name": "añadirPersonaContagiada",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF1N9g+Y9xKqek=",
+									"_parent": {
+										"$ref": "AAAAAAF1N9fxUtu83Gg="
+									},
+									"name": "Persona p",
+									"type": ""
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAF1N9iz+96fysM=",
+							"_parent": {
+								"$ref": "AAAAAAF0qFYiy5Jevww="
+							},
+							"name": "añadirPersonaSana",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF1N9jcT98ti/Q=",
+									"_parent": {
+										"$ref": "AAAAAAF1N9iz+96fysM="
+									},
+									"name": "Persona p",
+									"type": ""
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAF1N9jd29+ADhw=",
+							"_parent": {
+								"$ref": "AAAAAAF0qFYiy5Jevww="
+							},
+							"name": "añadirPersonaContagiada",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF1N9j1/+AOnYI=",
+									"_parent": {
+										"$ref": "AAAAAAF1N9jd29+ADhw="
+									},
+									"name": "Persona p",
+									"type": ""
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAF1OBOzW+DoKOg=",
+							"_parent": {
+								"$ref": "AAAAAAF0qFYiy5Jevww="
+							},
+							"name": "añadirPersonaCuidadoAlto",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF1OBP9vuF2TL0=",
+									"_parent": {
+										"$ref": "AAAAAAF1OBOzW+DoKOg="
+									},
+									"name": "Persona p",
+									"type": ""
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAF1OBQVfuKH5lo=",
+							"_parent": {
+								"$ref": "AAAAAAF0qFYiy5Jevww="
+							},
+							"name": "añadirPersonaCuidadoMedio",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF1OBRKOOMVs0s=",
+									"_parent": {
+										"$ref": "AAAAAAF1OBQVfuKH5lo="
+									},
+									"name": "Persona p",
+									"type": ""
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAF1OBRL++Noocc=",
+							"_parent": {
+								"$ref": "AAAAAAF0qFYiy5Jevww="
+							},
+							"name": "añadirPersonaCuidadoBajo",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF1OBRo6uP2v9E=",
+									"_parent": {
+										"$ref": "AAAAAAF1OBRL++Noocc="
+									},
+									"name": "Persona p",
+									"type": ""
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAF1OBSRXuSaqgI=",
+							"_parent": {
+								"$ref": "AAAAAAF0qFYiy5Jevww="
+							},
+							"name": "quitarPersonaSana",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF1OBTFVuUolRs=",
+									"_parent": {
+										"$ref": "AAAAAAF1OBSRXuSaqgI="
+									},
+									"name": "Persona p",
+									"type": ""
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAF1OBTV9+XMt7w=",
+							"_parent": {
+								"$ref": "AAAAAAF0qFYiy5Jevww="
+							},
+							"name": "quitarPersonaContagiada",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF1OBULl+ZaDxo=",
+									"_parent": {
+										"$ref": "AAAAAAF1OBTV9+XMt7w="
+									},
+									"name": "Persona p",
+									"type": ""
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAF1OBUNHuatY/A=",
+							"_parent": {
+								"$ref": "AAAAAAF0qFYiy5Jevww="
+							},
+							"name": "quitarPersonaCuidadoAlto",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF1OBUsauc7PL8=",
+									"_parent": {
+										"$ref": "AAAAAAF1OBUNHuatY/A="
+									},
+									"name": "Persona p",
+									"type": ""
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAF1OBUuBueOuaA=",
+							"_parent": {
+								"$ref": "AAAAAAF0qFYiy5Jevww="
+							},
+							"name": "quitarPersonaCuidadoMedio",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF1OBVUhugcnpg=",
+									"_parent": {
+										"$ref": "AAAAAAF1OBUuBueOuaA="
+									},
+									"name": "Persona p",
+									"type": ""
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAF1OBVWKuhvC/A=",
+							"_parent": {
+								"$ref": "AAAAAAF0qFYiy5Jevww="
+							},
+							"name": "quitarPersonaCuidadoBajo",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF1OBWR3+kYQfM=",
+									"_parent": {
+										"$ref": "AAAAAAF1OBVWKuhvC/A="
+									},
+									"name": "Persona p",
+									"type": ""
 								}
 							]
 						}
@@ -9378,7 +9806,7 @@
 								"reference": {
 									"$ref": "AAAAAAF0F/3S33atJmU="
 								},
-								"aggregation": "composite"
+								"aggregation": "shared"
 							}
 						}
 					],
