@@ -24,3 +24,12 @@ Cabe destacar los metodos no estan terminados, falta tener en consideracion algu
 Tambien realize los comentarios correspondientes a los metodos implementados.
 Todos los cambios ralizados se reflejaron en la modificiacion del UML.
 
+16/10/2020 --- 22:14 hs
+
+Cristian:
+
+Realizadas todas las relaciones de clase Persona, tambien he hecho cambios al UML acorde a los cambios.
+
+17/10/2020 --- 15:27 hs
+
+Mas cambios a las clases relacionadas con Persona.
