@@ -34,6 +34,10 @@ Realizadas todas las relaciones de clase Persona, tambien he hecho cambios al UM
 
 Mas cambios a las clases relacionadas con Persona.
 
+Aldana:
+Realice una implementacion inicial de metodos de clase Atencion, y Domicilio, complementando con sus comentarios y realizacion de cambios al UML acorde a respectivas modificaciones. 
+
+
 17/10/2020 --- 16:00hs
 
 Reunion de Grupo (Cristian,Aldana y Bautista).
