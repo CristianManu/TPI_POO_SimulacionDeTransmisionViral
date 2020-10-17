@@ -17,12 +17,11 @@ public class Mayor extends Persona{
      * @param apellido
      * @param dni
      * @param cuarentena
-     * @param comorbilidad
      * @param cuidado
      * @param estado 
      */
-    public Mayor(String nombre, boolean sano, String apellido, int dni, boolean cuarentena, Comorbilidad comorbilidad, Cuidado cuidado, Estado estado) {
-        super(nombre, sano, apellido, dni, cuarentena, comorbilidad, cuidado, estado);
+    public Mayor(String nombre, boolean sano, String apellido, int dni, boolean cuarentena, String cuidado, Estado estado) {
+        super(nombre, sano, apellido, dni, cuarentena, cuidado, estado);
     }
     void salirAPasear(){}
 }
