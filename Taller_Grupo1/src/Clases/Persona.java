@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package Clases;
-
+import java.util.List;
+import java.util.ArrayList;
 /**
  *
  * @author cristian - Bautista - Aldana
@@ -16,7 +17,7 @@ public class Persona {
     private String apellido;
     private int dni;
     private boolean cuarentena;
-    private Comorbilidad comorbilidad;
+    private List<Comorbilidad> comorlist;
     private Cuidado cuidado;
     private Estado estado;
 
@@ -31,14 +32,14 @@ public class Persona {
      * @param cuidado
      * @param estado 
      */
-    public Persona(String nombre, boolean sano, String apellido, int dni, boolean cuarentena, Comorbilidad comorbilidad, Cuidado cuidado, Estado estado) {
+    public Persona(String nombre, boolean sano, String apellido, int dni, boolean cuarentena, String cuidado, Estado estado) {
         this.nombre = nombre;
         this.sano = sano;
         this.apellido = apellido;
         this.dni = dni;
         this.cuarentena = cuarentena;
-        this.comorbilidad = comorbilidad;
-        this.cuidado = cuidado;
+        this.comorlist = new ArrayList<>();
+        this.cuidado = new Cuidado(cuidado);
         this.estado = estado;
     }
     
@@ -54,7 +55,14 @@ public class Persona {
     
     public void internacionDomicialiaria(){}
     
-    
+    /**
+     * Funcion que añade una comorbilidad a la lista de comorbilidades
+     * de la persona
+     * @param com 
+     */
+    public void añadirComorbilidad(Comorbilidad com){
+        this.comorlist.add(com);
+    }
     /*Metodos de acceso
         Getters y setters
     */
@@ -133,18 +141,14 @@ public class Persona {
         this.cuidado = cuidado;
     }
             
-   
-    public Comorbilidad getComorbilidad(){
-        return comorbilidad;
+   /**
+    * La funcion get de comorbilidad retorna una lista de comorbilidades
+    * @return List<Comorbilidad>
+    */
+    public List<Comorbilidad> getComorbilidad(){
+        return comorlist;
     }
-    
-    /**
-     * 
-     * @param array 
-     */
-    public void setComorbilidad(Comorbilidad []array){
-        
-    }
+ 
     /**
      * 
      */
