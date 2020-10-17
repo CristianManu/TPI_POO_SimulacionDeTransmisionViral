@@ -15,14 +15,41 @@ public class Cuidado {
     private boolean barbijo;
     private boolean manos;
     private boolean distanciamiento;
+    private int porcentaje;
+    
+    public Cuidado(String cui){
+        if(cui.toLowerCase() == "bajo"){
+            this.calidadCuidado = this.calidadCuidado.Bajo;
+            this.porcentaje = 70;
+        } else if (cui.toLowerCase() == "medio") {
+            this.calidadCuidado = this.calidadCuidado.Medio;
+            this.porcentaje = 25;
+        } else{
+            this.calidadCuidado = this.calidadCuidado.Alto;
+            this.porcentaje = 5;
+        }
+        determinarCalidadCuidado();
+    }
 
     public CalidadDeCuidado getCalidadCuidado() {
         return calidadCuidado;
     }
     
     
-    public CalidadDeCuidado determinarCalidadCuidado(){
-        return null;
+    private void determinarCalidadCuidado(){
+        if (calidadCuidado == CalidadDeCuidado.Bajo) {
+            this.manos = true;
+            this.barbijo = false;
+            this.distanciamiento = false;
+        } else if (calidadCuidado == CalidadDeCuidado.Medio) {
+            this.manos = true;
+            this.barbijo = true;
+            this.distanciamiento = false;
+        } else{
+            this.manos = true;
+            this.barbijo = true;
+            this.distanciamiento = true;
+        }
     }
 
 }
