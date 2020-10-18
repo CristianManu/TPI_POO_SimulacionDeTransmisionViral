@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package Main;
-import Clases.*;
+
+import Interfaz.Simulacion;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  *
@@ -13,11 +16,15 @@ import Clases.*;
 public class Admin {
     
     public static void main(String[] args) {
-    Comorbilidad com1 = new Comorbilidad("Lisiado");
-    Persona p1 = new Persona("Cristian Manuel", true, "Lopez", 15487564, true, "alto");
-    p1.añadirComorbilidad(com1);
-    
-        System.out.println(p1.mostrarInformacion());
+        JFrame frame = new JFrame("Simulacion de Covid");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocation(0,0);
+        frame.setPreferredSize(new Dimension(1024, 768));
+        Simulacion sim = new Simulacion();
+        frame.setResizable(false);
+        frame.add(sim);
+        frame.pack();
+        frame.setVisible(true);
     }
 
 }
