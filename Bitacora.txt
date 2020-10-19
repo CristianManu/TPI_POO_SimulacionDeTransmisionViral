@@ -63,3 +63,7 @@ Bautista:
 
 Actualize los constructores de hospital y cuidados moderados, ademas se actualizo el javadoc correspondiente a las clases Hospital, CuidadosModerados y CuidadosTerapiaIntensiva.
 
+19/10/2020---  09:00 hs 
+Aldana: 
+Actualice el Javadoc  de las clases. También realiza una modificación en el método darDeAltaPersonaDomicilio() de la clase Domicilio.
+
