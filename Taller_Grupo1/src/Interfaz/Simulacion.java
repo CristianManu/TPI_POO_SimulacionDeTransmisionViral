@@ -12,12 +12,14 @@ import java.util.*;
 import java.awt.event.*;
 /**
  *
- * @author cristian
+ * @author Grupo1
  */
 public class Simulacion extends JPanel implements KeyListener, MouseListener, MouseMotionListener{
     private static final int poblacion = 100;  //Poblacion de la ciudad.
     
-    //Dimension de la ventana
+    /**
+     *
+     */
     public static final int ancho = 768;
     public static final int alto = 1024;
     
@@ -29,7 +31,9 @@ public class Simulacion extends JPanel implements KeyListener, MouseListener, Mo
     
     static JLabel displayInfec, displaySano, displayAlto, displayMedio, displayBajo;
     
-    
+    /**
+     *
+     */
     public Simulacion(){
         //Configuracion JPanel
         this.setLayout(null);
