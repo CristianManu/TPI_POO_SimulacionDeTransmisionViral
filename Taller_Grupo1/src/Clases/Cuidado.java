@@ -17,6 +17,10 @@ public class Cuidado {
     private boolean distanciamiento;
     private int porcentaje;
     
+    /**
+     *
+     * @param cui
+     */
     public Cuidado(String cui){
         if(cui.toLowerCase() == "bajo"){
             this.calidadCuidado = this.calidadCuidado.Bajo;
@@ -28,9 +32,14 @@ public class Cuidado {
             this.calidadCuidado = this.calidadCuidado.Alto;
             this.porcentaje = 5;
         }
+        
         determinarCalidadCuidado();
     }
 
+    /**
+     *
+     * @return calidadCuidado
+     */
     public CalidadDeCuidado getCalidadCuidado() {
         return calidadCuidado;
     }

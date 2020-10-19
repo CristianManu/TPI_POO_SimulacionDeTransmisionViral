@@ -16,9 +16,10 @@ public class Atencion {
     private Domicilio domicilio;
 
     /**
-     * 
+     * Constructor parametrizado
      * @param persona
      * @param hospital 
+     * @param domicilio
      */
     public Atencion(Persona persona, Hospital hospital, Domicilio domicilio) {
         this.persona = persona;
@@ -26,38 +27,23 @@ public class Atencion {
         this.domicilio = domicilio;
     }
 
-    
+    /**Devuelve al paciente actual de atención
+     * @return persona*/
     public Persona getPersona() {
         return persona;
     }
     
-    /**
-     * 
-     * @param persona 
-     */
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
-
-    public Hospital getHospital() {
-        return hospital;
-    }
-
-    /**
-     * 
-     * @param hospital 
-     */
-    public void setHospital(Hospital hospital) {
-        this.hospital = hospital;
-    }
     
     /*Agrega una persona que fue derivada a Domicilio*/
     void enviarADomicilio(){
         domicilio.agregarPersona(persona);
     }
     
-    /*Derivación, si no se puede enviar al paciente a Cuidados Terapia Intensiva, deriva a Cuidados Moderados
-    de no ser asi, lo envia al Domicilio*/
+     
+    /**
+    * Metodo que agrega la persona indicada por parámetro a la lista de cuidados Terapia Intensiva.Si no se realizó la operación, agrega también la persona indicada por parámetro a la lista Cuidados Moderados.De no realizarse ninguna de las anteriores, agregará la persona indicada por parámetro a la lista de personas en 
+ domicilio.
+    */
     public void enviarATerapiaIntensiva(){     
         if (!hospital.agregarPacienteGrave(persona)){
             if (!hospital.agregarPacienteModerado(persona)){
@@ -66,11 +52,18 @@ public class Atencion {
         }
     }
     
-    /*Derivacion, si no se puede enviar al paciente a Cuidados Moderados, se lo deriva al Domicilio*/
+     
+    /**
+    * Metodo que agrega la persona indicada por parámetro a la lista de cuidados moderados.
+    * Si no se realizó la operación, agregará la persona indicada por parámetro a la lista de personas en 
+    * domicilio.
+    * @param persona un objeto persona 
+    * @return verdadero si la operacion fue exitosa , de lo contrario retornará falso.
+    */
     void enviarACuidadosModerados(){
         if (!hospital.agregarPacienteModerado(persona)){
-                this.enviarADomicilio();
-            }
+            this.enviarADomicilio();
+        }
     }
     
     /*Si la persona no esta sana, dependiendo de su estado se la derivará a una de las dos salas o a su domicilio*/
@@ -95,12 +88,12 @@ public class Atencion {
     
     /**
      *  Para dar de alta a un paciente, se verifica si el lugar donde se encuentra hospitalizado es igual a una
-     * de la internacion enumerada procede a, 
+     * de la internacion enumerada procediendo a:
      * si el lugar de la persona es igual a domicilio, remueve a la persona de la lista correspondiente
-     * a personas derivadas a sus domicilios.
+     * a personas en domicilio.
      * Sino, si el lugar de la persona es igual a Cuidados Moderados, remueve a la persona de la lista de pacientes
      * de Cuidados Moderado.
-     * De no ser ninguna de las dos anteriores, se procede a remover al paciente de la lista de pacientes de
+     * De no ser ninguna de las dos anteriores, se procederá a remover al paciente de la lista de pacientes de
      * Cuidados Terapia Intensiva.
      * @param persona 
      */

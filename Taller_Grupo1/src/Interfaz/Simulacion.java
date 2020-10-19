@@ -21,6 +21,10 @@ public class Simulacion extends JPanel implements KeyListener, MouseListener, Mo
      *
      */
     public static final int ancho = 768;
+
+    /**
+     *
+     */
     public static final int alto = 1024;
     
     //Texto a mostrarte en ventana

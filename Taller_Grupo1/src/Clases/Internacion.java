@@ -11,10 +11,25 @@ package Clases;
  */
 public enum Internacion {
     /*
-        Atributos que corresponde a la calidad de cuidados
+        Atributos constantes que corresponden al lugar de internacion
         que tenga una persona
     */
-    DOM("Domicilio"),CM("Cuidados Moderados"), CTI("Cuidados Terapia Intensiva");
+
+    /**
+     * Constante DOM con leyenda Domicilio
+     */
+
+    DOM("Domicilio"),
+
+    /**
+     * Constante CM con leyenda Cuidados Moderados 
+     */
+    CM("Cuidados Moderados"),
+
+    /**
+     * Constante CTI con leyenda Cuidados Terapia Intensiva
+     */
+    CTI("Cuidados Terapia Intensiva");
     
     private final String descripcion;
     
@@ -25,6 +40,10 @@ public enum Internacion {
         this.descripcion = descripcion;
     }
     
+    /**
+     *
+     * @return String
+     */
     public String getDescripcion(){
         return descripcion; 
     }

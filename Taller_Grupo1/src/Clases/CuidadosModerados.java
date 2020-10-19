@@ -13,7 +13,7 @@ import java.util.List;
  * @author Grupo1
  */
 public class CuidadosModerados {
-    //Atributo
+    //Atributos 
     private static final int  NUMEROCAMAS = 5;
     private List<Persona> pacientes;
     private int nPacientes;
@@ -28,7 +28,7 @@ public class CuidadosModerados {
     
     /**
      * 
-     * @return cantidad de camaras 
+     * @return cantidad de camas 
      */
     public int getNumeroDeCamas() {
         return NUMEROCAMAS;
