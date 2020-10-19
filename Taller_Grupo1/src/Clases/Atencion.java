@@ -35,7 +35,7 @@ public class Atencion {
     
     
     /*Agrega una persona que fue derivada a Domicilio*/
-    void enviarADomicilio(){
+    public void enviarADomicilio(){
         domicilio.agregarPersona(persona);
     }
     
@@ -60,14 +60,14 @@ public class Atencion {
     * @param persona un objeto persona 
     * @return verdadero si la operacion fue exitosa , de lo contrario retornará falso.
     */
-    void enviarACuidadosModerados(){
+    public void enviarACuidadosModerados(){
         if (!hospital.agregarPacienteModerado(persona)){
             this.enviarADomicilio();
         }
     }
     
     /*Si la persona no esta sana, dependiendo de su estado se la derivará a una de las dos salas o a su domicilio*/
-    void atencionPorCovid(){
+    public void atencionPorCovid(){
         if (persona.isSano() == false) {
             if(persona.getEstado() == "Asintomatico" || persona.getEstado() == "Leve"){
                 this.enviarADomicilio();
@@ -84,7 +84,7 @@ public class Atencion {
     }
     
     /*Implementacion postergada hasta consultar duda con profesor*/
-    void atencionGeneral(){}
+    public void atencionGeneral(){}
     
     /**
      *  Para dar de alta a un paciente, se verifica si el lugar donde se encuentra hospitalizado es igual a una
@@ -97,7 +97,7 @@ public class Atencion {
      * Cuidados Terapia Intensiva.
      * @param persona 
      */
-    void darDeAlta(Persona persona) throws Exception{
+    public void darDeAlta(Persona persona) throws Exception{
         if (persona.getInternacion().equals(Internacion.DOM)){
               domicilio.darDeAltaPacienteDomicilio(persona);
         }else{
