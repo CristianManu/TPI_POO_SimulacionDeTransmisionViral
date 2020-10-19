@@ -14,24 +14,26 @@ import java.awt.event.*;
  *
  * @author Grupo1
  */
-public class Simulacion extends JPanel implements KeyListener, MouseListener, MouseMotionListener{
+public class Simulacion extends JPanel{
+    private static final long serialVersionUID = -8716187417647724411L;    
     private static final int poblacion = 100;  //Poblacion de la ciudad.
     
     /**
      *
      */
-    public static final int ancho = 768;
+    public static final int ancho = 1024;
 
     /**
      *
      */
-    public static final int alto = 1024;
+    public static final int alto = 768;
     
     //Texto a mostrarte en ventana
     static int infectados = 1, sanos = 0, cuidadoAlto = 0, cuidadoMedio = 0, cuidadoBajo = 0;
     
     //Lista de personas que forman parte de la simulacion.
     static ArrayList<Persona> personas = new ArrayList<Persona>();
+    public boolean personaAñadida = false;
     
     static JLabel displayInfec, displaySano, displayAlto, displayMedio, displayBajo;
     
@@ -42,12 +44,9 @@ public class Simulacion extends JPanel implements KeyListener, MouseListener, Mo
         //Configuracion JPanel
         this.setLayout(null);
         this.setBackground(Color.BLACK);
-        this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        this.setPreferredSize(new Dimension(ancho, alto));
         this.setFocusable(true);
         
-        //Interaccion con la interfaz, revisar.
-        this.addKeyListener(this);
-        this.addMouseListener(this);
         
         crearLabels();
         
@@ -102,68 +101,39 @@ public class Simulacion extends JPanel implements KeyListener, MouseListener, Mo
      * Tambien ajusta las especificaciones graficas de la figura
      * @param pag 
      */
+    
+    @Override
     public void paintComponent(Graphics pag){
         super.paintComponent(pag);
-        Graphics2D g = (Graphics2D) pag;
+        Graphics2D g = (Graphics2D)pag;
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         for (Persona p: personas) {
             p.draw(g);
         }
     }
     
+    static void actValores(){
+        displaySano.setText("Sanos: " + sanos);
+    }
+    
     public void run(){
-        
+        while (true) {
+            sanos = 0;
+            System.out.println("Funcionando");
+            System.out.println("Persona posicion " + personas.get(0).getPosicion().getX() + " - " +  personas.get(0).getPosicion().getY());
+            for (int i = 0; i < personas.size(); i++) {
+                personas.get(i).bordes();
+                personas.get(i).update();
+                if (personas.get(i).isSano()) {
+                    sanos++;
+                }
+            }
+            actValores();
+            this.repaint();
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException ex) {
+            }
+        }
     }
-    
-    //Implementacion de metodos abstractos
-    @Override
-    public void keyTyped(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

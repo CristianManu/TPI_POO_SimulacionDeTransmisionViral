@@ -27,8 +27,8 @@ public class Persona {
     
     static{
         forma.moveTo(0, -tamaño*2);
-        forma.moveTo(-tamaño, tamaño*2);
-        forma.moveTo(tamaño, tamaño*2);
+        forma.lineTo(-tamaño, tamaño*2);
+        forma.lineTo(tamaño, tamaño*2);
         forma.closePath();
     }
     
@@ -171,6 +171,16 @@ public class Persona {
     /*Metodos de acceso
         Getters y setters
     */
+
+    public Vector getPosicion() {
+        return posicion;
+    }
+
+    public void setPosicion(Vector posicion) {
+        this.posicion = posicion;
+    }
+    
+    
     
     /**
      *  Devuelve el nombre de la persona actual
@@ -331,6 +341,9 @@ public class Persona {
     public void update(){
         this.velocidad.sumar(this.aceleracion);
         this.velocidad.limit(maxVelocidad);
+        this.posicion.sumar(this.velocidad);
+        this.velocidad.sumar(this.aceleracion);
+        this.velocidad.limit(maxVelocidad);
     }
     
     public void draw(Graphics2D g){
@@ -353,7 +366,9 @@ public class Persona {
         }
         
         if (this.posicion.getY() > Simulacion.alto) {
-            
+            this.posicion.y = 0;
+        }else if (this.posicion.getY() < 0){
+            this.posicion.y = Simulacion.alto;
         }
     }
     

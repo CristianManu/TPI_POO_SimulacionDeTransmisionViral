@@ -6,6 +6,7 @@
 package Main;
 
 import Interfaz.Simulacion;
+import Clases.Persona;
 import javax.swing.*;
 import java.awt.*;
 
@@ -29,6 +30,7 @@ public class Admin {
         frame.add(sim);
         frame.pack();
         frame.setVisible(true);
+        sim.run();
     }
 
 }
