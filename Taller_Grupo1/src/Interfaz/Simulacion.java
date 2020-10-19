@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Clases.Persona;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
@@ -16,10 +17,15 @@ import java.awt.event.*;
 public class Simulacion extends JPanel implements KeyListener, MouseListener, MouseMotionListener{
     private static final int poblacion = 100;  //Poblacion de la ciudad.
     
+    //Dimension de la ventana
     public static final int ancho = 768;
     public static final int alto = 1024;
     
+    //Texto a mostrarte en ventana
     static int infectados = 1, sanos = 0, cuidadoAlto = 0, cuidadoMedio = 0, cuidadoBajo = 0;
+    
+    //Lista de personas que forman parte de la simulacion.
+    static ArrayList<Persona> personas = new ArrayList<Persona>();
     
     static JLabel displayInfec, displaySano, displayAlto, displayMedio, displayBajo;
     
@@ -38,7 +44,8 @@ public class Simulacion extends JPanel implements KeyListener, MouseListener, Mo
         crearLabels();
         
         for (int i = 0; i < poblacion; i++) {
-            //añade personas a la simulacion
+            //por motivos de prueba de simulacion, se usará constructor por defecto.
+            personas.add(new Persona());
         }
     }
     
@@ -82,6 +89,23 @@ public class Simulacion extends JPanel implements KeyListener, MouseListener, Mo
         this.add(displayBajo);
     }
     
+    /**
+     * Este metodo crea una figura para cada persona
+     * Tambien ajusta las especificaciones graficas de la figura
+     * @param pag 
+     */
+    public void paintComponent(Graphics pag){
+        super.paintComponent(pag);
+        Graphics2D g = (Graphics2D) pag;
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        for (Persona p: personas) {
+            p.draw(g);
+        }
+    }
+    
+    public void run(){
+        
+    }
     
     //Implementacion de metodos abstractos
     @Override
