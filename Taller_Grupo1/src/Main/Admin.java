@@ -11,10 +11,14 @@ import java.awt.*;
 
 /**
  *
- * @author cristian
+ * @author Grupo1
  */
 public class Admin {
     
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         JFrame frame = new JFrame("Simulacion de Covid");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

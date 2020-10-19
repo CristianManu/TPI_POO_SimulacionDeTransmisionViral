@@ -50,7 +50,7 @@ public class CuidadosTerapiaIntensiva {
     
     /**
      * Da de alta un paciente eliminandolo de la lista.Si no hay pacientes que eliminar lanza una excepcion.
-     * @param p un objeto persona
+     * @param persona un objeto persona
      * @throws java.lang.Exception lanza excepcion si no hay pacientes que dar de alta.
      */
     public void darDeAlta(Persona p) throws Exception{

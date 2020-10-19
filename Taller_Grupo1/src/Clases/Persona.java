@@ -12,7 +12,7 @@ import java.util.Random;
  * @author cristian - Bautista - Aldana
  */
 public class Persona {
-    
+    //Atributos 
     private String nombre;
     private boolean sano;
     private String apellido;
@@ -46,6 +46,10 @@ public class Persona {
         this.internacion = null;
     }
     
+    /**
+     *
+     * @return 
+     */
     public String getEstado(){
         return this.estado.getDescripcion();
     }
@@ -67,22 +71,45 @@ public class Persona {
         }
     }
 
+    /**
+     * Devuelve el lugar de internación actual de una persona
+     * @return
+     */
     public Internacion getInternacion() {
         return internacion;
     }
 
+    /**
+     *
+     * @param internacion
+     */
     public void setInternacion(Internacion internacion) {
         this.internacion = internacion;
     }
  
+    /**
+     *
+     */
     public void toser(){}
     
+    /**
+     *
+     */
     public void llamarAlMedico(){}
     
+    /**
+     *
+     */
     public void caminar(){}
     
+    /**
+     *
+     */
     public void irAlHospital(){}
     
+    /**
+     *
+     */
     public void internacionDomicialiaria(){}
     
     /**
@@ -97,6 +124,10 @@ public class Persona {
         Getters y setters
     */
     
+    /**
+     *  Devuelve el nombre de la persona actual
+     * @return nombre
+     */
     public String getNombre() {
         return nombre;
     }
@@ -109,7 +140,10 @@ public class Persona {
         this.nombre = nombre;
     }
 
-    
+    /**
+     * 
+     * @return si la persona esta sana o no
+     */
     public boolean isSano() {
         return sano;
     }
@@ -122,6 +156,10 @@ public class Persona {
         this.sano = sano;
     }
 
+    /**
+     * Devuelve el apellido de la persona actual
+     * @return apellido
+     */
     public String getApellido() {
         return apellido;
     }
@@ -134,6 +172,10 @@ public class Persona {
         this.apellido = apellido;
     }
     
+    /**
+     *  Devuelve el dni de la persona actual
+     * @return dni
+     */
     public int getDni() {
         return dni;
     }
@@ -146,6 +188,10 @@ public class Persona {
         this.dni = dni;
     }
     
+    /**
+     * Devuelve si la persona esta en cuarentena o no
+     * @return cuarentena
+     */
     public boolean isCuarentena() {
         return cuarentena;
     }
@@ -158,7 +204,10 @@ public class Persona {
         this.cuarentena = cuarentena;
     }
     
-    
+    /**
+     *  Devuelve el cuidado de la persona actual
+     * @return cuidado
+     */
     public Cuidado getCuidado() {
         return cuidado;
     }

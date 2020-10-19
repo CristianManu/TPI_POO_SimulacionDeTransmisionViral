@@ -14,7 +14,22 @@ public enum CalidadDeCuidado {
         Atributos que corresponde a la calidad de cuidados
         que tenga una persona
     */
-    Alto("Alto"),Medio("Medio"), Bajo("Bajo");
+
+    /**
+     * Calidad de cuidado alto
+     */
+
+    Alto("Alto"),
+
+    /**
+     * Calidad de cuidado medio
+     */
+    Medio("Medio"),
+
+    /**
+     *Calidad de cuidado bajo
+     */
+    Bajo("Bajo");
     
     private final String descripcion;
     
@@ -25,6 +40,10 @@ public enum CalidadDeCuidado {
         this.descripcion = descripcion;
     }
     
+    /**
+     * Devuelve la calidad de cuidado
+     * @return descripcion
+     */
     public String getDescripcion(){
         return descripcion; 
     }

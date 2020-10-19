@@ -7,7 +7,7 @@ package Clases;
 
 /**
  *
- * @author Notebook HP
+ * @author Grupo1
  */
 public class Comorbilidad {
     /*Atributo nombre de dos o
@@ -16,13 +16,19 @@ public class Comorbilidad {
     
     private String nombre;
     
+    /**
+     *
+     * @param comor
+     */
     public Comorbilidad (String comor){
         this.nombre = comor;
     }
     
-    
+    /*Métodos de acceso 
+        Getter y setter
+    */
     /**
-     * 
+     * Devuelve el nombre de la comorbilidad
      * @return String
      */
     public String getNombre() {
