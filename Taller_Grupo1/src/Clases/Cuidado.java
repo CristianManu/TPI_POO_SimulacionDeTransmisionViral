@@ -43,6 +43,12 @@ public class Cuidado {
     public CalidadDeCuidado getCalidadCuidado() {
         return calidadCuidado;
     }
+
+    public int getPorcentaje() {
+        return porcentaje;
+    }
+    
+    
     
     
     private void determinarCalidadCuidado(){
