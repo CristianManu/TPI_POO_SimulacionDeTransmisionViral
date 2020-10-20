@@ -74,3 +74,7 @@ Bautista:
 
 Implemente el metodo contagiar en la clase persona, implemente el metodo ir al hospital, actualice la clase cuidado para poder obtener los porcentajes.
 Mas tarde volvi a actualizar el metodo contagiar para que concuerde con la simulacion, ademas se creo el metodo cerca para facilitar los calculos en contagiar.
+
+16:30hs
+
+Actualize el UML para que se correponda con los cambios
