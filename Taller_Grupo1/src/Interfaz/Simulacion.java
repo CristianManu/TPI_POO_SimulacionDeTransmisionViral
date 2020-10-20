@@ -114,11 +114,13 @@ public class Simulacion extends JPanel{
     
     static void actValores(){
         displaySano.setText("Sanos: " + sanos);
+        displayInfec.setText("Infectados: " + infectados);
     }
     
     public void run(){
         while (true) {
             sanos = 0;
+            infectados = 0;
             System.out.println("Funcionando");
             System.out.println("Persona posicion " + personas.get(0).getPosicion().getX() + " - " +  personas.get(0).getPosicion().getY());
             for (int i = 0; i < personas.size(); i++) {
@@ -126,7 +128,8 @@ public class Simulacion extends JPanel{
                 personas.get(i).interaccion(personas);
                 personas.get(i).update();
                 if (!(personas.get(i).isSano())) {
-                personas.get(i).contagiar(personas);                    
+                personas.get(i).contagiar(personas);
+                infectados++;
                 }
                 if (personas.get(i).isSano()) {
                     sanos++;

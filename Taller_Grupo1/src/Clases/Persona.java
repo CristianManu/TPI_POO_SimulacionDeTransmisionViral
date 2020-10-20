@@ -157,7 +157,7 @@ public class Persona {
     public void contagiar(List<Persona> p){
         for (int i = 0;i < p.size();i++){
             if (cerca(p.get(i))){
-                int probabilidad = (p.get(i).getCuidado().getPorcentaje() + this.getCuidado().getPorcentaje())/2;
+                double probabilidad = (double) ((p.get(i).getCuidado().getPorcentaje() + this.getCuidado().getPorcentaje())/2);
                 double random = Math.random()*100;
                 if (random < probabilidad){
                     p.get(i).setSano(false);
@@ -174,7 +174,7 @@ public class Persona {
     private boolean cerca (Persona p){
         boolean isCerca = false;
         double dist = distancia(this.getPosicion().getX(),this.getPosicion().getY(),p.getPosicion().getX(),p.getPosicion().getY());
-        if (dist <= 10){
+        if (dist <= 20){
             isCerca = true;
         }
         return isCerca;
