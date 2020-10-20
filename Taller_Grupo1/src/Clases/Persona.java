@@ -44,6 +44,7 @@ public class Persona {
     private Estado estado;
     private Internacion internacion;
     private Domicilio domicilio;
+    private boolean inmune;
     
 
 
@@ -131,6 +132,16 @@ public class Persona {
     public Domicilio getDomicilio() {
         return domicilio;
     }
+
+    public boolean isInmune() {
+        return inmune;
+    }
+
+    public void setInmune(boolean inmune) {
+        this.inmune = inmune;
+    }
+    
+    
     
     
 
@@ -156,7 +167,7 @@ public class Persona {
      */
     public void contagiar(List<Persona> p){
         for (int i = 0;i < p.size();i++){
-            if (cerca(p.get(i))){
+            if (cerca(p.get(i)) && !p.get(i).isInmune() && p.get(i).isSano()){
                 double probabilidad = (double) ((p.get(i).getCuidado().getPorcentaje() + this.getCuidado().getPorcentaje())/2);
                 double random = Math.random()*100;
                 if (random < probabilidad){
