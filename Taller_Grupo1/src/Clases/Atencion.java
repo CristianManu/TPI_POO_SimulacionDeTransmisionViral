@@ -7,7 +7,7 @@ package Clases;
 
 /**
  *
- * @author Notebook HP
+ * @author Grupo1
  */
 public class Atencion {
     //Atributos de la clase asociacion Atencion
@@ -34,15 +34,22 @@ public class Atencion {
     }
     
     
-    /*Agrega una persona que fue derivada a Domicilio*/
+  
+
+    /**
+     * Agrega una persona que fue derivada a Domicilio
+     */
+
     public void enviarADomicilio(){
         domicilio.agregarPersona(persona);
     }
     
      
     /**
-    * Metodo que agrega la persona indicada por parámetro a la lista de cuidados Terapia Intensiva.Si no se realizó la operación, agrega también la persona indicada por parámetro a la lista Cuidados Moderados.De no realizarse ninguna de las anteriores, agregará la persona indicada por parámetro a la lista de personas en 
- domicilio.
+    * Metodo que agrega la persona indicada por parámetro a la lista de cuidados Terapia Intensiva.
+    * Si no se realizó la operación, agrega también la persona indicada por parámetro a la lista Cuidados Moderados.
+    * De no realizarse ninguna de las anteriores, 
+    * agregará la persona indicada por parámetro a la lista de personas en domicilio.
     */
     public void enviarATerapiaIntensiva(){     
         if (!hospital.agregarPacienteGrave(persona)){
@@ -54,11 +61,8 @@ public class Atencion {
     
      
     /**
-    * Metodo que agrega la persona indicada por parámetro a la lista de cuidados moderados.
-    * Si no se realizó la operación, agregará la persona indicada por parámetro a la lista de personas en 
-    * domicilio.
-    * @param persona un objeto persona 
-    * @return verdadero si la operacion fue exitosa , de lo contrario retornará falso.
+    * Metodo que agrega la persona indicada por parámetro a la lista de cuidados moderados.Si no se realizó la operación, 
+    * agregará la persona indicada por parámetro a la lista de personas en domicilio.
     */
     public void enviarACuidadosModerados(){
         if (!hospital.agregarPacienteModerado(persona)){
@@ -66,7 +70,12 @@ public class Atencion {
         }
     }
     
-    /*Si la persona no esta sana, dependiendo de su estado se la derivará a una de las dos salas o a su domicilio*/
+    
+
+    /**
+     * Si la persona no esta sana, dependiendo de su estado se la derivará a una de las dos salas o a su domicilio
+     */
+
     public void atencionPorCovid(){
         if (persona.isSano() == false) {
             if(persona.getEstado() == "Asintomatico" || persona.getEstado() == "Leve"){
@@ -83,19 +92,24 @@ public class Atencion {
         }
     }
     
-    /*Implementacion postergada hasta consultar duda con profesor*/
+  
+
+    /**
+     *Implementacion postergada hasta consultar duda con profesor
+     */
+
     public void atencionGeneral(){}
     
     /**
      *  Para dar de alta a un paciente, se verifica si el lugar donde se encuentra hospitalizado es igual a una
      * de la internacion enumerada procediendo a:
      * si el lugar de la persona es igual a domicilio, remueve a la persona de la lista correspondiente
-     * a personas en domicilio.
-     * Sino, si el lugar de la persona es igual a Cuidados Moderados, remueve a la persona de la lista de pacientes
-     * de Cuidados Moderado.
-     * De no ser ninguna de las dos anteriores, se procederá a remover al paciente de la lista de pacientes de
+     * a personas en domicilio.Sino, si el lugar de la persona es igual a Cuidados Moderados, remueve a la persona 
+     * de la lista de pacientes de Cuidados Moderado.
+     * De no ser ninguna de las dos anteriores, se procederá a remover al paciente de la lista de pacientes de 
      * Cuidados Terapia Intensiva.
      * @param persona 
+     * @throws java.lang.Exception 
      */
     public void darDeAlta(Persona persona) throws Exception{
         if (persona.getInternacion().equals(Internacion.DOM)){
