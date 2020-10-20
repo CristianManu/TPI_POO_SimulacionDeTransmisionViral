@@ -455,6 +455,7 @@ public class Persona {
     public void draw(Graphics2D g){
         AffineTransform save = g.getTransform();
         g.translate((int)this.posicion.getX(), (int)this.posicion.getY());
+        g.rotate(this.velocidad.dir() + Math.PI/2);
         g.setColor(Color.WHITE); //mas tarde agregar color segun estado
         g.fill(forma);
         g.draw(forma);
