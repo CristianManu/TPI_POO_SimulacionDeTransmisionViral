@@ -21,10 +21,10 @@ public class Atencion {
      * @param hospital 
      * @param domicilio
      */
-    public Atencion(Persona persona, Hospital hospital, Domicilio domicilio) {
+    public Atencion(Persona persona, Hospital hospital) {
         this.persona = persona;
         this.hospital = hospital;
-        this.domicilio = domicilio;
+        
     }
 
     /**Devuelve al paciente actual de atención
