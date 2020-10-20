@@ -408,8 +408,8 @@ public class Persona {
             direccion.dividir((double)total);
             double sepfinal;
             double fuefinal;
-            if (total > 40) {
-                sepfinal = separMaxVelocidad * 2;
+            if (total > 10) {
+                sepfinal = separMaxVelocidad * 4;
                 fuefinal = separMaxFuerza * 2;
             }else{
                 sepfinal = separMaxVelocidad;
