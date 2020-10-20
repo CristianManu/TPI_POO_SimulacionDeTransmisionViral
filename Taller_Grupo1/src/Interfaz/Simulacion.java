@@ -123,6 +123,7 @@ public class Simulacion extends JPanel{
             System.out.println("Persona posicion " + personas.get(0).getPosicion().getX() + " - " +  personas.get(0).getPosicion().getY());
             for (int i = 0; i < personas.size(); i++) {
                 personas.get(i).bordes();
+                personas.get(i).interaccion(personas);
                 personas.get(i).update();
                 if (personas.get(i).isSano()) {
                     sanos++;

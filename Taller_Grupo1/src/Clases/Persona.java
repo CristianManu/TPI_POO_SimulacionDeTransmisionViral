@@ -338,6 +338,101 @@ public class Persona {
         } catch (InterruptedException e) {}
     }
     
+    
+    public Vector alinear(ArrayList<Persona> personas){
+        int radiopercep = (int)(alinePercRadio);
+        int total = 0;
+        Vector direccion = new Vector(0,0);
+        //distancia entre personas
+        for (int i = 0; i < personas.size(); i++) {
+            double dist = distancia(this.posicion.getX(), this.posicion.getY(), personas.get(i).posicion.getX(), personas.get(i).posicion.getY());
+            if (personas.get(i) != this && dist < radiopercep) {
+                direccion.sumar(personas.get(i).velocidad);
+                total++;
+            }
+        }
+        
+        if (total > 0) {
+            direccion.dividir((double)total);
+            direccion.setMagnitud(maxVelocidad);
+            direccion.restar(this.velocidad);
+            direccion.limit(maxFuerza);
+        }
+        return direccion;
+    }
+    
+    public Vector cohesion(ArrayList<Persona> personas){
+        int radiopercep = (int)(cohesiPercRadio);
+        int total = 0;
+        Vector direccion = new Vector(0,0);
+        for (int i = 0; i < personas.size(); i++) {
+            double dist = distancia(this.posicion.getX(), this.posicion.getY(), personas.get(i).posicion.getX(), personas.get(i).posicion.getY());
+            if (personas.get(i) != this && dist < radiopercep) {
+                direccion.sumar(personas.get(i).posicion);
+                total++;
+            }
+        }
+        if (total > 0) {
+            direccion.dividir((double)total);
+            direccion.restar(this.posicion);
+            direccion.setMagnitud(maxVelocidad);
+            direccion.restar(this.velocidad);
+            direccion.limit(maxFuerza);
+        }
+        return direccion;
+    }
+    
+    public Vector separacion(ArrayList<Persona> personas){
+        int radiopercep = (int)separPercRadio;
+        int total = 0;
+        Vector direccion = new Vector(0, 0);
+        for (int i = 0; i < personas.size(); i++) {
+            double dist = distancia(this.posicion.getX(), this.posicion.getY(), personas.get(i).posicion.getX(), personas.get(i).posicion.getY());
+            if (personas.get(i) != this && dist < radiopercep) {
+                Vector diferencia = new Vector(this.posicion.getX(),this.posicion.getY());
+                diferencia.restar(personas.get(i).posicion);
+                if(dist == 0.0) dist += 0.001;
+                diferencia.dividir(dist*dist);
+                direccion.sumar(diferencia);
+                total++;
+            }
+        }
+        if (total > 0) {
+            direccion.dividir((double)total);
+            double sepfinal;
+            double fuefinal;
+            if (total > 40) {
+                sepfinal = separMaxVelocidad * 2;
+                fuefinal = separMaxFuerza * 2;
+            }else{
+                sepfinal = separMaxVelocidad;
+                fuefinal = separMaxFuerza;
+            }
+            direccion.setMagnitud(sepfinal);
+            direccion.restar(this.velocidad);
+            direccion.limit(fuefinal);
+        }
+        return direccion;
+    }
+    
+    public void interaccion(ArrayList<Persona> personas){
+        this.aceleracion.setValores(0, 0);
+        Vector alineacion = this.alinear(personas);
+        Vector cohesion = this.cohesion(personas);
+        Vector separacion = this.separacion(personas);
+        this.aceleracion.sumar(alineacion);
+        this.aceleracion.sumar(separacion);
+        this.aceleracion.sumar(cohesion);
+    }
+    
+    
+    private double distancia(double x1, double y1, double x2, double y2){
+        //Formula de distancia 
+        return Math.sqrt(Math.pow(x2-x1, 2) + Math.pow(y2-y1, 2));
+    }
+    /**
+     * Metodo encargado de "mover" a la persona
+     */
     public void update(){
         this.velocidad.sumar(this.aceleracion);
         this.velocidad.limit(maxVelocidad);
@@ -346,6 +441,10 @@ public class Persona {
         this.velocidad.limit(maxVelocidad);
     }
     
+    /**
+     * Metodo que crea la forma de la persona a visualizarse en la pantalla
+     * @param g 
+     */
     public void draw(Graphics2D g){
         AffineTransform save = g.getTransform();
         g.translate((int)this.posicion.getX(), (int)this.posicion.getY());
