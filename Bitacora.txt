@@ -78,3 +78,13 @@ Mas tarde volvi a actualizar el metodo contagiar para que concuerde con la simul
 16:30hs
 
 Actualize el UML para que se correponda con los cambios
+
+20/10/2020 --- 16:30hs
+
+Grupo en clase:
+
+Arreglamos un problema en el metodo contagiar que tenia problemas para contagiar de manera rapida a las personas. Añadimos, el atributo inmune a Persona para representar
+a las personas que superaron la infeccion. Se modificaron las condiciones de contagio para tener en cuenta las personas inmunes y las personas ya infectadas.
+
+Actualizamos el UML para que se corresponda con los cambios.
+
