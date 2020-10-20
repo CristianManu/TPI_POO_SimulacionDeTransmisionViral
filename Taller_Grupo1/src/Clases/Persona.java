@@ -42,6 +42,8 @@ public class Persona {
     private Cuidado cuidado;
     private Estado estado;
     private Internacion internacion;
+    private Domicilio domicilio;
+    
 
 
     
@@ -62,7 +64,8 @@ public class Persona {
         this.comorlist = new ArrayList<>();
         this.cuidado = null;
         this.estado = null;
-        this.internacion = null;        
+        this.internacion = null;
+        this.domicilio = null;
     }
     
     /**
@@ -92,6 +95,7 @@ public class Persona {
         this.cuidado = new Cuidado(cuidado);
         this.estado = null;
         this.internacion = null;
+        this.domicilio = null;
     }
     
     /**
@@ -119,6 +123,12 @@ public class Persona {
         }
     }
 
+    public Domicilio getDomicilio() {
+        return domicilio;
+    }
+    
+    
+
     /**
      * Devuelve el lugar de internación actual de una persona
      * @return
@@ -135,31 +145,28 @@ public class Persona {
         this.internacion = internacion;
     }
  
-    /**
-     *
+    /**Contagia a la otra persona dependiendo de la probabilidad que tiene esta de contagiarse segun el cuidado
+     * de la persona que contagia y de la persona siendo contagiada.
+     *@param p un objeto persona
      */
-    public void toser(){}
+    public void contagiar(Persona p){
+        int probabilidad = (p.getCuidado().getPorcentaje() + this.getCuidado().getPorcentaje())/2;
+        double random = Math.random()*100;
+        if (random < probabilidad){
+            p.setSano(false);
+        }
+    }
+    
     
     /**
      *
      */
-    public void llamarAlMedico(){}
+    public void irAlHospital(Hospital h){
+        Atencion a = new Atencion(this,h,this.getDomicilio());
+        a.atencionPorCovid();
+    }
     
-    /**
-     *
-     */
-    public void caminar(){}
-    
-    /**
-     *
-     */
-    public void irAlHospital(){}
-    
-    /**
-     *
-     */
-    public void internacionDomicialiaria(){}
-    
+   
     /**
      * Funcion que añade una comorbilidad a la lista de comorbilidades
      * de la persona
