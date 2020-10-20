@@ -154,16 +154,16 @@ public class Persona {
      * las dos personas.
      *@param p una lista de todas las personas.
      */
-    public void contagiar(ArrayList<Persona> p){
+    public void contagiar(List<Persona> p){
         for (int i = 0;i < p.size();i++){
             if (cerca(p.get(i))){
-            int probabilidad = (p.get(i).getCuidado().getPorcentaje() + this.getCuidado().getPorcentaje())/2;
-            double random = Math.random()*100;
-            if (random < probabilidad){
-                p.get(i).setSano(false);
-        }            
+                int probabilidad = (p.get(i).getCuidado().getPorcentaje() + this.getCuidado().getPorcentaje())/2;
+                double random = Math.random()*100;
+                if (random < probabilidad){
+                    p.get(i).setSano(false);
+                }
+            }
         }
-    }
     }
     /**
      * Compara las distancias entre la persona acutal y la pasada por parametro y devuelve true o false dependiendo si
