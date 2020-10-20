@@ -31,6 +31,7 @@ public class Persona {
         forma.lineTo(tamaño, tamaño*2);
         forma.closePath();
     }
+    static boolean hayInfectados = false;
     
     //Atributos UML
     private String nombre;
@@ -48,6 +49,11 @@ public class Persona {
 
     
     public Persona(){
+        //Si no hay una persona infectada, la infecta
+        if (!hayInfectados) {
+            this.sano = false;
+            hayInfectados = true;
+        } else{this.sano = true;}
         //Inicializacion de atributos Interfaz
         this.posicion = new Vector((double)(Math.random()*Simulacion.ancho), (double)(Math.random()*Simulacion.alto));
         double angulo = Math.random()*360;
@@ -57,12 +63,11 @@ public class Persona {
         
         //Inicializacion de atributos UML
         this.nombre = "";
-        this.sano = true;
         this.apellido = "";
         this.dni = 0;
         this.cuarentena = false;
         this.comorlist = new ArrayList<>();
-        this.cuidado = null;
+        this.cuidado = new Cuidado("bajo");
         this.estado = null;
         this.internacion = null;
         this.domicilio = null;
@@ -145,16 +150,34 @@ public class Persona {
         this.internacion = internacion;
     }
  
-    /**Contagia a la otra persona dependiendo de la probabilidad que tiene esta de contagiarse segun el cuidado
-     * de la persona que contagia y de la persona siendo contagiada.
-     *@param p un objeto persona
+    /**Se le pasa la lista de personas, y contagia a aquellas que se encuentran a cierta distancia, dependiendo del cuidado que tengan
+     * las dos personas.
+     *@param p una lista de todas las personas.
      */
-    public void contagiar(Persona p){
-        int probabilidad = (p.getCuidado().getPorcentaje() + this.getCuidado().getPorcentaje())/2;
-        double random = Math.random()*100;
-        if (random < probabilidad){
-            p.setSano(false);
+    public void contagiar(ArrayList<Persona> p){
+        for (int i = 0;i < p.size();i++){
+            if (cerca(p.get(i))){
+            int probabilidad = (p.get(i).getCuidado().getPorcentaje() + this.getCuidado().getPorcentaje())/2;
+            double random = Math.random()*100;
+            if (random < probabilidad){
+                p.get(i).setSano(false);
+        }            
         }
+    }
+    }
+    /**
+     * Compara las distancias entre la persona acutal y la pasada por parametro y devuelve true o false dependiendo si
+     * esta cerca o no.
+     * @param p un objeto persona
+     * @return isCerca es un boolean que indica si esta cerca o no
+     */
+    private boolean cerca (Persona p){
+        boolean isCerca = false;
+        double dist = distancia(this.getPosicion().getX(),this.getPosicion().getY(),p.getPosicion().getX(),p.getPosicion().getY());
+        if (dist <= 10){
+            isCerca = true;
+        }
+        return isCerca;
     }
     
     
@@ -456,7 +479,9 @@ public class Persona {
         AffineTransform save = g.getTransform();
         g.translate((int)this.posicion.getX(), (int)this.posicion.getY());
         g.rotate(this.velocidad.dir() + Math.PI/2);
-        g.setColor(Color.WHITE); //mas tarde agregar color segun estado
+        if (this.isSano()) {
+        g.setColor(Color.WHITE);            
+        }else{g.setColor(Color.RED);}
         g.fill(forma);
         g.draw(forma);
         g.setTransform(save);

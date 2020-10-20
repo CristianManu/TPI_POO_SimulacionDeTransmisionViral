@@ -125,6 +125,9 @@ public class Simulacion extends JPanel{
                 personas.get(i).bordes();
                 personas.get(i).interaccion(personas);
                 personas.get(i).update();
+                if (!(personas.get(i).isSano())) {
+                personas.get(i).contagiar(personas);                    
+                }
                 if (personas.get(i).isSano()) {
                     sanos++;
                 }
