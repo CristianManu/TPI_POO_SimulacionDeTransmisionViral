@@ -67,3 +67,10 @@ Actualize los constructores de hospital y cuidados moderados, ademas se actualiz
 Aldana: 
 Actualice el Javadoc  de las clases. También realiza una modificación en el método darDeAltaPersonaDomicilio() de la clase Domicilio.
 
+
+20/10/2020 --- 15:00 hs
+
+Bautista:
+
+Implemente el metodo contagiar en la clase persona, implemente el metodo ir al hospital, actualice la clase cuidado para poder obtener los porcentajes.
+Mas tarde volvi a actualizar el metodo contagiar para que concuerde con la simulacion, ademas se creo el metodo cerca para facilitar los calculos en contagiar.
