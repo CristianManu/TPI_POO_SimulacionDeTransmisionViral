@@ -13,13 +13,12 @@ public class Atencion {
     //Atributos de la clase asociacion Atencion
     private Persona persona;
     private Hospital hospital;
-    private Domicilio domicilio;
+    
 
     /**
      * Constructor parametrizado
      * @param persona
      * @param hospital 
-     * @param domicilio
      */
     public Atencion(Persona persona, Hospital hospital) {
         this.persona = persona;
@@ -41,7 +40,7 @@ public class Atencion {
      */
 
     public void enviarADomicilio(){
-        domicilio.agregarPersona(persona);
+        persona.getDomicilio().agregarPersona(persona);
     }
     
      
@@ -113,7 +112,7 @@ public class Atencion {
      */
     public void darDeAlta(Persona persona) throws Exception{
         if (persona.getInternacion().equals(Internacion.DOM)){
-              domicilio.darDeAltaPacienteDomicilio(persona);
+              persona.getDomicilio().darDeAltaPacienteDomicilio(persona);
         }else{
             if(persona.getInternacion().equals(Internacion.CM)){
                 hospital.darDeAltaPacienteModerado(persona);

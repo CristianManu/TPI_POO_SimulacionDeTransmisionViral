@@ -182,10 +182,10 @@ public class Persona {
     
     
     /**
-     *
+     * 
      */
     public void irAlHospital(Hospital h){
-        Atencion a = new Atencion(this,h,this.getDomicilio());
+        Atencion a = new Atencion(this,h);
         a.atencionPorCovid();
     }
     

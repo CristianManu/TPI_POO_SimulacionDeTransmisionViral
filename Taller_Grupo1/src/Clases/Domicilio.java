@@ -14,27 +14,24 @@ import java.util.List;
  */
 public class Domicilio {
     //Atributo
-    private int nPersonasCuarentena;
     private List<Persona> personaDom;
     
     /**Constructor por defecto
      * Inicializa contador en 0, y crea la lista de personas
      * */
     public Domicilio() {
-        nPersonasCuarentena = 0;
         personaDom = new ArrayList();
     }
     
      
     /**
-    * Aumenta la cantidad de pacientes en domicilio y la cantidad total de pacientes en cuarentena.
-    * También agrega la persona indicada por parámetro a la lista.
+    * Aumenta la cantidad de pacientes en domicilio.
+    * También añade la persona indicada por parámetro a la lista.
     * 
     * @param persona
     */
     public void agregarPersona(Persona persona){
         personaDom.add(persona);
-        nPersonasCuarentena++;
         persona.setInternacion(Internacion.DOM);
     }
     
@@ -45,26 +42,20 @@ public class Domicilio {
      * @throws java.lang.Exception lanza una excepción si no hay pacientes que dar de alta.
     */
     public void darDeAltaPacienteDomicilio(Persona persona) throws Exception{
-         if (nPersonasCuarentena >= 0){
+         if (personaDom.size() >= 0){
             personaDom.remove(persona);
-            nPersonasCuarentena--;
+            
         } else {
             throw new Exception("No hay pacientes que dar de alta");
         }
     }
+    
+    
     /*
         Metodos de acceso
         Getter
     */
     
-    /**
-     * Devuelve la cantidad de pacientes actualmente en cuarentena
-     * @return nPersonasCuarentena
-    */
-    public int getnPersonasCuarentena() {
-        return nPersonasCuarentena;
-    }
-
     
     /**
      * Muestra una lista actual de personas en cuarentena
