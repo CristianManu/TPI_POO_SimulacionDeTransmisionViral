@@ -64,7 +64,8 @@ public class Persona {
         this.comorlist = new ArrayList<>();
         this.cuidado = null;
         this.estado = null;
-        this.internacion = null;        
+        this.internacion = null;
+        this.domicilio = null;
     }
     
     /**
@@ -94,6 +95,7 @@ public class Persona {
         this.cuidado = new Cuidado(cuidado);
         this.estado = null;
         this.internacion = null;
+        this.domicilio = null;
     }
     
     /**
