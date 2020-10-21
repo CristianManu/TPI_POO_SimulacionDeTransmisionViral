@@ -74,7 +74,7 @@ public class Persona {
         this.comorlist = new ArrayList<>();
         this.cuidado = new Cuidado("bajo");
         this.internacion = null;
-        this.domicilio = null;
+        this.domicilio = new Domicilio();
         this.inmune = false;
     }
     
@@ -171,11 +171,16 @@ public class Persona {
      */
     public void contagiar(List<Persona> p){
         for (int i = 0;i < p.size();i++){
-            if (cerca(p.get(i)) && !p.get(i).isInmune() && p.get(i).isSano()){
+            /* La condicion de este if es
+            -El infectado esta cerca de otra persona y no esta en cuarentena
+            -La otra persona no esta inmunizada y esta sana
+            */
+            if (cerca(p.get(i)) && !p.get(i).isInmune() && p.get(i).isSano() && !this.isCuarentena()){
                 double probabilidad = (double) ((p.get(i).getCuidado().getPorcentaje() + this.getCuidado().getPorcentaje())/2);
                 double random = Math.random()*100;
                 if (random < probabilidad){
                     p.get(i).setSano(false);
+                    p.get(i).setEstado();
                 }
             }
         }

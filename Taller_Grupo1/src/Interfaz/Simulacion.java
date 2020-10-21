@@ -142,8 +142,14 @@ public class Simulacion extends JPanel{
             } catch (InterruptedException ex) {
             }
             //probando control de tiempo
-            if (contador > 300) {
-                personas.get(0).irAlHospital(hosp);
+            if (contador > 1000) {
+                for (int i = 0; i < personas.size(); i++) {
+                switch((int)(Math.round(Math.random()))){
+                    case 0: break;
+                    case 1: personas.get(i).irAlHospital(hosp);
+                }                    
+                }
+//                personas.get(0).irAlHospital(hosp);
 //              personas.get((int)(Math.random()*100)).setCuarentena(true);
                 contador = 0;
             }
