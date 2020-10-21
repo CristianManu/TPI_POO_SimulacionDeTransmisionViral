@@ -7,6 +7,7 @@ package Main;
 
 import Interfaz.Simulacion;
 import Clases.Persona;
+import Interfaz.VentanaInforme;
 import javax.swing.*;
 import java.awt.*;
 
@@ -21,15 +22,24 @@ public class Admin {
      * @param args
      */
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Simulacion de Covid");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocation(0,0);
-        frame.setPreferredSize(new Dimension(1024, 768));
+        JFrame frame1 = new JFrame("Simulacion de Covid");
+        JFrame frame2 = new JFrame("Informes");
+        frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame1.setLocation(0,0);
+        frame2.setLocation(1024,0);
+        frame1.setPreferredSize(new Dimension(1024, 768));
+        frame2.setPreferredSize(new Dimension(400,300));
         Simulacion sim = new Simulacion();
-        frame.setResizable(false);
-        frame.add(sim);
-        frame.pack();
-        frame.setVisible(true);
+        VentanaInforme vi = new VentanaInforme();
+        frame1.setResizable(false);
+        frame2.setResizable(false);
+        frame1.add(sim);
+        frame2.add(vi);
+        frame1.pack();
+        frame2.pack();
+        frame1.setVisible(true);
+        frame2.setVisible(true);
         sim.run();
     }
 
