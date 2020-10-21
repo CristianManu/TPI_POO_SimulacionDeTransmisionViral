@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Clases.Hospital;
 import Clases.Persona;
 import javax.swing.*;
 import java.awt.*;
@@ -37,6 +38,9 @@ public class Simulacion extends JPanel{
     static ArrayList<Persona> personas = new ArrayList<Persona>();
     public boolean personaAñadida = false;
     
+    //Hospital
+    public Hospital hosp;
+    
     static JLabel displayInfec, displaySano, displayAlto, displayMedio, displayBajo;
     
     /**
@@ -55,6 +59,8 @@ public class Simulacion extends JPanel{
             //por motivos de prueba de simulacion, se usará constructor por defecto.
             personas.add(new Persona());
         }
+        
+        this.hosp = new Hospital();
     }
     
     /**
@@ -128,6 +134,28 @@ public class Simulacion extends JPanel{
             System.out.println("Funcionando");
             System.out.println("Persona posicion " + personas.get(0).getPosicion().getX() + " - " +  personas.get(0).getPosicion().getY());
             System.out.println("Contador: " + contador);
+            personasGrafica();
+            actValores();
+            this.repaint();
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException ex) {
+            }
+            //probando control de tiempo
+            if (contador > 300) {
+                personas.get(0).irAlHospital(hosp);
+//              personas.get((int)(Math.random()*100)).setCuarentena(true);
+                contador = 0;
+            }
+            contador++;
+        }
+    }
+    
+    //Funciones para run()
+    /**
+     * Funcion que dibuja y controla el movimiento de las personas
+     */
+    private void personasGrafica(){
             for (int i = 0; i < personas.size(); i++) {
                 personas.get(i).bordes();
                 personas.get(i).interaccion(personas);
@@ -139,19 +167,6 @@ public class Simulacion extends JPanel{
                 if (personas.get(i).isSano()) {
                     sanos++;
                 }
-            }
-            actValores();
-            this.repaint();
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException ex) {
-            }
-            //probando control de tiempo
-            if (contador > 300) {
-                personas.get((int)(Math.random()*100)).setCuarentena(true);
-                contador = 0;
-            }
-            contador++;
-        }
+            }        
     }
 }

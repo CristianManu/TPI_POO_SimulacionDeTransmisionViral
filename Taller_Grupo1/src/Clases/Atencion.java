@@ -42,6 +42,7 @@ public class Atencion {
     public void enviarADomicilio(){
         persona.getDomicilio().agregarPersona(persona);
         persona.setInternacion(Internacion.DOM);
+        persona.setCuarentena(true);
     }
     
      
@@ -51,7 +52,8 @@ public class Atencion {
     * De no realizarse ninguna de las anteriores, 
     * agregará la persona indicada por parámetro a la lista de personas en domicilio.
     */
-    public void enviarATerapiaIntensiva(){     
+    public void enviarATerapiaIntensiva(){
+        persona.setCuarentena(true);
         if (!hospital.agregarPacienteGrave(persona)){
             if (!hospital.agregarPacienteModerado(persona)){
                 this.enviarADomicilio();
@@ -69,6 +71,7 @@ public class Atencion {
     * agregará la persona indicada por parámetro a la lista de personas en domicilio.
     */
     public void enviarACuidadosModerados(){
+        persona.setCuarentena(true);
         if (!hospital.agregarPacienteModerado(persona)){
             this.enviarADomicilio();
         } else {

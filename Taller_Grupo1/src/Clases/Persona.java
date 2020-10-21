@@ -53,8 +53,12 @@ public class Persona {
         //Si no hay una persona infectada, la infecta
         if (!hayInfectados) {
             this.sano = false;
+            this.estado = estado.Moderado;
             hayInfectados = true;
-        } else{this.sano = true;}
+        } else{
+            this.sano = true;
+            this.estado = null;
+        }
         //Inicializacion de atributos Interfaz
         this.posicion = new Vector((double)(Math.random()*Simulacion.ancho), (double)(Math.random()*Simulacion.alto));
         double angulo = Math.random()*360;
@@ -69,9 +73,9 @@ public class Persona {
         this.cuarentena = false;
         this.comorlist = new ArrayList<>();
         this.cuidado = new Cuidado("bajo");
-        this.estado = null;
         this.internacion = null;
         this.domicilio = null;
+        this.inmune = false;
     }
     
     /**
