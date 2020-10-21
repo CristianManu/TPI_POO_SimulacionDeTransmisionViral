@@ -15,12 +15,26 @@ import java.util.List;
  */
 public class Informes {
     //Listas de tipo persona 
-    List<Persona> personasContagiadas = new ArrayList<>();
-    List<Persona> personasSanas = new ArrayList<>();
-    List<Persona> personasCuidadoAlto = new ArrayList<>();
-    List<Persona> personasCuidadoMedio = new ArrayList<>();
-    List<Persona> personasCuidadoBajo = new ArrayList<>();
+    List<Persona> personasContagiadas;
+    List<Persona> personasSanas;
+    List<Persona> personasCuidadoAlto;
+    List<Persona> personasCuidadoMedio;
+    List<Persona> personasCuidadoBajo;
 
+    /**
+    *Constructor por defecto
+    * Crea listas de personas contagiadas, sanas, con cuidado Alto, Medio y Bajo.
+    */
+    public Informes() {
+        personasContagiadas = new ArrayList<>();
+        personasSanas = new ArrayList<>();
+        personasCuidadoAlto = new ArrayList<>();
+        personasCuidadoMedio = new ArrayList<>();
+        personasCuidadoBajo = new ArrayList<>();
+    }
+
+    
+    
     /**
      *Añade la persona indicada por parámetro a la lista de personas contagiadas.
      * @param p un objeto Persona
