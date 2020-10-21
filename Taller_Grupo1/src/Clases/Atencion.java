@@ -41,6 +41,7 @@ public class Atencion {
 
     public void enviarADomicilio(){
         persona.getDomicilio().agregarPersona(persona);
+        persona.setInternacion(Internacion.DOM);
     }
     
      
@@ -54,7 +55,11 @@ public class Atencion {
         if (!hospital.agregarPacienteGrave(persona)){
             if (!hospital.agregarPacienteModerado(persona)){
                 this.enviarADomicilio();
+            } else {
+                persona.setInternacion(Internacion.CM);
             }
+        } else {
+            persona.setInternacion(Internacion.CTI);
         }
     }
     
@@ -66,6 +71,8 @@ public class Atencion {
     public void enviarACuidadosModerados(){
         if (!hospital.agregarPacienteModerado(persona)){
             this.enviarADomicilio();
+        } else {
+            persona.setInternacion(Internacion.CM);
         }
     }
     
