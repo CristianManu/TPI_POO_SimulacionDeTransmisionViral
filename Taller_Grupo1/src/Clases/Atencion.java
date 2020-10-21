@@ -37,6 +37,7 @@ public class Atencion {
 
     /**
      * Agrega una persona al Domicilio. Ademas se cambia la internacion a internacion domiciliaria.
+     * Tambien setea a True el atributo Cuarentena de Persona.
      */
 
     public void enviarADomicilio(){
@@ -52,6 +53,7 @@ public class Atencion {
     * De no realizarse ninguna de las anteriores, 
     * agregará la persona indicada por parámetro a la lista de personas en domicilio.
     * Ademas cambia la Internacion de la persona dependiendo del caso.
+    * Tambien setea a True el atributo Cuarentena de Persona.
     */
     public void enviarATerapiaIntensiva(){
         persona.setCuarentena(true);
@@ -71,6 +73,7 @@ public class Atencion {
     * Metodo que agrega la persona indicada por parámetro a la lista de cuidados moderados.Si no se realizó la operación, 
     * agregará la persona indicada por parámetro a la lista de personas en domicilio. Tambien cambia la internacion de la 
     * persona a cuidados moderados si se logra realizar la operacion.
+    * Tambien setea a True el atributo Cuarentena de Persona.
     */
     public void enviarACuidadosModerados(){
         persona.setCuarentena(true);
