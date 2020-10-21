@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 import java.awt.event.*;
+import java.util.Random;
 /**
  *
  * @author Grupo1
@@ -17,6 +18,7 @@ import java.awt.event.*;
 public class Simulacion extends JPanel{
     private static final long serialVersionUID = -8716187417647724411L;    
     private static final int poblacion = 100;  //Poblacion de la ciudad.
+    private static int contador = 0;
     
     /**
      *
@@ -46,7 +48,6 @@ public class Simulacion extends JPanel{
         this.setBackground(Color.BLACK);
         this.setPreferredSize(new Dimension(ancho, alto));
         this.setFocusable(true);
-        
         
         crearLabels();
         
@@ -109,6 +110,9 @@ public class Simulacion extends JPanel{
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         for (Persona p: personas) {
             p.draw(g);
+            if (p.isCuarentena()) {
+            p.drawRectangle(g);                
+            }
         }
     }
     
@@ -123,6 +127,7 @@ public class Simulacion extends JPanel{
             infectados = 0;
             System.out.println("Funcionando");
             System.out.println("Persona posicion " + personas.get(0).getPosicion().getX() + " - " +  personas.get(0).getPosicion().getY());
+            System.out.println("Contador: " + contador);
             for (int i = 0; i < personas.size(); i++) {
                 personas.get(i).bordes();
                 personas.get(i).interaccion(personas);
@@ -141,6 +146,12 @@ public class Simulacion extends JPanel{
                 Thread.sleep(10);
             } catch (InterruptedException ex) {
             }
+            //probando control de tiempo
+            if (contador > 300) {
+                personas.get((int)(Math.random()*100)).setCuarentena(true);
+                contador = 0;
+            }
+            contador++;
         }
     }
 }

@@ -464,11 +464,13 @@ public class Persona {
      * Metodo encargado de "mover" a la persona
      */
     public void update(){
+        if (!(this.isCuarentena())) {
         this.velocidad.sumar(this.aceleracion);
         this.velocidad.limit(maxVelocidad);
         this.posicion.sumar(this.velocidad);
         this.velocidad.sumar(this.aceleracion);
-        this.velocidad.limit(maxVelocidad);
+        this.velocidad.limit(maxVelocidad);            
+        }
     }
     
     /**
@@ -485,6 +487,18 @@ public class Persona {
         g.fill(forma);
         g.draw(forma);
         g.setTransform(save);
+    }
+    
+    public void drawRectangle(Graphics2D g){
+        AffineTransform save = g.getTransform();
+        g.translate((int)this.posicion.getX(), (int)this.posicion.getY());
+        g.rotate(this.velocidad.dir() + Math.PI/2);
+        if (this.isSano()) {
+        g.setColor(Color.WHITE);            
+        }else{g.setColor(Color.RED);}
+//        g.fill(forma);
+        g.drawRect(-7, -7, tamaño*5, tamaño*5);
+        g.setTransform(save); 
     }
     
     /**
