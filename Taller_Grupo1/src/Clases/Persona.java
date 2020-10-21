@@ -437,6 +437,8 @@ public class Persona {
         int total = 0;
         Vector direccion = new Vector(0, 0);
         for (int i = 0; i < personas.size(); i++) {
+            //Si la persona no esta en cuarentena, se activa la separacion. De no ser asi, la ignora.
+            if (!(personas.get(i).isCuarentena())) {
             double dist = distancia(this.posicion.getX(), this.posicion.getY(), personas.get(i).posicion.getX(), personas.get(i).posicion.getY());
             if (personas.get(i) != this && dist < radiopercep) {
                 Vector diferencia = new Vector(this.posicion.getX(),this.posicion.getY());
@@ -445,7 +447,17 @@ public class Persona {
                 diferencia.dividir(dist*dist);
                 direccion.sumar(diferencia);
                 total++;
+            }                
             }
+//            double dist = distancia(this.posicion.getX(), this.posicion.getY(), personas.get(i).posicion.getX(), personas.get(i).posicion.getY());
+//            if (personas.get(i) != this && dist < radiopercep) {
+//                Vector diferencia = new Vector(this.posicion.getX(),this.posicion.getY());
+//                diferencia.restar(personas.get(i).posicion);
+//                if(dist == 0.0) dist += 0.001;
+//                diferencia.dividir(dist*dist);
+//                direccion.sumar(diferencia);
+//                total++;
+//            }
         }
         if (total > 0) {
             direccion.dividir((double)total);
