@@ -136,12 +136,23 @@ public class Simulacion extends JPanel{
             System.out.println("Contador: " + contador);
             personasGrafica();
             actValores();
+            controlTiempo();            
             this.repaint();
             try {
                 Thread.sleep(10);
             } catch (InterruptedException ex) {
             }
             //probando control de tiempo
+            contador++;
+        }
+    }
+    
+    //Funciones para run()
+    
+    /**
+     * Metodo que realiza tareas tras alcanzar determinado valor de contador.
+     */
+    private void controlTiempo(){
             if (contador > 1000) {
                 for (int i = 0; i < personas.size(); i++) {
                 switch((int)(Math.round(Math.random()))){
@@ -152,27 +163,44 @@ public class Simulacion extends JPanel{
 //                personas.get(0).irAlHospital(hosp);
 //              personas.get((int)(Math.random()*100)).setCuarentena(true);
                 contador = 0;
-            }
-            contador++;
-        }
+            }        
     }
     
-    //Funciones para run()
+    
     /**
-     * Funcion que dibuja y controla el movimiento de las personas
+     * Metodo que dibuja y controla el movimiento de las personas
      */
-    private void personasGrafica(){
-            for (int i = 0; i < personas.size(); i++) {
-                personas.get(i).bordes();
-                personas.get(i).interaccion(personas);
-                personas.get(i).update();
-                if (!(personas.get(i).isSano())) {
+    private void personasGrafica() {
+        for (int i = 0; i < personas.size(); i++) {
+            personas.get(i).bordes();
+            personas.get(i).interaccion(personas);
+            personas.get(i).update();
+            if (!(personas.get(i).isSano())) {
                 personas.get(i).contagiar(personas);
                 infectados++;
+            }
+            if (personas.get(i).isSano()) {
+                sanos++;
+            }
+            if (personas.get(i).isCuarentena()) {
+                personas.get(i).contColorTiempo++;
+                if (personas.get(i).contColorTiempo % 4 == 0) {
+                    personas.get(i).contColor++;
+                    switch (personas.get(i).contColor) {
+                        case 1:
+                            personas.get(i).colRectan = Color.BLUE;
+                            break;
+                        case 2:
+                            personas.get(i).colRectan = Color.WHITE;
+                            break;
+                        case 3:
+                            personas.get(i).colRectan = Color.RED;
+                            personas.get(i).contColor = 0;
+                            break;
+                    }
                 }
-                if (personas.get(i).isSano()) {
-                    sanos++;
-                }
-            }        
+
+            }
+        }
     }
 }

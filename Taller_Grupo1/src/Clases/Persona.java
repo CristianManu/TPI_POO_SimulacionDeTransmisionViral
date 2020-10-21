@@ -25,6 +25,9 @@ public class Persona {
     static int tamaño = 3;
     static Path2D forma = new Path2D.Double();
     
+    public Color colRectan = Color.BLUE;
+    public int contColor, contColorTiempo;
+    
     static{
         forma.moveTo(0, -tamaño*2);
         forma.lineTo(-tamaño, tamaño*2);
@@ -65,6 +68,8 @@ public class Persona {
         double radio = Math.random()*2+2; //2-4
         this.velocidad = new Vector(radio * Math.cos(angulo), radio * Math.sin(angulo));
         this.aceleracion = new Vector(0, 0);
+        this.contColor = 0;
+        this.contColorTiempo = 0;
         
         //Inicializacion de atributos UML
         this.nombre = "";
@@ -389,16 +394,18 @@ public class Persona {
     }
     
     
-    public Vector alinear(ArrayList<Persona> personas){
-        int radiopercep = (int)(alinePercRadio);
+    public Vector alinear(ArrayList<Persona> personas) {
+        int radiopercep = (int) (alinePercRadio);
         int total = 0;
-        Vector direccion = new Vector(0,0);
+        Vector direccion = new Vector(0, 0);
         //distancia entre personas
         for (int i = 0; i < personas.size(); i++) {
-            double dist = distancia(this.posicion.getX(), this.posicion.getY(), personas.get(i).posicion.getX(), personas.get(i).posicion.getY());
-            if (personas.get(i) != this && dist < radiopercep) {
-                direccion.sumar(personas.get(i).velocidad);
-                total++;
+            if (!personas.get(i).isCuarentena()) {
+                double dist = distancia(this.posicion.getX(), this.posicion.getY(), personas.get(i).posicion.getX(), personas.get(i).posicion.getY());
+                if (personas.get(i) != this && dist < radiopercep) {
+                    direccion.sumar(personas.get(i).velocidad);
+                    total++;
+                }
             }
         }
         
@@ -411,19 +418,21 @@ public class Persona {
         return direccion;
     }
     
-    public Vector cohesion(ArrayList<Persona> personas){
-        int radiopercep = (int)(cohesiPercRadio);
+    public Vector cohesion(ArrayList<Persona> personas) {
+        int radiopercep = (int) (cohesiPercRadio);
         int total = 0;
-        Vector direccion = new Vector(0,0);
+        Vector direccion = new Vector(0, 0);
         for (int i = 0; i < personas.size(); i++) {
-            double dist = distancia(this.posicion.getX(), this.posicion.getY(), personas.get(i).posicion.getX(), personas.get(i).posicion.getY());
-            if (personas.get(i) != this && dist < radiopercep) {
-                direccion.sumar(personas.get(i).posicion);
-                total++;
+            if (!personas.get(i).isCuarentena()) {
+                double dist = distancia(this.posicion.getX(), this.posicion.getY(), personas.get(i).posicion.getX(), personas.get(i).posicion.getY());
+                if (personas.get(i) != this && dist < radiopercep) {
+                    direccion.sumar(personas.get(i).posicion);
+                    total++;
+                }
             }
         }
         if (total > 0) {
-            direccion.dividir((double)total);
+            direccion.dividir((double) total);
             direccion.restar(this.posicion);
             direccion.setMagnitud(maxVelocidad);
             direccion.restar(this.velocidad);
@@ -432,22 +441,24 @@ public class Persona {
         return direccion;
     }
     
-    public Vector separacion(ArrayList<Persona> personas){
-        int radiopercep = (int)separPercRadio;
+    public Vector separacion(ArrayList<Persona> personas) {
+        int radiopercep = (int) separPercRadio;
         int total = 0;
         Vector direccion = new Vector(0, 0);
         for (int i = 0; i < personas.size(); i++) {
             //Si la persona no esta en cuarentena, se activa la separacion. De no ser asi, la ignora.
-            if (!(personas.get(i).isCuarentena())) {
-            double dist = distancia(this.posicion.getX(), this.posicion.getY(), personas.get(i).posicion.getX(), personas.get(i).posicion.getY());
-            if (personas.get(i) != this && dist < radiopercep) {
-                Vector diferencia = new Vector(this.posicion.getX(),this.posicion.getY());
-                diferencia.restar(personas.get(i).posicion);
-                if(dist == 0.0) dist += 0.001;
-                diferencia.dividir(dist*dist);
-                direccion.sumar(diferencia);
-                total++;
-            }                
+            if (!personas.get(i).isCuarentena()) {
+                double dist = distancia(this.posicion.getX(), this.posicion.getY(), personas.get(i).posicion.getX(), personas.get(i).posicion.getY());
+                if (personas.get(i) != this && dist < radiopercep) {
+                    Vector diferencia = new Vector(this.posicion.getX(), this.posicion.getY());
+                    diferencia.restar(personas.get(i).posicion);
+                    if (dist == 0.0) {
+                        dist += 0.001;
+                    }
+                    diferencia.dividir(dist * dist);
+                    direccion.sumar(diferencia);
+                    total++;
+                }
             }
 //            double dist = distancia(this.posicion.getX(), this.posicion.getY(), personas.get(i).posicion.getX(), personas.get(i).posicion.getY());
 //            if (personas.get(i) != this && dist < radiopercep) {
@@ -527,7 +538,7 @@ public class Persona {
         g.rotate(this.velocidad.dir() + Math.PI/2);
         if (this.isSano()) {
         g.setColor(Color.WHITE);            
-        }else{g.setColor(Color.RED);}
+        }else{g.setColor(colRectan);}
 //        g.fill(forma);
         g.drawRect(-7, -7, tamaño*5, tamaño*5);
         g.setTransform(save); 
