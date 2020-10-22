@@ -544,13 +544,17 @@ public class Persona {
      * Metodo que crea la forma de la persona a visualizarse en la pantalla
      * @param g 
      */
-    public void draw(Graphics2D g){
+    public void draw(Graphics2D g) {
         AffineTransform save = g.getTransform();
-        g.translate((int)this.posicion.getX(), (int)this.posicion.getY());
-        g.rotate(this.velocidad.dir() + Math.PI/2);
+        g.translate((int) this.posicion.getX(), (int) this.posicion.getY());
+        g.rotate(this.velocidad.dir() + Math.PI / 2);
         if (this.isSano()) {
-        g.setColor(Color.WHITE);            
-        }else{g.setColor(Color.RED);}
+            if (this.isInmune()) {
+                g.setColor(Color.BLUE);
+            } else {g.setColor(Color.WHITE);}
+        } else {
+            g.setColor(Color.RED);
+        }
         g.fill(forma);
         g.draw(forma);
         g.setTransform(save);
