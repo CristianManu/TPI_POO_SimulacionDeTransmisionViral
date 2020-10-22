@@ -64,9 +64,24 @@ public class Simulacion extends JPanel implements Runnable{
         this.setFocusable(true);
         
         
-        for (int i = 0; i < poblacion; i++) {
-            
+        
+        
+       // for (int i = 0; i < poblacion; i++) {
+       //     
+       //     personas.add(new Adulto());
+       // }
+        int adultos = 70;
+        int niños = 20;
+        int ancianos = 10;
+        
+        for (int i = 0;i <= adultos; i++){
             personas.add(new Adulto());
+        }
+        for (int i = 0;i <= niños; i++){
+            personas.add(new Menor());
+        }
+        for (int i = 0;i <= ancianos; i++){
+            personas.add(new Mayor());
         }
         
         this.hosp = new Hospital();
