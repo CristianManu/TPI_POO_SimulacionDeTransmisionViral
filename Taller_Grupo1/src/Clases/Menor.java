@@ -5,14 +5,28 @@
  */
 package Clases;
 
-import java.awt.Graphics2D;
+import Interfaz.Simulacion;
+import java.util.List;
 import java.util.ArrayList;
+import java.util.Random;
+import java.awt.*;
+import java.awt.geom.*;
 
 /**
  *
  * @author Notebook HP
  */
 public class Menor extends Persona{
+    
+    private int tamaño = 2;
+    private Path2D forma = new Path2D.Double();
+    
+    {
+        forma.moveTo(0, -tamaño*2);
+        forma.lineTo(-tamaño, tamaño*2);
+        forma.lineTo(tamaño, tamaño*2);
+        forma.closePath();
+    }
     /**
      * 
      * @param nombre
@@ -22,6 +36,11 @@ public class Menor extends Persona{
      * @param cuarentena
      * @param cuidado
      */
+    
+    public Menor(){
+        super();
+    }
+    
     public Menor(String nombre, boolean sano, String apellido, int dni, boolean cuarentena, String cuidado) {
         super(nombre, sano, apellido, dni, cuarentena, cuidado);
     }
@@ -32,8 +51,18 @@ public class Menor extends Persona{
 
     @Override
     public void draw(Graphics2D g) {
-        super.draw(g); //To change body of generated methods, choose Tools | Templates.
+        AffineTransform save = g.getTransform();
+        g.translate((int)this.posicion.getX(), (int)this.posicion.getY());
+        g.rotate(this.velocidad.dir() + Math.PI/2);
+        if (this.isSano()) {
+        g.setColor(Color.WHITE);            
+        }else{g.setColor(Color.RED);}
+        g.fill(forma);
+        g.draw(forma);
+        g.setTransform(save);
     }
+    
+    
 
     @Override
     public void update() {

@@ -5,9 +5,12 @@
  */
 package Interfaz;
 
+import Clases.Adulto;
 import Clases.CalidadDeCuidado;
 import Clases.Hospital;
 import Clases.Informes;
+import Clases.Mayor;
+import Clases.Menor;
 import Clases.Persona;
 import com.sun.corba.se.impl.protocol.LocalClientRequestDispatcherBase;
 import javax.swing.*;
@@ -63,8 +66,8 @@ public class Simulacion extends JPanel implements Runnable{
         crearLabels();
         
         for (int i = 0; i < poblacion; i++) {
-            //por motivos de prueba de simulacion, se usará constructor por defecto.
-            personas.add(new Persona());
+            
+            personas.add(new Adulto());
         }
         
         this.hosp = new Hospital();

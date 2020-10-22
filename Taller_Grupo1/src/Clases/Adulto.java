@@ -20,6 +20,10 @@ public class Adulto extends Persona {
      * @param cuarentena
      * @param cuidado
      */
+    public Adulto(){
+        super();
+    }
+    
     public Adulto(String nombre, boolean sano, String apellido, int dni, boolean cuarentena, String cuidado) {
         super(nombre, sano, apellido, dni, cuarentena, cuidado);
     }

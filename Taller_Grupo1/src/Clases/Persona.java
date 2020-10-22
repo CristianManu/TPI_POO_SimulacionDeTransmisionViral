@@ -22,14 +22,14 @@ public class Persona {
     Vector aceleracion;
     
     static int rangoVision = 120;
-    static int tamaño = 3;
-    static Path2D forma = new Path2D.Double();
+    private int tamaño = 3;
+    private Path2D forma = new Path2D.Double();
     
     public Color colRectan = Color.BLUE;
     public Color colCircul = Color.cyan;
     public int contColor, contColorTiempo;
     
-    static{
+    {
         forma.moveTo(0, -tamaño*2);
         forma.lineTo(-tamaño, tamaño*2);
         forma.lineTo(tamaño, tamaño*2);
