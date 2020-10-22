@@ -26,6 +26,7 @@ public class Persona {
     static Path2D forma = new Path2D.Double();
     
     public Color colRectan = Color.BLUE;
+    public Color colCircul = Color.cyan;
     public int contColor, contColorTiempo;
     
     static{
@@ -48,6 +49,7 @@ public class Persona {
     private Internacion internacion;
     private Domicilio domicilio;
     private boolean inmune;
+    private boolean fueDiagnosticado;
     
 
 
@@ -77,10 +79,11 @@ public class Persona {
         this.dni = 0;
         this.cuarentena = false;
         this.comorlist = new ArrayList<>();
-        this.cuidado = new Cuidado("bajo");
+        this.cuidado = new Cuidado(setCuidado());
         this.internacion = null;
         this.domicilio = new Domicilio();
         this.inmune = false;
+        this.fueDiagnosticado = false;
     }
     
     /**
@@ -111,6 +114,8 @@ public class Persona {
         this.estado = null;
         this.internacion = null;
         this.domicilio = null;
+        this.inmune = false;
+        this.fueDiagnosticado = false;
     }
     
     /**
@@ -125,7 +130,7 @@ public class Persona {
      */
     public void setEstado(){
         Random r1 = new Random();
-        int ran = r1.nextInt(3);
+        int ran = r1.nextInt(4);
         switch(ran){
             case 0: this.estado = Estado.Asintomatico;
             break;
@@ -208,10 +213,16 @@ public class Persona {
     
     /**
      * 
+     * @param h
      */
     public void irAlHospital(Hospital h){
+        if (!this.fueDiagnosticado) {
         Atencion a = new Atencion(this,h);
         a.atencionPorCovid();
+            if (!this.isSano()) {
+                this.fueDiagnosticado = true;                
+            }
+        }
     }
     
    
@@ -323,6 +334,19 @@ public class Persona {
      */
     public Cuidado getCuidado() {
         return cuidado;
+    }
+    /*
+    Metodo para constructor, asigna un cuidado aleatorio
+    */
+    private String setCuidado(){
+        Random r1 = new Random();
+        int ran = r1.nextInt(3);
+        switch(ran){
+            case 0: return "bajo";
+            case 1: return "medio";
+            case 2: return "alto";
+            default: return "bajo";
+        }        
     }
     
     /**
@@ -542,6 +566,21 @@ public class Persona {
 //        g.fill(forma);
         g.drawRect(-7, -7, tamaño*5, tamaño*5);
         g.setTransform(save); 
+    }
+    
+    public void drawCircle(Graphics2D g) {
+        AffineTransform save = g.getTransform();
+        g.translate((int) this.posicion.getX(), (int) this.posicion.getY());
+        g.rotate(this.velocidad.dir() + Math.PI / 2);
+        if (this.getCuidado().getCalidadCuidado() == CalidadDeCuidado.Bajo) {
+            g.setColor(Color.CYAN);
+        } else if (this.getCuidado().getCalidadCuidado() == CalidadDeCuidado.Medio) {
+            g.setColor(Color.YELLOW);
+        } else {
+            g.setColor(Color.ORANGE);
+        }
+        g.fillOval(-7, -7, tamaño + 1, tamaño + 1);
+        g.setTransform(save);
     }
     
     /**
