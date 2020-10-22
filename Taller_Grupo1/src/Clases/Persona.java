@@ -50,6 +50,7 @@ public class Persona {
     private Domicilio domicilio;
     private boolean inmune;
     private boolean fueDiagnosticado;
+    private int tiempoInfec;
     
 
 
@@ -84,6 +85,7 @@ public class Persona {
         this.domicilio = new Domicilio();
         this.inmune = false;
         this.fueDiagnosticado = false;
+        this.tiempoInfec = 0;
     }
     
     /**
@@ -117,7 +119,26 @@ public class Persona {
         this.domicilio = null;
         this.inmune = false;
         this.fueDiagnosticado = false;
+        this.tiempoInfec = 0;
     }
+
+    public boolean isFueDiagnosticado() {
+        return fueDiagnosticado;
+    }
+
+    public void setFueDiagnosticado(boolean fueDiagnosticado) {
+        this.fueDiagnosticado = fueDiagnosticado;
+    }
+
+    public int getTiempoInfec() {
+        return tiempoInfec;
+    }
+
+    public void setTiempoInfec(int tiempoInfec) {
+        this.tiempoInfec = tiempoInfec;
+    }
+    
+    
     
     /**
      *
@@ -534,13 +555,23 @@ public class Persona {
     /**
      * Metodo encargado de "mover" a la persona
      */
-    public void update(){
-        if (!(this.isCuarentena())) {
-        this.velocidad.sumar(this.aceleracion);
-        this.velocidad.limit(maxVelocidad);
-        this.posicion.sumar(this.velocidad);
-        this.velocidad.sumar(this.aceleracion);
-        this.velocidad.limit(maxVelocidad);            
+    public void update() {
+        if (!this.isCuarentena()) {
+            this.velocidad.sumar(this.aceleracion);
+            this.velocidad.limit(maxVelocidad);
+            this.posicion.sumar(this.velocidad);
+            this.velocidad.sumar(this.aceleracion);
+            this.velocidad.limit(maxVelocidad);
+        }
+        if (!this.isSano()) {
+            if (this.tiempoInfec > 2000) {
+                this.setCuarentena(false);
+                this.setSano(true);
+                this.setInmune(true);
+                this.setInternacion(null);
+            } else {
+                this.tiempoInfec++;
+            }
         }
     }
     
