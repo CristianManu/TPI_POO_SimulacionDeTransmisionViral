@@ -25,7 +25,15 @@ import javax.swing.border.Border;
  * @author cristian
  */
 public class VentanaInforme extends Container implements Runnable {
+
+    /**
+     *
+     */
     public Informes info;
+
+    /**
+     *
+     */
     public Hospital hosp;
     private JPanel panelIzq, panelDer;
     private JLabel displayInfec, displaySano, displayAlto, displayMedio, displayBajo,
@@ -36,6 +44,11 @@ public class VentanaInforme extends Container implements Runnable {
     
     static final int separacion = 7;
 
+    /**
+     * Constructor parametrizado
+     * @param info
+     * @param hosp
+     */
     public VentanaInforme(Informes info, Hospital hosp) {
         panelIzq = new JPanel();
         panelDer = new JPanel();
@@ -56,6 +69,9 @@ public class VentanaInforme extends Container implements Runnable {
         crearLabels();
     }
     
+    /**
+     * Funcion que crea las labels que muestran la informacion de la epidemia.
+     */
     private void crearLabels(){
         displaySano = new JLabel("Cantidad de personas sanas");
         this.setLayout(new FlowLayout());

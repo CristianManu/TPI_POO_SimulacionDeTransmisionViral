@@ -63,7 +63,9 @@ public class Hospital {
     }
     
     /**
-    * Disminuye la cantidad de pacientes moderados y la cantidad total de pacientes.Se elimina a la persona de la lista indicada por parametro.
+    * Disminuye la cantidad de pacientes moderados y la cantidad total de pacientes.
+    * Se elimina a la persona de la lista indicada por parametro.
+    * Seteando la inmunidad de la persona a verdadero;
     * @param p un objeto persona
      * @throws java.lang.Exception lanza excepcion si no hay personas que remover.
     */
@@ -71,11 +73,17 @@ public class Hospital {
         cuidadosModerados.darDeAlta(p);
         nPacientesModerados--;
         nPacientesTotal--;
-        personasInternadas.remove(p);    
+        p.setInmune(true);
+        p.setSano(true);
+        personasInternadas.remove(p); 
+        
     }
     
     /**
-    * Disminuye la cantidad de pacientes graves y la cantidad total de pacientes.Se elimina a la persona de la lista indicada por parametro.
+    * Disminuye la cantidad de pacientes graves y la cantidad total de pacientes.
+    * Cambia la inmunidad de la persona a verdadero. Como así también sano a verdadero 
+    * y elimina al mismo de la lista indicada por parámetro.
+    * 
     * @param p un objeto persona
     * @throws java.lang.Exception lanza excepcion so no hay personas que remover
     */
@@ -83,7 +91,10 @@ public class Hospital {
         cuidadosTerapiaIntensiva.darDeAlta(p);
         nPacientesGraves--;
         nPacientesTotal--;
+        p.setInmune(true);
+        p.setSano(true);
         personasInternadas.remove(p);
+        
     }
     
     /**

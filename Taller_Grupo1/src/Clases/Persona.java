@@ -53,7 +53,7 @@ public class Persona {
     
 
 
-    
+    /**Constructor por defecto*/
     public Persona(){
         //Si no hay una persona infectada, la infecta
         if (!hayInfectados) {
@@ -87,6 +87,7 @@ public class Persona {
     }
     
     /**
+     * Constructor parametrizado
      * 
      * @param nombre
      * @param sano
@@ -142,7 +143,10 @@ public class Persona {
             break;
         }
     }
-
+    
+    /**
+     * @return domicilio
+     */
     public Domicilio getDomicilio() {
         return domicilio;
     }
@@ -336,7 +340,7 @@ public class Persona {
         return cuidado;
     }
     /*
-    Metodo para constructor, asigna un cuidado aleatorio
+    *Metodo para constructor, asigna un cuidado aleatorio
     */
     private String setCuidado(){
         Random r1 = new Random();
@@ -599,5 +603,4 @@ public class Persona {
             this.posicion.y = Simulacion.alto;
         }
     }
-    
 }

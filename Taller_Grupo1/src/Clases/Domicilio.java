@@ -37,13 +37,18 @@ public class Domicilio {
     
     /**
      * 
-    * Da de alta al paciente eliminandolo al mismo de la lista indicada por parámetro.
+    * Da de alta al paciente cambiando la inmunidad de la persona a verdadero. 
+    * Como así también sano a verdadero y elimina al mismo de la lista indicada por parámetro.
+    * 
     * @param persona 
      * @throws java.lang.Exception lanza una excepción si no hay pacientes que dar de alta.
     */
     public void darDeAltaPacienteDomicilio(Persona persona) throws Exception{
          if (personaDom.size() >= 0){
+            persona.setInmune(true);
+            persona.setSano(true);
             personaDom.remove(persona);
+            
             
         } else {
             throw new Exception("No hay pacientes que dar de alta");
