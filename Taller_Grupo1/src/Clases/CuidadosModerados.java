@@ -52,14 +52,11 @@ public class CuidadosModerados {
     /**
      * Da de alta un paciente eliminandolo de la lista.Si no hay pacientes que eliminar lanza una excepcion.
      * @param p un objeto Persona
-     * @throws java.lang.Exception lanza excepcion si no hay pacientes para dar de alta.
      */
-    public void darDeAlta(Persona p) throws Exception{
+    public void darDeAlta(Persona p){
         if (nPacientes >= 0){
             pacientes.remove(p);
             nPacientes--;
-        } else {
-            throw new Exception("No hay pacientes que dar de alta");
         }
     }
     /**
