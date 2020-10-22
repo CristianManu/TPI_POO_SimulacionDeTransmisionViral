@@ -52,8 +52,12 @@ public class Mayor extends Persona{
         g.translate((int)this.posicion.getX(), (int)this.posicion.getY());
         g.rotate(this.velocidad.dir() + Math.PI/2);
         if (this.isSano()) {
-        g.setColor(Color.WHITE);            
-        }else{g.setColor(Color.RED);}
+            if (this.isInmune()) {
+                g.setColor(Color.BLUE);
+            } else {g.setColor(Color.WHITE);}
+        } else {
+            g.setColor(Color.RED);
+        }
         g.fill(forma);
         g.draw(forma);
         g.setTransform(save);
