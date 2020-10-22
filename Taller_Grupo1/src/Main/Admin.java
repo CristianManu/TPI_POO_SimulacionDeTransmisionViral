@@ -31,7 +31,9 @@ public class Admin {
         frame1.setPreferredSize(new Dimension(1024, 768));
         frame2.setPreferredSize(new Dimension(400,300));
         Simulacion sim = new Simulacion();
-        VentanaInforme vi = new VentanaInforme();
+        VentanaInforme vi = new VentanaInforme(sim.informe, sim.hosp);
+        Thread hilosim = new Thread(sim);
+        Thread hilovi = new Thread(vi);
         frame1.setResizable(false);
         frame2.setResizable(false);
         frame1.add(sim);
@@ -40,7 +42,8 @@ public class Admin {
         frame2.pack();
         frame1.setVisible(true);
         frame2.setVisible(true);
-        sim.run();
+        hilosim.start();
+        hilovi.start();
     }
 
 }
