@@ -2,6 +2,7 @@ package Clases;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Iterator;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -36,6 +37,24 @@ public class Hospital {
         cuidadosTerapiaIntensiva = new CuidadosTerapiaIntensiva();
     }
 
+    public CuidadosModerados getCuidadosModerados() {
+        return cuidadosModerados;
+    }
+
+    public void setCuidadosModerados(CuidadosModerados cuidadosModerados) {
+        this.cuidadosModerados = cuidadosModerados;
+    }
+
+    public CuidadosTerapiaIntensiva getCuidadosTerapiaIntensiva() {
+        return cuidadosTerapiaIntensiva;
+    }
+
+    public void setCuidadosTerapiaIntensiva(CuidadosTerapiaIntensiva cuidadosTerapiaIntensiva) {
+        this.cuidadosTerapiaIntensiva = cuidadosTerapiaIntensiva;
+    }
+    
+    
+
     
     /**
      * Devuelve la cantidad de pacientes actual del hospital
@@ -69,14 +88,11 @@ public class Hospital {
     * @param p un objeto persona
      * @throws java.lang.Exception lanza excepcion si no hay personas que remover.
     */
-    public void darDeAltaPacienteModerado(Persona p) throws Exception{
+    public void darDeAltaPacienteModerado(Persona p){
         cuidadosModerados.darDeAlta(p);
-        nPacientesModerados--;
-        nPacientesTotal--;
-        p.setInmune(true);
-        p.setSano(true);
         personasInternadas.remove(p); 
-        
+        nPacientesModerados--;
+        nPacientesTotal--;        
     }
     
     /**
@@ -87,13 +103,11 @@ public class Hospital {
     * @param p un objeto persona
     * @throws java.lang.Exception lanza excepcion so no hay personas que remover
     */
-    public void darDeAltaPacienteGrave(Persona p) throws Exception{
+    public void darDeAltaPacienteGrave(Persona p){
         cuidadosTerapiaIntensiva.darDeAlta(p);
-        nPacientesGraves--;
-        nPacientesTotal--;
-        p.setInmune(true);
-        p.setSano(true);
         personasInternadas.remove(p);
+        nPacientesGraves--;
+        nPacientesTotal--;        
         
     }
     
@@ -120,7 +134,7 @@ public class Hospital {
     * @return cantidad de pacientes moderados
     */
     public int getnPacientesModerado() {
-        return nPacientesModerados;
+        return this.getCuidadosModerados().mostrarPacientes().size();
     }
     
     /**
@@ -128,7 +142,7 @@ public class Hospital {
      * @return  cantidad de pacientes graves
     */
     public int getnPacientesGraves() {
-        return nPacientesGraves;
+        return this.getCuidadosTerapiaIntensiva().mostrarPacientes().size();
     }
 
 
@@ -139,4 +153,46 @@ public class Hospital {
     public List<Persona> mostrarInternados(){
         return personasInternadas;
     }
+    
+    //actualiza el estado de sus pacientes, Si los tiene
+    public void update(){
+        Iterator<Persona> recorrerCuiMod = this.cuidadosModerados.mostrarPacientes().iterator();
+        Iterator<Persona> recorrerTerInt = this.cuidadosTerapiaIntensiva.mostrarPacientes().iterator();
+        //reviso Cuidados Moderados
+        while (recorrerCuiMod.hasNext()) {
+            Persona next = recorrerCuiMod.next();
+            if (next.getTiempoInfec() > 2000) {
+                recorrerCuiMod.remove();
+            }
+        }
+        
+        //reviso Cuidados Terapia intensiva
+        while (recorrerTerInt.hasNext()) {
+            Persona next = recorrerTerInt.next();
+            if (next.getTiempoInfec() > 2000) {
+                recorrerTerInt.remove();
+            }
+        }
+        
+        
+        //No funciona
+//        //reviso Cuidados Moderados
+//        if (!this.cuidadosModerados.mostrarPacientes().isEmpty()) {
+//            for (Persona p : this.cuidadosModerados.mostrarPacientes()) {
+//                if (p.getTiempoInfec() > 2000) {
+//                    this.darDeAltaPacienteModerado(p);
+//                }
+//            }
+//        }
+//        
+//        //reviso Cuidados Terapia Intensiva
+//        if (!this.cuidadosTerapiaIntensiva.mostrarPacientes().isEmpty()) {
+//            for (Persona p : this.cuidadosTerapiaIntensiva.mostrarPacientes()) {
+//                if (p.getTiempoInfec() > 2000) {
+//                    this.darDeAltaPacienteGrave(p);
+//                }
+//            }
+//        }        
+    }
+    
 }
