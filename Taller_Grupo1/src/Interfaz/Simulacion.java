@@ -12,7 +12,6 @@ import Clases.Informes;
 import Clases.Mayor;
 import Clases.Menor;
 import Clases.Persona;
-import com.sun.corba.se.impl.protocol.LocalClientRequestDispatcherBase;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
