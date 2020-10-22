@@ -9,15 +9,17 @@ import Clases.Adulto;
 import Clases.CalidadDeCuidado;
 import Clases.Hospital;
 import Clases.Informes;
+import Clases.Internacion;
 import Clases.Mayor;
 import Clases.Menor;
 import Clases.Persona;
-import com.sun.corba.se.impl.protocol.LocalClientRequestDispatcherBase;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 import java.awt.event.*;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Grupo1
@@ -130,6 +132,7 @@ public class Simulacion extends JPanel implements Runnable{
             if (personas.get(i).isSano()) {
                 if (!informe.getPersonasSanas().contains(personas.get(i))) {
                     informe.añadirPersonaSana(personas.get(i));
+                    informe.quitarPersonaContagiada(personas.get(i));
                 }
             }
             if (!personas.get(i).isSano()) {
@@ -165,9 +168,10 @@ public class Simulacion extends JPanel implements Runnable{
     //Funciones para run()
     
     /**
-     * Metodo que realiza tareas tras alcanzar determinado valor de contador.
+     * Metodo que realiza tareas tras alcanzar determinado valor de contadores de tiempo.
      */
     private void controlTiempo(){
+        //Este if controla la periodicidad del chequeo de personas, el cual es aleatorio
         if (contador > 1000) {
             for (int i = 0; i < personas.size(); i++) {
                 switch((int)(Math.round(Math.random()))){
@@ -175,10 +179,33 @@ public class Simulacion extends JPanel implements Runnable{
                     case 1: personas.get(i).irAlHospital(hosp);
                 }                    
             }
-//              personas.get(0).irAlHospital(hosp);
-//              personas.get((int)(Math.random()*100)).setCuarentena(true);
                 contador = 0;
-        }        
+        }
+        //Este if controla la periodicidad en el que el hospital revisa a sus pacientes.
+        if (tiempo % 100 == 0) {
+            hosp.update();
+        }
+        
+        //Esta sentencia da error java.util.ConcurrentModificationException
+//        if (tiempo > 2100) {
+//            for (Persona p : hosp.mostrarInternados()) {
+//                if (p.getTiempoInfec() > 2000) {
+//                    if (p.getInternacion() == Internacion.CM) {
+//                        try {
+//                            hosp.darDeAltaPacienteModerado(p);
+//                        } catch (Exception ex) {
+//                            Logger.getLogger(Simulacion.class.getName()).log(Level.SEVERE, null, ex);
+//                        }
+//                    } else if (p.getInternacion() == Internacion.CTI) {
+//                        try {
+//                            hosp.darDeAltaPacienteGrave(p);
+//                        } catch (Exception ex) {
+//                            Logger.getLogger(Simulacion.class.getName()).log(Level.SEVERE, null, ex);
+//                        }
+//                    }
+//                }
+//            }
+//        }
     }
     
     
