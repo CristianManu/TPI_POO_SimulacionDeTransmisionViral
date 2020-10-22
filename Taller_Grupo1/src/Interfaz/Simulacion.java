@@ -5,9 +5,11 @@
  */
 package Interfaz;
 
+import Clases.CalidadDeCuidado;
 import Clases.Hospital;
 import Clases.Informes;
 import Clases.Persona;
+import com.sun.corba.se.impl.protocol.LocalClientRequestDispatcherBase;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
@@ -17,10 +19,11 @@ import java.util.Random;
  *
  * @author Grupo1
  */
-public class Simulacion extends JPanel{
+public class Simulacion extends JPanel implements Runnable{
     private static final long serialVersionUID = -8716187417647724411L;    
     private static final int poblacion = 100;  //Poblacion de la ciudad.
     private static int contador = 0;
+    private static int tiempo = 0;
     
     /**
      *
@@ -66,15 +69,22 @@ public class Simulacion extends JPanel{
         
         this.hosp = new Hospital();
         
-       /* for (int i = 1; i < poblacion; i++) {
+        for (int i = 0; i < poblacion; i++) {
             if (personas.get(i).isSano()) {
                 informe.añadirPersonaSana(personas.get(i));
             }
-            if (!personas.get(i).isSano()) {
+            if (!(personas.get(i).isSano())) {
                 informe.añadirPersonaContagiada(personas.get(i));
-                informe.quitarPersonaSana(personas.remove(i));
+//                informe.quitarPersonaSana(personas.remove(i));
             }
-        }*/
+            if (personas.get(i).getCuidado().getCalidadCuidado() == CalidadDeCuidado.Bajo) {
+                informe.añadirPersonaCuidadoBajo(personas.get(i));
+            } else if (personas.get(i).getCuidado().getCalidadCuidado() == CalidadDeCuidado.Medio) {
+                informe.añadirPersonaCuidadoMedio(personas.get(i));
+            } else{
+                informe.añadirPersonaCuidadoAlto(personas.get(i));
+            }
+        }
     }
     
     /**
@@ -128,8 +138,10 @@ public class Simulacion extends JPanel{
         super.paintComponent(pag);
         Graphics2D g = (Graphics2D)pag;
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        //Aqui se dibuja
         for (Persona p: personas) {
             p.draw(g);
+            p.drawCircle(g);
             if (p.isCuarentena()) {
             p.drawRectangle(g);                
             }
@@ -137,19 +149,19 @@ public class Simulacion extends JPanel{
     }
     
     void actValores(){
-        /*for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 100; i++) {
             if (personas.get(i).isSano()) {
-                if (informe.contains(personas.get(i))) {
+                if (!informe.getPersonasSanas().contains(personas.get(i))) {
                     informe.añadirPersonaSana(personas.get(i));
                 }
             }
             if (!personas.get(i).isSano()) {
-                if (informe.contains(personas.get(i))) {
-                    informe.get(i).añadirPersonaContagiada(personas.get(i));
-                    informe.get(i).quitarPersonaSana(personas.get(i));
+                if (!informe.getPersonasContagiadas().contains(personas.get(i))) {
+                    informe.añadirPersonaContagiada(personas.get(i));
+                    informe.quitarPersonaSana(personas.get(i));
                 }
             }
-        }*/
+        }
        
         displaySano.setText("Sanos: " + informe.getPersonasSanas().size());
         displayInfec.setText("Infectados: " + informe.getPersonasContagiadas().size());
@@ -157,13 +169,15 @@ public class Simulacion extends JPanel{
         
     }
     
+    @Override
     public void run(){
-        while (true) {
+        while (tiempo < 10000) {
             sanos = 0;
             infectados = 0;
             System.out.println("Funcionando");
             System.out.println("Persona posicion " + personas.get(0).getPosicion().getX() + " - " +  personas.get(0).getPosicion().getY());
             System.out.println("Contador: " + contador);
+            System.out.println("Tiempo:" + tiempo);
             personasGrafica();
             actValores();
             controlTiempo();            
@@ -174,6 +188,7 @@ public class Simulacion extends JPanel{
             }
             //probando control de tiempo
             contador++;
+            tiempo++;
         }
     }
     
