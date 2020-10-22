@@ -6,8 +6,11 @@
 
 package Interfaz;
 import Clases.Domicilio;
+import Clases.Estado;
 import Clases.Hospital;
 import Clases.Informes;
+import Clases.Internacion;
+import Clases.Persona;
 import javax.swing.*;
 import java.awt.*;
 
@@ -21,10 +24,9 @@ import javax.swing.border.Border;
  *
  * @author cristian
  */
-public class VentanaInforme extends Container {
-    public Hospital hosp;
-    public Domicilio dom;
+public class VentanaInforme extends Container implements Runnable {
     public Informes info;
+    public Hospital hosp;
     private JPanel panelIzq, panelDer;
     private JLabel displayInfec, displaySano, displayAlto, displayMedio, displayBajo,
             displayIntDom, displayCuiMod, displayTerInt;
@@ -34,7 +36,7 @@ public class VentanaInforme extends Container {
     
     static final int separacion = 7;
 
-    public VentanaInforme() {
+    public VentanaInforme(Informes info, Hospital hosp) {
         panelIzq = new JPanel();
         panelDer = new JPanel();
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
@@ -49,9 +51,8 @@ public class VentanaInforme extends Container {
         this.setPreferredSize(new Dimension(400, 300));
         this.setFocusable(true);
         
-        this.hosp = new Hospital();
-        this.dom = new Domicilio();
-        this.info = new Informes();
+        this.info = info;
+        this.hosp = hosp;
         crearLabels();
     }
     
@@ -152,15 +153,38 @@ public class VentanaInforme extends Container {
         
     }
     
+    @Override
+    public void run(){
+        while (true) {
+            System.out.println("Ventana informe funcionando");
+            actValores();
+            this.repaint();
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException ex) {
+            }            
+        }
+    }
+    
     void actValores(){
-        displaySano.setText("Sanos: "+ info.getPersonasSanas());
-        displayInfec.setText("Infectados: "+ info.getPersonasContagiadas().size());
-        displayAlto.setText("Cuidado Alto: "+ info.getPersonasCuidadoAlto().size());
-        displayMedio.setText("Cuidado Medio: "+ info.getPersonasCuidadoMedio().size());
-        displayBajo.setText("Cuidado Bajo: "+ info.getPersonasCuidadoBajo().size());
-        displayIntDom.setText("Internados domicilio"+dom.mostrarPersonasCuarentena().size());
-        displayCuiMod.setText("Cuidados Moderados: "+hosp.getnPacientesModerado());
-        displayTerInt.setText("Terapia Intensiva: "+hosp.getnPacientesGraves());
+        numSanos.setText(" " + info.getPersonasSanas().size()  + " ");
+        numInfec.setText(" " + info.getPersonasContagiadas().size()  + " ");
+        numAlto.setText(" " + info.getPersonasCuidadoAlto().size()  + " ");
+        numMedio.setText(" " + info.getPersonasCuidadoMedio().size()  + " ");
+        numBajo.setText(" " + info.getPersonasCuidadoBajo().size()  + " ");
+        
+        
+        //Mostrar personas en internacion domiciliaria
+        int contdom = 0;
+        for (Persona p : info.getPersonasContagiadas()) {
+            if (p.getInternacion() == Internacion.DOM) {
+                contdom++;
+            }
+        }
+        numIntDom.setText(" " + contdom + " ");
+        
+        numCuiMod.setText(" " + hosp.getnPacientesModerado() + " ");
+        numTerInt.setText(" " + hosp.getnPacientesGraves()  + " ");
        
     }
     
