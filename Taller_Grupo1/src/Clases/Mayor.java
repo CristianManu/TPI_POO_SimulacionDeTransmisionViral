@@ -17,9 +17,19 @@ import java.awt.geom.*;
  * @author Notebook HP
  */
 public class Mayor extends Persona{
+    
     private int tamaño = 4;
+    
+    /**
+     * Construye un nuevo Path2D objeto vacío de doble
+     */
     private Path2D forma = new Path2D.Double();
     
+    /**
+     * Creación de un triángulo
+     *  Primeramente crea un punto, luego dibuja una línea hacia ese punto y luego las dos restantes.
+     * la última sentencia cierra la figura.
+     */
     {
         forma.moveTo(0, -tamaño*2);
         forma.lineTo(-tamaño, tamaño*2);
@@ -27,8 +37,18 @@ public class Mayor extends Persona{
         forma.closePath();
     }
     
+   
     /**
+     * Invoca al constructor por defecto de la clase Persona.
      * 
+     */
+    public Mayor(){
+        super();
+    }
+    
+    
+     /**
+     *  Invoca el constructor parametrizado de la clase Persona.
      * @param nombre
      * @param sano
      * @param apellido
@@ -37,15 +57,18 @@ public class Mayor extends Persona{
      * @param cuidado
      */
     
-    public Mayor(){
-        super();
-    }
-    
     public Mayor(String nombre, boolean sano, String apellido, int dni, boolean cuarentena, String cuidado) {
         super(nombre, sano, apellido, dni, cuarentena, cuidado);
     }
+    
+    /***********************               FUNCIONES               ***********************/
+    
     void salirAPasear(){}
 
+    /**
+     * Método que crea la forma del Mayor a visualizarse en la pantalla
+     * @param g 
+     */
     @Override
     public void draw(Graphics2D g) {
         AffineTransform save = g.getTransform();

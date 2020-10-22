@@ -33,6 +33,8 @@ public enum Internacion {
     
     private final String descripcion;
     
+    /****************        MÉTODOS DE ACCESO        *****************/
+    
     /*
      *@param descripcion
     */

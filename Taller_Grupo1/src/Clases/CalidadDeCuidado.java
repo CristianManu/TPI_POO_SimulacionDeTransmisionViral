@@ -33,6 +33,11 @@ public enum CalidadDeCuidado {
     
     private final String descripcion;
     
+    /**
+     * MÉTODOS DE ACCESO
+     * GETTER Y SETTER
+    */
+    
     /*
      *@param descripcion
     */

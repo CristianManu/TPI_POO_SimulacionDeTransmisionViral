@@ -26,6 +26,10 @@ public class CuidadosModerados {
         nPacientes = 0;
     }
     
+    /****************        MÉTODOS DE ACCESO        ****************
+     *     GETTER 
+    */
+    
     /**
      * 
      * @return cantidad de camas 
@@ -33,7 +37,19 @@ public class CuidadosModerados {
     public int getNumeroDeCamas() {
         return NUMEROCAMAS;
     }
+    
+    /**
+     * Devuelve la lista con los pacientes en la sala.
+     * @return Lista de pacientes
+     */
+    public List<Persona> mostrarPacientes(){
+        return pacientes;
+    }
   
+    /**
+     *********************               FUNCIONES               *********************
+     **/
+    
     /**
      * Agrega un Paciente a la sala, si la sala esta llena devuelve false y no lo agrega.De lo contrario devuelve true.
      * @param p un objeto Persona
@@ -59,11 +75,5 @@ public class CuidadosModerados {
             nPacientes--;
         }
     }
-    /**
-     * Devuelve la lista con los pacientes en la sala.
-     * @return Lista de pacientes
-     */
-    public List<Persona> mostrarPacientes(){
-        return pacientes;
-    }
+    
 }

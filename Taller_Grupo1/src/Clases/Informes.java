@@ -32,8 +32,67 @@ public class Informes {
         personasCuidadoMedio = new ArrayList<>();
         personasCuidadoBajo = new ArrayList<>();
     }
-
     
+    
+     /****************        MÉTODOS DE ACCESO        *****************/
+    
+    
+     /**
+     *
+     * @return una lista de personas sanas
+     */
+    public List<Persona> getPersonasSanas(){
+        return this.personasSanas;
+    }
+    
+    /**
+     * 
+     * @return una lista de personas contagiadas
+     */
+    public List<Persona> getPersonasContagiadas(){
+        return this.personasContagiadas;
+    }
+    
+    /**
+     *
+     * @return una lista de personas con cuidado alto
+     */
+    public List<Persona> getPersonasCuidadoAlto(){
+        return this.personasCuidadoAlto;
+    }
+    
+    /**
+     *
+     * @return una lista de personas con cuidado medio
+     */
+    public List<Persona> getPersonasCuidadoMedio(){
+        return this.personasCuidadoMedio;
+    }
+    
+    /**
+     *
+     * @return una lista de personas con cuidado bajo
+     */
+    public List<Persona> getPersonasCuidadoBajo(){
+        return this.personasCuidadoBajo;
+    }
+    
+    /**
+     *  Muestra la información actual
+     * @return String  
+     */
+    public String mostrarInfoActual(){
+        String titulo = "Informe de la situacion" + "\n";
+        String nPerSanas = "Numero de personas Sanas: " + this.getPersonasSanas().size() + "\n";
+        String nPerConta = "Numero de personas Contagiadas: " + this.getPersonasContagiadas().size() + "\n";
+        String nPerCuiAlto = "Numero de personas con Cuidados Altos: " + this.getPersonasCuidadoAlto().size() + "\n";
+        String nPerCuiMedio = "Numero de personas con Cuidados Medios: " + this.getPersonasCuidadoMedio().size() + "\n";
+        String nPerCuiBajo = "Numero de personas con Cuidados Bajos: " + this.getPersonasCuidadoBajo().size() + "\n";
+        return titulo + nPerSanas + nPerConta + nPerCuiAlto + nPerCuiMedio + nPerCuiBajo;
+    }
+    
+
+    /***********************               FUNCIONES               ***********************/
     
     /**
      *Añade la persona indicada por parámetro a la lista de personas contagiadas.
@@ -115,58 +174,5 @@ public class Informes {
         personasCuidadoBajo.remove(p);
     }
 
-    /**
-     *  Muestra la información actual
-     * @return String  
-     */
-    public String mostrarInfoActual(){
-        String titulo = "Informe de la situacion" + "\n";
-        String nPerSanas = "Numero de personas Sanas: " + this.getPersonasSanas().size() + "\n";
-        String nPerConta = "Numero de personas Contagiadas: " + this.getPersonasContagiadas().size() + "\n";
-        String nPerCuiAlto = "Numero de personas con Cuidados Altos: " + this.getPersonasCuidadoAlto().size() + "\n";
-        String nPerCuiMedio = "Numero de personas con Cuidados Medios: " + this.getPersonasCuidadoMedio().size() + "\n";
-        String nPerCuiBajo = "Numero de personas con Cuidados Bajos: " + this.getPersonasCuidadoBajo().size() + "\n";
-        return titulo + nPerSanas + nPerConta + nPerCuiAlto + nPerCuiMedio + nPerCuiBajo;
-    }
     
-    /**
-     *
-     * @return una lista de personas sanas
-     */
-    public List<Persona> getPersonasSanas(){
-        return this.personasSanas;
-    }
-    
-    /**
-     * 
-     * @return una lista de personas contagiadas
-     */
-    public List<Persona> getPersonasContagiadas(){
-        return this.personasContagiadas;
-    }
-    
-    /**
-     *
-     * @return una lista de personas con cuidado alto
-     */
-    public List<Persona> getPersonasCuidadoAlto(){
-        return this.personasCuidadoAlto;
-    }
-    
-    /**
-     *
-     * @return una lista de personas con cuidado medio
-     */
-    public List<Persona> getPersonasCuidadoMedio(){
-        return this.personasCuidadoMedio;
-    }
-    
-    /**
-     *
-     * @return una lista de personas con cuidado bajo
-     */
-    public List<Persona> getPersonasCuidadoBajo(){
-        return this.personasCuidadoBajo;
-    }
-    
-}
+}  

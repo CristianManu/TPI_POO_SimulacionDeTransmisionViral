@@ -26,6 +26,10 @@ public class CuidadosTerapiaIntensiva {
         nPacientes = 0;
     }
    
+    /****************        MÉTODOS DE ACCESO        ****************
+     *     GETTER 
+    */
+    
     /**
      * 
      * @return el numero de camas en terapia intensiva
@@ -33,6 +37,19 @@ public class CuidadosTerapiaIntensiva {
     public int getNumeroDeCamas() {
         return NUMEROCAMAS;
     }
+    
+    /**
+     * Devuelve la lista con los pacientes en la sala.
+     * @return Lista de Pacientes
+     */
+    public List<Persona> mostrarPacientes(){
+        return pacientes;
+    }
+    
+    /**
+     *********************               FUNCIONES               *********************
+     **/
+    
     /**
      * Agrega un Paciente a la sala, si la sala esta llena devuelve false y no lo agrega.De lo contrario devuelve true.
      * @param p un objeto persona
@@ -57,13 +74,5 @@ public class CuidadosTerapiaIntensiva {
             pacientes.remove(p);
             nPacientes--;
         }
-    }
-    
-    /**
-     * Devuelve la lista con los pacientes en la sala.
-     * @return Lista de Pacientes
-     */
-    public List<Persona> mostrarPacientes(){
-        return pacientes;
     }
 }
