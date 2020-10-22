@@ -5,6 +5,9 @@
  */
 
 package Interfaz;
+import Clases.Domicilio;
+import Clases.Hospital;
+import Clases.Informes;
 import javax.swing.*;
 import java.awt.*;
 
@@ -19,6 +22,9 @@ import javax.swing.border.Border;
  * @author cristian
  */
 public class VentanaInforme extends Container {
+    public Hospital hosp;
+    public Domicilio dom;
+    public Informes info;
     private JPanel panelIzq, panelDer;
     private JLabel displayInfec, displaySano, displayAlto, displayMedio, displayBajo,
             displayIntDom, displayCuiMod, displayTerInt;
@@ -43,12 +49,15 @@ public class VentanaInforme extends Container {
         this.setPreferredSize(new Dimension(400, 300));
         this.setFocusable(true);
         
+        this.hosp = new Hospital();
+        this.dom = new Domicilio();
+        this.info = new Informes();
         crearLabels();
     }
     
     private void crearLabels(){
         displaySano = new JLabel("Cantidad de personas sanas");
-//        this.setLayout(new FlowLayout());
+        this.setLayout(new FlowLayout());
         panelIzq.add(displaySano);
         panelIzq.add(Box.createRigidArea(new Dimension(0, separacion)));
         
@@ -143,5 +152,16 @@ public class VentanaInforme extends Container {
         
     }
     
+    void actValores(){
+        displaySano.setText("Sanos: "+ info.getPersonasSanas());
+        displayInfec.setText("Infectados: "+ info.getPersonasContagiadas().size());
+        displayAlto.setText("Cuidado Alto: "+ info.getPersonasCuidadoAlto().size());
+        displayMedio.setText("Cuidado Medio: "+ info.getPersonasCuidadoMedio().size());
+        displayBajo.setText("Cuidado Bajo: "+ info.getPersonasCuidadoBajo().size());
+        displayIntDom.setText("Internados domicilio"+dom.mostrarPersonasCuarentena().size());
+        displayCuiMod.setText("Cuidados Moderados: "+hosp.getnPacientesModerado());
+        displayTerInt.setText("Terapia Intensiva: "+hosp.getnPacientesGraves());
+       
+    }
     
 }
