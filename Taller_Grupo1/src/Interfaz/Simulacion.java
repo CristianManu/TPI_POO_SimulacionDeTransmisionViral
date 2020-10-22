@@ -6,6 +6,7 @@
 package Interfaz;
 
 import Clases.Hospital;
+import Clases.Informes;
 import Clases.Persona;
 import javax.swing.*;
 import java.awt.*;
@@ -41,6 +42,9 @@ public class Simulacion extends JPanel{
     //Hospital
     public Hospital hosp;
     
+    //Informes
+    public Informes informe = new Informes();
+    
     static JLabel displayInfec, displaySano, displayAlto, displayMedio, displayBajo;
     
     /**
@@ -61,6 +65,16 @@ public class Simulacion extends JPanel{
         }
         
         this.hosp = new Hospital();
+        
+       /* for (int i = 1; i < poblacion; i++) {
+            if (personas.get(i).isSano()) {
+                informe.añadirPersonaSana(personas.get(i));
+            }
+            if (!personas.get(i).isSano()) {
+                informe.añadirPersonaContagiada(personas.get(i));
+                informe.quitarPersonaSana(personas.remove(i));
+            }
+        }*/
     }
     
     /**
@@ -122,9 +136,25 @@ public class Simulacion extends JPanel{
         }
     }
     
-    static void actValores(){
-        displaySano.setText("Sanos: " + sanos);
-        displayInfec.setText("Infectados: " + infectados);
+    void actValores(){
+        /*for (int i = 0; i < 100; i++) {
+            if (personas.get(i).isSano()) {
+                if (informe.contains(personas.get(i))) {
+                    informe.añadirPersonaSana(personas.get(i));
+                }
+            }
+            if (!personas.get(i).isSano()) {
+                if (informe.contains(personas.get(i))) {
+                    informe.get(i).añadirPersonaContagiada(personas.get(i));
+                    informe.get(i).quitarPersonaSana(personas.get(i));
+                }
+            }
+        }*/
+       
+        displaySano.setText("Sanos: " + informe.getPersonasSanas().size());
+        displayInfec.setText("Infectados: " + informe.getPersonasContagiadas().size());
+        
+        
     }
     
     public void run(){
@@ -177,10 +207,12 @@ public class Simulacion extends JPanel{
             personas.get(i).update();
             if (!(personas.get(i).isSano())) {
                 personas.get(i).contagiar(personas);
-                infectados++;
+                
+                //informe.añadirPersonaContagiada(personas.get(i));
+                //informe.quitarPersonaSana(personas.get(i));
             }
             if (personas.get(i).isSano()) {
-                sanos++;
+               // informe.añadirPersonaSana(personas.get(i));
             }
             if (personas.get(i).isCuarentena()) {
                 personas.get(i).contColorTiempo++;
