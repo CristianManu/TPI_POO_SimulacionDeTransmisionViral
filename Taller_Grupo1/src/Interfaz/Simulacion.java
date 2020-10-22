@@ -37,10 +37,7 @@ public class Simulacion extends JPanel implements Runnable{
      *
      */
     public static final int alto = 768;
-    
-    //Texto a mostrarte en ventana
-    static int infectados = 1, sanos = 0, cuidadoAlto = 0, cuidadoMedio = 0, cuidadoBajo = 0;
-    
+        
     //Lista de personas que forman parte de la simulacion.
     static ArrayList<Persona> personas = new ArrayList<Persona>();
     public boolean personaAñadida = false;
@@ -49,12 +46,13 @@ public class Simulacion extends JPanel implements Runnable{
     public Hospital hosp;
     
     //Informes
-    public Informes informe = new Informes();
+    public Informes informe;
     
-    static JLabel displayInfec, displaySano, displayAlto, displayMedio, displayBajo;
+   
     
-    /**
-     *
+    /** Constructor por defecto
+     * Se realiza la configuración JPanel
+     * Se añade personas a la lista personas.
      */
     public Simulacion(){
         //Configuracion JPanel
@@ -63,7 +61,6 @@ public class Simulacion extends JPanel implements Runnable{
         this.setPreferredSize(new Dimension(ancho, alto));
         this.setFocusable(true);
         
-        crearLabels();
         
         for (int i = 0; i < poblacion; i++) {
             
@@ -71,7 +68,17 @@ public class Simulacion extends JPanel implements Runnable{
         }
         
         this.hosp = new Hospital();
+        this.informe  = new Informes();
         
+        /**       En el bucle recorre la lista, 
+         *  Si la persona que se encuentra en la posicion indicado por el índice esta sano, de ser asi lo añade 
+         * a la lista de personas sanas de tipo Informe. De caso contrario,
+         * lo añadirá a la lista de personas contagiadas.
+         *  Si la persona que se encuentra en la posicion indicado por el indice tiene calidad de cuidado igual bajo 
+         * lo añade a personasCuidadoBajo de informes, sino si es igual a medio lo añade a la lista de personaCuidadoMedio
+         * de no ser ninguna de las anteriores, lo añadirá a la lista personCuidadoAlto 
+         *
+         */
         for (int i = 0; i < poblacion; i++) {
             if (personas.get(i).isSano()) {
                 informe.añadirPersonaSana(personas.get(i));
@@ -90,46 +97,7 @@ public class Simulacion extends JPanel implements Runnable{
         }
     }
     
-    /**
-     * Funcion que crea las labels que muestran la informacion de la epidemia.
-     */
-    private void crearLabels(){
-        /*Label de personas sanas
-        
-        */
-        displaySano = new JLabel("Sanos: " + sanos);
-        this.setLayout(new FlowLayout());
-        this.add(displaySano);
-        
-        /*Label de personas infectadas
-        
-        */
-        displayInfec = new JLabel("Infectados: " + infectados);
-        this.setLayout(new FlowLayout());
-        this.add(displayInfec);
-        
-        /*Label de personas con cuidados Altos
-        
-        */
-        displayAlto = new JLabel("Cuidados Altos: " + cuidadoBajo);
-        this.setLayout(new FlowLayout());
-        this.add(displayAlto);
-        
-        /*Label de personas con cuidados Medios
-        
-        */
-        displayMedio = new JLabel("Cuidados Medios: " + cuidadoMedio);
-        this.setLayout(new FlowLayout());
-        this.add(displayMedio);
-        
-        /*Label de personas con cuidados Bajos
-        
-        */
-        displayBajo = new JLabel("Cuidados Bajos " + cuidadoBajo);
-        this.setLayout(new FlowLayout());
-        this.add(displayBajo);
-    }
-    
+       
     /**
      * Este metodo crea una figura para cada persona
      * Tambien ajusta las especificaciones graficas de la figura
@@ -150,7 +118,13 @@ public class Simulacion extends JPanel implements Runnable{
             }
         }
     }
-    
+    /**
+     * Método que actualiza valores
+     * Recorre la lista, si la persona esta sana, y si no se encuentra en la lista Informe los añade a
+     * la lista de personas sanas.
+     * En caso contrario, si la persona no esta sana, y si  no se encuentra en la lista informe, los añade
+     * a la lista de persona contagiadas y las quita de la lista de personas sanas
+     */
     void actValores(){
         for (int i = 0; i < 100; i++) {
             if (personas.get(i).isSano()) {
@@ -165,18 +139,11 @@ public class Simulacion extends JPanel implements Runnable{
                 }
             }
         }
-       
-        displaySano.setText("Sanos: " + informe.getPersonasSanas().size());
-        displayInfec.setText("Infectados: " + informe.getPersonasContagiadas().size());
-        
-        
     }
     
     @Override
     public void run(){
         while (tiempo < 10000) {
-            sanos = 0;
-            infectados = 0;
             System.out.println("Funcionando");
             System.out.println("Persona posicion " + personas.get(0).getPosicion().getX() + " - " +  personas.get(0).getPosicion().getY());
             System.out.println("Contador: " + contador);
@@ -201,17 +168,17 @@ public class Simulacion extends JPanel implements Runnable{
      * Metodo que realiza tareas tras alcanzar determinado valor de contador.
      */
     private void controlTiempo(){
-            if (contador > 1000) {
-                for (int i = 0; i < personas.size(); i++) {
+        if (contador > 1000) {
+            for (int i = 0; i < personas.size(); i++) {
                 switch((int)(Math.round(Math.random()))){
                     case 0: break;
                     case 1: personas.get(i).irAlHospital(hosp);
                 }                    
-                }
-//                personas.get(0).irAlHospital(hosp);
+            }
+//              personas.get(0).irAlHospital(hosp);
 //              personas.get((int)(Math.random()*100)).setCuarentena(true);
                 contador = 0;
-            }        
+        }        
     }
     
     
@@ -225,13 +192,8 @@ public class Simulacion extends JPanel implements Runnable{
             personas.get(i).update();
             if (!(personas.get(i).isSano())) {
                 personas.get(i).contagiar(personas);
-                
-                //informe.añadirPersonaContagiada(personas.get(i));
-                //informe.quitarPersonaSana(personas.get(i));
             }
-            if (personas.get(i).isSano()) {
-               // informe.añadirPersonaSana(personas.get(i));
-            }
+            
             if (personas.get(i).isCuarentena()) {
                 personas.get(i).contColorTiempo++;
                 if (personas.get(i).contColorTiempo % 4 == 0) {
@@ -249,7 +211,6 @@ public class Simulacion extends JPanel implements Runnable{
                             break;
                     }
                 }
-
             }
         }
     }
