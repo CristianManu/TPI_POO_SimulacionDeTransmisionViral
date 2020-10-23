@@ -636,7 +636,7 @@ public class Persona {
      */
     public void recuperarse(){
         if (this.estado == Estado.Asintomatico || this.estado == Estado.Leve){
-            if (this.tiempoInfec > 2000){
+            if (this.tiempoInfec > 1500){
                 this.setCuarentena(false);
                 this.setSano(true);
                 this.setInmune(true);
@@ -646,7 +646,7 @@ public class Persona {
             }
         } else {
             if (this.estado == Estado.Moderado){
-                if (this.tiempoInfec > 2500){
+                if (this.tiempoInfec > 2000){
                     this.setCuarentena(false);
                     this.setSano(true);
                     this.setInmune(true);

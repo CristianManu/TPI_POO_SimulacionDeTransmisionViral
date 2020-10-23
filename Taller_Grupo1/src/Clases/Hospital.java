@@ -178,7 +178,7 @@ public class Hospital {
         //reviso Cuidados Moderados
         while (recorrerCuiMod.hasNext()) {
             Persona next = recorrerCuiMod.next();
-            if (next.getTiempoInfec() > 2500) {
+            if (next.getTiempoInfec() > 2000) {
                 recorrerCuiMod.remove();
             }
         }
