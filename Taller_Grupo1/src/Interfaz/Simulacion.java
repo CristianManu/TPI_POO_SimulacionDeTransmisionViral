@@ -207,7 +207,7 @@ public class Simulacion extends JPanel implements Runnable{
             //probando control de tiempo
             contador++;
             tiempo++;
-            horario++;
+            horario++;  
         }
     }
     
