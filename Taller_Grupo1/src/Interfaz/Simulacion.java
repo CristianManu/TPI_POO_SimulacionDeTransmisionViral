@@ -33,7 +33,7 @@ public class Simulacion extends JPanel implements Runnable{
     private static int tiempo = 0;
     private static int horario = 0;
     private static int dia = 1;
-    private static int hora = 0;
+//    private static int hora = 0;
     
     /**
      * Se establece el tamaño del ancho de la ventana
@@ -45,7 +45,8 @@ public class Simulacion extends JPanel implements Runnable{
      */
     public static final int alto = 768;
     
-    private JLabel displayHora, displayDia;
+//    private JLabel displayHora;
+    private JLabel displayDia;
         
     //Lista de personas que forman parte de la simulacion.
     static ArrayList<Persona> personas = new ArrayList<Persona>();
@@ -139,11 +140,11 @@ public class Simulacion extends JPanel implements Runnable{
         displayDia.setForeground(Color.WHITE);
         displayDia.setVisible(true);
         
-        this.displayHora = new JLabel("Hora " + hora + ":00");
-        this.setLayout(new FlowLayout());
-        this.add(displayHora);
-        displayHora.setForeground(Color.WHITE);
-        displayHora.setVisible(true);
+//        this.displayHora = new JLabel("Hora " + hora + ":00");
+//        this.setLayout(new FlowLayout());
+//        this.add(displayHora);
+//        displayHora.setForeground(Color.WHITE);
+//        displayHora.setVisible(true);
     }
     
     /**
@@ -176,7 +177,7 @@ public class Simulacion extends JPanel implements Runnable{
      * a la lista de persona contagiadas y las quita de la lista de personas sanas
      */
     void actValores(){
-        displayHora.setText("Hora " + hora + ":00");
+//        displayHora.setText("Hora " + hora + ":00");
         displayDia.setText("Dia " + dia);
         
         for (int i = 0; i < 100; i++) {
@@ -216,16 +217,13 @@ public class Simulacion extends JPanel implements Runnable{
     /**
      * Metodo que realiza tareas tras alcanzar determinado valor de contadores de tiempo.
      */
-    private void setearHoraDia(){
-        if (hora > 22) {
-            dia++;
-            hora = 0;
-        }else{hora++;}
+    private void setearDia(){
+        dia++;
     }
     
     private void controlTiempo(){
-        if (horario % 10 == 0) {
-            setearHoraDia();
+        if (horario % 100 == 0) {
+            setearDia();
             horario = 0;
         }
         
