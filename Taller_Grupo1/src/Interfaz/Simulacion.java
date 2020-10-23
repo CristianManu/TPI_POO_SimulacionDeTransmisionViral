@@ -31,6 +31,9 @@ public class Simulacion extends JPanel implements Runnable{
     private static final int poblacion = 100;  //Poblacion de la ciudad.
     private static int contador = 0;
     private static int tiempo = 0;
+    private static int horario = 0;
+    private static int dia = 1;
+    private static int hora = 0;
     
     /**
      * Se establece el tamaño del ancho de la ventana
@@ -41,6 +44,8 @@ public class Simulacion extends JPanel implements Runnable{
      * Se establece el tamaño del alto de la ventana
      */
     public static final int alto = 768;
+    
+    private JLabel displayHora, displayDia;
         
     //Lista de personas que forman parte de la simulacion.
     static ArrayList<Persona> personas = new ArrayList<Persona>();
@@ -71,7 +76,7 @@ public class Simulacion extends JPanel implements Runnable{
         this.setPreferredSize(new Dimension(ancho, alto));
         this.setFocusable(true);
         
-        
+        crearLabels();
         
         
        // for (int i = 0; i < poblacion; i++) {
@@ -127,6 +132,19 @@ public class Simulacion extends JPanel implements Runnable{
     
     /***********************               FUNCIONES               ***********************/   
     
+    private void crearLabels(){
+        this.displayDia = new JLabel("Dia " + dia);
+        this.setLayout(new FlowLayout());
+        this.add(displayDia);
+        displayDia.setForeground(Color.WHITE);
+        displayDia.setVisible(true);
+        
+        this.displayHora = new JLabel("Hora " + hora + ":00");
+        this.setLayout(new FlowLayout());
+        this.add(displayHora);
+        displayHora.setForeground(Color.WHITE);
+        displayHora.setVisible(true);
+    }
     
     /**
      * Este metodo crea una figura para cada persona
@@ -158,6 +176,9 @@ public class Simulacion extends JPanel implements Runnable{
      * a la lista de persona contagiadas y las quita de la lista de personas sanas
      */
     void actValores(){
+        displayHora.setText("Hora " + hora + ":00");
+        displayDia.setText("Dia " + dia);
+        
         for (int i = 0; i < 100; i++) {
             if (!personas.get(i).isSano()) {
                 if (!informe.getPersonasContagiadas().contains(personas.get(i))) {
@@ -170,7 +191,7 @@ public class Simulacion extends JPanel implements Runnable{
     
     @Override
     public void run(){
-        while (tiempo < 10000) {
+        while (dia < 90) {
             System.out.println("Funcionando");
             System.out.println("Persona posicion " + personas.get(0).getPosicion().getX() + " - " +  personas.get(0).getPosicion().getY());
             System.out.println("Contador: " + contador);
@@ -186,6 +207,7 @@ public class Simulacion extends JPanel implements Runnable{
             //probando control de tiempo
             contador++;
             tiempo++;
+            horario++;
         }
     }
     
@@ -194,7 +216,19 @@ public class Simulacion extends JPanel implements Runnable{
     /**
      * Metodo que realiza tareas tras alcanzar determinado valor de contadores de tiempo.
      */
+    private void setearHoraDia(){
+        if (hora > 22) {
+            dia++;
+            hora = 0;
+        }else{hora++;}
+    }
+    
     private void controlTiempo(){
+        if (horario % 10 == 0) {
+            setearHoraDia();
+            horario = 0;
+        }
+        
         //Este if controla la periodicidad del chequeo de personas, el cual es aleatorio
         if (contador > 1000) {
             for (int i = 0; i < personas.size(); i++) {
