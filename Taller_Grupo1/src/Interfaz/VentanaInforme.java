@@ -191,6 +191,10 @@ public class VentanaInforme extends Container implements Runnable {
         }
     }
     
+    /**
+     * Actualiza
+     * Información aparece dentro de la caja de texto durante la ejecución del programa.
+     */
     public void actValores(){
         numSanos.setText(" " + info.getPersonasSanas().size()  + " ");
         numInfec.setText(" " + info.getPersonasContagiadas().size()  + " ");

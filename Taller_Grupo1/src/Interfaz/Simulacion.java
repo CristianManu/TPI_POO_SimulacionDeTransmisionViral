@@ -51,18 +51,38 @@ public class Simulacion extends JPanel implements Runnable{
         
     //Lista de personas que forman parte de la simulacion.
     static ArrayList<Persona> personas = new ArrayList<Persona>();
+
+    /**
+     *
+     */
     public boolean personaAñadida = false;
     
     //Escuela
+
+    /**
+     *
+     */
     public Escuela escu;
     
     //Hospital
+
+    /**
+     *
+     */
     public Hospital hosp;
     
     //Informes
+
+    /**
+     *
+     */
     public Informes informe;
     
     //Trabajo
+
+    /**
+     *
+     */
     public Trabajo trab;
     
    
@@ -222,38 +242,74 @@ public class Simulacion extends JPanel implements Runnable{
         dia++;
     }
 
+    /**
+     *
+     * @return dia actual
+     */
     public static int getDia() {
         return dia;
     }
     
+    /**
+     *
+     * @param dia
+     */
     public static void setearDiaLimite(int dia){
         diaLimite = dia;
     }
     
+    /**
+     *
+     * @return diaLimite
+     */
     public static int getDiaLimite(){
         return diaLimite;
     }
     
+    /**
+     *
+     * @param perio
+     */
     public static void setearPeriodoDeChequeo(int perio){
         perioCheq = perio;
     }
     
+    /**
+     *
+     * @return el perído de chequeo actual
+     */
     public static int getPeriodoDeChequeo(){
         return perioCheq;
     }
     
+    /**
+     *
+     * @param perio
+     */
     public static void setearPeriodoDeChequeoHospital(int perio){
         perioCheqHosp = perio;
     }
     
+    /**
+     *
+     * @return periodo de chequeo de Hospital
+     */
     public static int getPeriodoDeChequeoHospital(){
         return perioCheqHosp;
     }
     
+    /**
+     *
+     * @param tiempo
+     */
     public static void setearControlPaseoMayores(int tiempo){
         controlPaseoMayores = tiempo;
     }
     
+    /**
+     *
+     * @return control de paseo de mayores 
+     */
     public static int getControlPaseoMayores(){
         return controlPaseoMayores;
     }
