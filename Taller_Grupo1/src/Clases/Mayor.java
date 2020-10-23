@@ -20,6 +20,8 @@ public class Mayor extends Persona{
     private int tamaño = 4;
     private Path2D forma = new Path2D.Double();
     
+    private int tiempopaseo;
+    
     {
         forma.moveTo(0, -tamaño*2);
         forma.lineTo(-tamaño, tamaño*2);
@@ -39,12 +41,29 @@ public class Mayor extends Persona{
     
     public Mayor(){
         super();
+        this.setEnCasa(true);
+        this.tiempopaseo = 0;
     }
     
     public Mayor(String nombre, boolean sano, String apellido, int dni, boolean cuarentena, String cuidado) {
         super(nombre, sano, apellido, dni, cuarentena, cuidado);
     }
-    void salirAPasear(){}
+    public void salirAPasear(){
+        this.tiempopaseo = 0;
+        this.setEnCasa(false);
+    }
+
+    @Override
+    public void update() {
+        super.update();
+        if (tiempopaseo < 300) {
+            this.tiempopaseo++;
+        } else if (!this.isInmune()) {
+            this.setEnCasa(true);
+        }
+    }
+    
+    
 
     @Override
     public void draw(Graphics2D g) {
