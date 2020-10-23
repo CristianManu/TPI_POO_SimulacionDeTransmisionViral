@@ -30,15 +30,20 @@ public class Persona {
     public Color colRectan = Color.WHITE;
     public Color colCircul = Color.cyan;
     public int contColor, contColorTiempo;
-
+    
+    /**
+     * Creación de un triángulo
+     *  Primeramente crea un punto, luego dibuja una línea hacia ese punto y luego las dos restantes.
+     * la última sentencia cierra la figura.
+     */
     {
         forma.moveTo(0, -tamaño * 2);
         forma.lineTo(-tamaño, tamaño * 2);
         forma.lineTo(tamaño, tamaño * 2);
         forma.closePath();
     }
-    static boolean hayInfectados = false;
-
+    
+    
     //Atributos UML
     private String nombre;
     private boolean sano;
@@ -54,6 +59,8 @@ public class Persona {
     private boolean fueDiagnosticado;
     private int tiempoInfec;
     private boolean enCasa;
+    static boolean hayInfectados = false;
+    
 
     /**
      * Constructor por defecto
@@ -125,54 +132,49 @@ public class Persona {
         this.fueDiagnosticado = false;
         this.tiempoInfec = 0;
     }
+     
+    
+    /****************        MÉTODOS DE ACCESO        *****************/
+    
 
+    /**
+     * @return fueDiagnosticado
+     */
     public boolean isFueDiagnosticado() {
         return fueDiagnosticado;
     }
 
+    /**
+     *
+     * @param fueDiagnosticado
+     */
     public void setFueDiagnosticado(boolean fueDiagnosticado) {
         this.fueDiagnosticado = fueDiagnosticado;
     }
 
+    /**
+     * @return tiempoInfec 
+     */
     public int getTiempoInfec() {
         return tiempoInfec;
     }
 
+    /**
+     * @param tiempoInfec
+     */
     public void setTiempoInfec(int tiempoInfec) {
         this.tiempoInfec = tiempoInfec;
     }
-
+    
     /**
      *
-     * @return
+     * @return una cadena de String de estado
      */
     public String getEstado() {
         return this.estado.getDescripcion();
     }
-
-    /**
-     * Funcion que asigna un estado aleatorio a una Persona cuando esta se
-     * contagia.
-     */
-    public void setEstado() {
-        Random r1 = new Random();
-        int ran = r1.nextInt(4);
-        switch (ran) {
-            case 0:
-                this.estado = Estado.Asintomatico;
-                break;
-            case 1:
-                this.estado = Estado.Leve;
-                break;
-            case 2:
-                this.estado = Estado.Moderado;
-                break;
-            case 3:
-                this.estado = Estado.Grave;
-                break;
-        }
-    }
-
+    
+    
     /**
      * @return domicilio
      */
@@ -180,14 +182,18 @@ public class Persona {
         return domicilio;
     }
 
+    /**
+     * @return inmune
+     */
     public boolean isInmune() {
         return inmune;
     }
 
+    /**@param inmune*/
     public void setInmune(boolean inmune) {
         this.inmune = inmune;
     }
-
+    
     /**
      * Devuelve el lugar de internación actual de una persona
      *
@@ -204,83 +210,21 @@ public class Persona {
     public void setInternacion(Internacion internacion) {
         this.internacion = internacion;
     }
-
+    
     /**
-     * Se le pasa la lista de personas, y contagia a aquellas que se encuentran
-     * a cierta distancia, dependiendo del cuidado que tengan las dos personas.
-     *
-     * @param p una lista de todas las personas.
+     * @return posicion
      */
-    public void contagiar(List<Persona> p) {
-        for (int i = 0; i < p.size(); i++) {
-            /* La condicion de este if es
-            -El infectado esta cerca de otra persona y no esta en cuarentena
-            -La otra persona no esta inmunizada y esta sana
-             */
-            if (cerca(p.get(i)) && !p.get(i).isInmune() && p.get(i).isSano() && 
-                    !p.get(i).isEnCasa() && !this.isCuarentena() && !this.isEnCasa()) {
-                double probabilidad = (double) ((p.get(i).getCuidado().getPorcentaje() + this.getCuidado().getPorcentaje()) / 2);
-                double random = Math.random() * 100;
-                if (random < probabilidad) {
-                    p.get(i).setSano(false);
-                    p.get(i).setEstado();
-                }
-            }
-        }
-    }
-
-    /**
-     * Compara las distancias entre la persona acutal y la pasada por parametro
-     * y devuelve true o false dependiendo si esta cerca o no.
-     *
-     * @param p un objeto persona
-     * @return isCerca es un boolean que indica si esta cerca o no
-     */
-    private boolean cerca(Persona p) {
-        boolean isCerca = false;
-        double dist = distancia(this.getPosicion().getX(), this.getPosicion().getY(), p.getPosicion().getX(), p.getPosicion().getY());
-        if (dist <= 20) {
-            isCerca = true;
-        }
-        return isCerca;
-    }
-
-    /**
-     *
-     * @param h
-     */
-    public void irAlHospital(Hospital h) {
-        if (!this.fueDiagnosticado) {
-            Atencion a = new Atencion(this, h);
-            a.atencionPorCovid();
-            if (!this.isSano()) {
-                this.fueDiagnosticado = true;
-            }
-        }
-    }
-
-    /**
-     * Funcion que añade una comorbilidad a la lista de comorbilidades de la
-     * persona
-     *
-     * @param com
-     */
-    public void añadirComorbilidad(Comorbilidad com) {
-        this.comorlist.add(com);
-    }
-
-    /*Metodos de acceso
-        Getters y setters
-     */
-
     public Vector getPosicion() {
         return posicion;
     }
 
+    /**
+     * @param posicion
+     */
     public void setPosicion(Vector posicion) {
         this.posicion = posicion;
     }
-
+    
     /**
      * Devuelve el nombre de la persona actual
      *
@@ -381,25 +325,8 @@ public class Persona {
     public Cuidado getCuidado() {
         return cuidado;
     }
-
-    /*
-    *Metodo para constructor, asigna un cuidado aleatorio
-     */
-    private String setCuidado() {
-        Random r1 = new Random();
-        int ran = r1.nextInt(3);
-        switch (ran) {
-            case 0:
-                return "bajo";
-            case 1:
-                return "medio";
-            case 2:
-                return "alto";
-            default:
-                return "bajo";
-        }
-    }
-
+    
+    
     /**
      *
      * @param cuidado
@@ -407,13 +334,12 @@ public class Persona {
     public void setCuidado(Cuidado cuidado) {
         this.cuidado = cuidado;
     }
-
-    /**
-     * La funcion get de comorbilidad retorna una lista de comorbilidades
-     *
-     * @return List<Comorbilidad>
-     */
-    public List<Comorbilidad> getComorbilidad() {
+            
+   /**
+    * retorna una lista de comorbilidades
+    * @return List<Comorbilidad>
+    */
+    public List<Comorbilidad> getComorbilidad(){
         return comorlist;
     }
 
@@ -445,11 +371,110 @@ public class Persona {
                 + "Cuidados: " + this.cuidado.getCalidadCuidado() + "\n"
                 + "Comorbolidad: " + comorbolidades;
     }
-
+ 
+    
+    /***********************               FUNCIONES               ***********************/
+    
+    
     /**
-     * FUNCIONES DE LA INTERFAZ Estas funciones seran utilizadas exclusivamente
-     * para la interaccion de los objetos con la interfaz Tambien contiene
-     * atributos estaticos que interactuaran con la misma
+     * Función que asigna un estado aleatorio a una Persona cuando esta se contagia.
+     */
+    public void setEstado(){
+        Random r1 = new Random();
+        int ran = r1.nextInt(4);
+        switch(ran){
+            case 0: this.estado = Estado.Asintomatico;
+            break;
+            case 1: this.estado = Estado.Leve;
+            break;
+            case 2: this.estado = Estado.Moderado;
+            break;
+            case 3: this.estado = Estado.Grave;
+            break;
+        }
+    }
+    
+    /*
+    *Método para constructor, asigna un cuidado aleatorio
+    */
+    private String setCuidado(){
+        Random r1 = new Random();
+        int ran = r1.nextInt(3);
+        switch(ran){
+            case 0: return "bajo";
+            case 1: return "medio";
+            case 2: return "alto";
+            default: return "bajo";
+        }        
+    }
+    
+    
+    /**Se le pasa la lista de personas, y contagia a aquellas que se encuentran a cierta distancia, 
+     * dependiendo del cuidado que tengan las dos personas.
+     *@param p una lista de todas las personas.
+     */
+    public void contagiar(List<Persona> p){
+        for (int i = 0;i < p.size();i++){
+            /* La condicion de este if es
+            -El infectado esta cerca de otra persona y no esta en cuarentena
+            -La otra persona no esta inmunizada y esta sana
+            */
+            if (cerca(p.get(i)) && !p.get(i).isInmune() && p.get(i).isSano() && !this.isCuarentena()){
+                double probabilidad = (double) ((p.get(i).getCuidado().getPorcentaje() + this.getCuidado().getPorcentaje())/2);
+                double random = Math.random()*100;
+                if (random < probabilidad){
+                    p.get(i).setSano(false);
+                    p.get(i).setEstado();
+                }
+            }
+        }
+    }
+    
+    /**
+     * Compara las distancias entre la persona acutal y la pasada por parametro y devuelve true o false dependiendo si
+     * esta cerca o no.
+     * @param p un objeto persona
+     * @return isCerca es un boolean que indica si esta cerca o no
+     */
+    private boolean cerca (Persona p){
+        boolean isCerca = false;
+        double dist = distancia(this.getPosicion().getX(),this.getPosicion().getY(),p.getPosicion().getX(),p.getPosicion().getY());
+        if (dist <= 20){
+            isCerca = true;
+        }
+        return isCerca;
+    }
+    
+    
+    /**
+     * 
+     * @param h
+     */
+    public void irAlHospital(Hospital h){
+        if (!this.fueDiagnosticado) {
+        Atencion a = new Atencion(this,h);
+        a.atencionPorCovid();
+            if (!this.isSano()) {
+                this.fueDiagnosticado = true;                
+            }
+        }
+    }
+    
+   
+    /**
+     * Funcion que añade una comorbilidad a la lista de comorbilidades
+     * de la persona
+     * @param com 
+     */
+    public void añadirComorbilidad(Comorbilidad com){
+        this.comorlist.add(com);
+    }
+    
+    
+    /** FUNCIONES DE LA INTERFAZ
+     *  Estas funciones seran utilizadas exclusivamente 
+     * para la interaccion de los objetos con la interfaz
+     *  Tambien contiene atributos estaticos que interactuaran con la misma
      */
     static double maxFuerza = 0.2;
     static double maxVelocidad = 2;
@@ -476,7 +501,12 @@ public class Persona {
         } catch (InterruptedException e) {
         }
     }
-
+    
+    /**
+     *
+     * @param personas
+     * @return direccion
+     */
     public Vector alinear(ArrayList<Persona> personas) {
         int radiopercep = (int) (alinePercRadio);
         int total = 0;
@@ -500,7 +530,12 @@ public class Persona {
         }
         return direccion;
     }
-
+    
+    /**
+     *
+     * @param personas
+     * @return direccion
+     */
     public Vector cohesion(ArrayList<Persona> personas) {
         int radiopercep = (int) (cohesiPercRadio);
         int total = 0;
@@ -523,7 +558,12 @@ public class Persona {
         }
         return direccion;
     }
-
+    
+    /**
+     *
+     * @param personas
+     * @return direccion
+     */
     public Vector separacion(ArrayList<Persona> personas) {
         int radiopercep = (int) separPercRadio;
         int total = 0;
@@ -563,8 +603,12 @@ public class Persona {
         }
         return direccion;
     }
-
-    public void interaccion(ArrayList<Persona> personas) {
+    
+    /**
+     *
+     * @param personas
+     */
+    public void interaccion(ArrayList<Persona> personas){
         this.aceleracion.setValores(0, 0);
         Vector alineacion = this.alinear(personas);
         Vector cohesion = this.cohesion(personas);
@@ -573,12 +617,55 @@ public class Persona {
         this.aceleracion.sumar(separacion);
         this.aceleracion.sumar(cohesion);
     }
-
-    public double distancia(double x1, double y1, double x2, double y2) {
+    
+    /**
+     * @param x1
+     * @param x2
+     * @param y1
+     * @param y2
+     * @return Resultado al aplicar la fórmula de distancia
+     **/
+    private double distancia(double x1, double y1, double x2, double y2){
         //Formula de distancia 
         return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
-
+        
+    /**
+     * Metodo que consulta si la persona se recupero de la enfermedad, y setea los boolean relacionados si es asi.
+     * Dependiendo del estado de la persona puede tardar mas o menos en recuperarse
+     */
+    public void recuperarse(){
+        if (this.estado == Estado.Asintomatico || this.estado == Estado.Leve){
+            if (this.tiempoInfec > 2000){
+                this.setCuarentena(false);
+                this.setSano(true);
+                this.setInmune(true);
+                this.setInternacion(null);
+            } else {
+                this.tiempoInfec++;
+            }
+        } else {
+            if (this.estado == Estado.Moderado){
+                if (this.tiempoInfec > 2500){
+                    this.setCuarentena(false);
+                    this.setSano(true);
+                    this.setInmune(true);
+                    this.setInternacion(null);
+                } else {
+                    this.tiempoInfec++;
+                }
+            } else {
+                if (this.tiempoInfec > 3000){
+                    this.setCuarentena(false);
+                    this.setSano(true);
+                    this.setInmune(true);
+                    this.setInternacion(null);
+                } else {
+                    this.tiempoInfec++;
+                }
+            }
+        }
+    }
     /**
      * Metodo encargado de "mover" a la persona
      */
@@ -592,15 +679,15 @@ public class Persona {
         }
         //tiempoInfec empieza a contar apenas se infecta
         if (!this.isSano()) {
-            //Cuando llega a cierto numero, se recupera. Sino sigue contando
-            if (this.tiempoInfec > 2000) {
-                this.setCuarentena(false);
-                this.setSano(true);
-                this.setInmune(true);
-                this.setInternacion(null);
-            } else {
-                this.tiempoInfec++;
-            }
+//            if (this.tiempoInfec > 2000) {
+//                this.setCuarentena(false);
+//                this.setSano(true);
+//                this.setInmune(true);
+//                this.setInternacion(null);
+//            } else {
+//                this.tiempoInfec++;
+//            }
+            recuperarse();
         }
     }
 
@@ -626,8 +713,11 @@ public class Persona {
         g.draw(forma);
         g.setTransform(save);
     }
-
-    public void drawRectangle(Graphics2D g) {
+    
+    /**
+     * @param g
+     */
+    public void drawRectangle(Graphics2D g){
         AffineTransform save = g.getTransform();
         g.translate((int) this.posicion.getX(), (int) this.posicion.getY());
         g.rotate(this.velocidad.dir() + Math.PI / 2);
@@ -640,7 +730,11 @@ public class Persona {
         g.drawRect(-7, -7, tamaño * 5, tamaño * 5);
         g.setTransform(save);
     }
-
+    
+    /**
+     *
+     * @param g
+     */
     public void drawCircle(Graphics2D g) {
         AffineTransform save = g.getTransform();
         g.translate((int) this.posicion.getX(), (int) this.posicion.getY());

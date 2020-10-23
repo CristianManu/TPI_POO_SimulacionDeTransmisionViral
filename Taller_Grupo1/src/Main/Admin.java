@@ -6,7 +6,6 @@
 package Main;
 
 import Interfaz.Simulacion;
-import Clases.Persona;
 import Interfaz.VentanaInforme;
 import javax.swing.*;
 import java.awt.*;
@@ -22,6 +21,7 @@ public class Admin {
      * @param args
      */
     public static void main(String[] args) {
+        
         JFrame frame1 = new JFrame("Simulacion de Covid");
         JFrame frame2 = new JFrame("Informes");
         frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,6 +44,9 @@ public class Admin {
         frame2.setVisible(true);
         hilosim.start();
         hilovi.start();
+        if (!hilosim.isAlive()) {
+            hilovi.stop();
+        }
     }
 
 }

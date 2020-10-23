@@ -34,6 +34,8 @@ public enum Estado {
     
     private final String descripcion;
 
+    /****************        MÉTODOS DE ACCESO        *****************/
+        
     /**
      * 
      * @param descripcion 

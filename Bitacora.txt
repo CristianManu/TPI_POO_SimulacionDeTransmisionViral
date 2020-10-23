@@ -88,3 +88,11 @@ a las personas que superaron la infeccion. Se modificaron las condiciones de con
 
 Actualizamos el UML para que se corresponda con los cambios.
 
+22/10/2020 --- 16:00hs
+
+Se intentaron implementar varias recomendaciones de los profesores, se crearon distintos tipos de Persona (adulto menor y mayor) en la simulacion. Nos topamos con un error del tipo: java.util.ConcurrentModificationExceptio. Buscando en google logramos solucionar el problema(Fuente https://stackoverflow.com/questions/8104692/how-to-avoid-java-util-concurrentmodificationexception-when-iterating-through-an). Se actualizo gran parte del UML para incluir las clases de la simulacion.
+
+22:00hs
+
+Se modifico los metodos de update() en Persona y Hospital para dar representacion a los distintos tiempos de recuperacion segun el estado de las personas.
+

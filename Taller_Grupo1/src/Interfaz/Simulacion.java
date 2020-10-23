@@ -33,12 +33,12 @@ public class Simulacion extends JPanel implements Runnable{
     private static int tiempo = 0;
     
     /**
-     *
+     * Se establece el tamaño del ancho de la ventana
      */
     public static final int ancho = 1024;
 
     /**
-     *
+     * Se establece el tamaño del alto de la ventana
      */
     public static final int alto = 768;
         
@@ -124,7 +124,10 @@ public class Simulacion extends JPanel implements Runnable{
         }
     }
     
-       
+    
+    /***********************               FUNCIONES               ***********************/   
+    
+    
     /**
      * Este metodo crea una figura para cada persona
      * Tambien ajusta las especificaciones graficas de la figura

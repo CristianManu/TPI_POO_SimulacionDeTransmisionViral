@@ -15,6 +15,7 @@ public class Atencion {
     private Hospital hospital;
     
 
+    
     /**
      * Constructor parametrizado
      * @param persona
@@ -26,13 +27,38 @@ public class Atencion {
         
     }
 
+    /**
+     * GETTER
+     */
     /**Devuelve al paciente actual de atención
      * @return persona*/
     public Persona getPersona() {
         return persona;
     }
     
+    /**
+     *********************               FUNCIONES               *********************
+     **/
     
+     /**
+     * Si la persona no esta sana, dependiendo de su estado se la derivará a una de las dos salas o a su domicilio
+     */
+
+    public void atencionPorCovid(){
+        if (persona.isSano() == false) {
+            if(persona.getEstado() == "Asintomatico" || persona.getEstado() == "Leve"){
+                this.enviarADomicilio();
+            } else{
+                if (persona.getEstado()== "Moderado") {
+                    this.enviarACuidadosModerados();
+                }
+                if (persona.getEstado() == "Grave") {
+                    this.enviarATerapiaIntensiva();
+                }
+            }
+           
+        }
+    }
   
 
     /**
@@ -85,34 +111,12 @@ public class Atencion {
     }
     
     
-
-    /**
-     * Si la persona no esta sana, dependiendo de su estado se la derivará a una de las dos salas o a su domicilio
-     */
-
-    public void atencionPorCovid(){
-        if (persona.isSano() == false) {
-            if(persona.getEstado() == "Asintomatico" || persona.getEstado() == "Leve"){
-                this.enviarADomicilio();
-            } else{
-                if (persona.getEstado()== "Moderado") {
-                    this.enviarACuidadosModerados();
-                }
-                if (persona.getEstado() == "Grave") {
-                    this.enviarATerapiaIntensiva();
-                }
-            }
-           
-        }
-    }
-    
-  
-
     /**
      *Implementacion postergada hasta consultar duda con profesor
      */
 
     public void atencionGeneral(){}
+    
     
     /**
      *  Para dar de alta a un paciente, se verifica si el lugar donde se encuentra hospitalizado es igual a una

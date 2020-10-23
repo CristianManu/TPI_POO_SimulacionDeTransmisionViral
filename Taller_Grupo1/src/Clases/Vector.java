@@ -7,7 +7,7 @@ package Clases;
 
 /**
  *
- * @author cristian
+ * @author Grupo1
  */
 public class Vector {
     public double x,y;
@@ -22,6 +22,8 @@ public class Vector {
         this.x = x;
         this.y = y;
     }
+    
+    /***********************          MÉTODOS DE ACCESO              ***********************/
 
     public double getX() {return x;}
 
@@ -31,10 +33,23 @@ public class Vector {
 
     public void setY(double y) {this.y = y;}
     
+    void setValores(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    
+    /***********************               FUNCIONES               ***********************/
+    
+    /**
+     * @return  
+     */
     public double magnitud(){
         return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
     }
     
+    /**
+     * @param maxF*/
     public void limit(double maxF) {
         double magnitud = magnitud();
         double producto;
@@ -47,6 +62,9 @@ public class Vector {
         this.y *= producto;
     }
 
+    /**
+     * @param nMagnitud
+     * @return */
     public Vector setMagnitud(double nMagnitud) {
         double aMagnitud = magnitud();
         this.x *= (nMagnitud/aMagnitud);
@@ -69,21 +87,24 @@ public class Vector {
         this.y *= producto;
     }
 
+    
     void dividir(double denominador) {
         this.x /= denominador;
         this.y /= denominador;
     }
 
+    /**
+     * @return  la arcotangente del cociente entre x e y
+     */
     double dir() {
         return Math.atan2(this.y, this.x);
     }
 
-    void setValores(double x, double y) {
-        this.x = x;
-        this.y = y;
-    }
-
+    /**
+     * @return Resultado de producto entre x e y
+     */
     double movimiento() {
         return this.x+this.y;
     }
+    
 }

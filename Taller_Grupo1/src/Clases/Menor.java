@@ -14,13 +14,23 @@ import java.awt.geom.*;
 
 /**
  *
- * @author Notebook HP
+ * @author Grupo1
  */
 public class Menor extends Persona{
     
     private int tamaño = 2;
+    /**
+     * Construye un nuevo Path2Dobjeto vacío 
+     * 
+     */
     private Path2D forma = new Path2D.Double();
     
+    /**
+     *  CREACION DE TRIÁNGULO
+     *  Primeramente crea un punto, luego dibuja una línea hacia ese punto y luego las dos restantes.
+     * la última sentencia cierra la figura.
+     */   
+
     {
         forma.moveTo(0, -tamaño*2);
         forma.lineTo(-tamaño, tamaño*2);
@@ -29,15 +39,8 @@ public class Menor extends Persona{
     }
     private boolean asistirEscuela;
     /**
-     * 
-     * @param nombre
-     * @param sano
-     * @param apellido
-     * @param dni
-     * @param cuarentena
-     * @param cuidado
+     * Invoca el constructor por defecto de la clase Persona
      */
-    
     public Menor(){
         super();
         this.asistirEscuela = false;
@@ -54,6 +57,10 @@ public class Menor extends Persona{
     
     public void jugar(){}
 
+    /**
+     * Metodo que crea la forma del menor a visualizarse en la pantalla
+     * @param g 
+     */
     @Override
     public void draw(Graphics2D g) {
         AffineTransform save = g.getTransform();
@@ -70,24 +77,5 @@ public class Menor extends Persona{
         g.draw(forma);
         g.setTransform(save);
     }
-    
-    
-
-    @Override
-    public void update() {
-        super.update(); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
-    @Override
-    public Vector cohesion(ArrayList<Persona> personas) {
-        return super.cohesion(personas); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Vector alinear(ArrayList<Persona> personas) {
-        return super.alinear(personas); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     
 }

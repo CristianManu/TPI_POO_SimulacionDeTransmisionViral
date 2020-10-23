@@ -5,24 +5,20 @@
  */
 
 package Interfaz;
-import Clases.Domicilio;
-import Clases.Estado;
 import Clases.Hospital;
 import Clases.Informes;
 import Clases.Internacion;
 import Clases.Persona;
 import javax.swing.*;
 import java.awt.*;
+import java.util.Iterator;
 
 import javax.swing.BorderFactory;
-import java.util.*;
-import java.awt.event.*;
-import java.util.Random;
 import javax.swing.border.Border;
 
 /**
  *
- * @author cristian
+ * @author Grupo1
  */
 public class VentanaInforme extends Container implements Runnable {
 
@@ -32,7 +28,7 @@ public class VentanaInforme extends Container implements Runnable {
     public Informes info;
 
     /**
-     *
+     * 
      */
     public Hospital hosp;
     private JPanel panelIzq, panelDer;
@@ -68,6 +64,10 @@ public class VentanaInforme extends Container implements Runnable {
         this.hosp = hosp;
         crearLabels();
     }
+    
+    
+    /***********************               FUNCIONES               ***********************/
+    
     
     /**
      * Funcion que crea las labels que muestran la informacion de la epidemia.

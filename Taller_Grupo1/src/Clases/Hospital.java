@@ -36,25 +36,38 @@ public class Hospital {
         cuidadosModerados = new CuidadosModerados();
         cuidadosTerapiaIntensiva = new CuidadosTerapiaIntensiva();
     }
+    
+    
+    /****************        MÉTODOS DE ACCESO        *****************/
 
+    /**
+     * Devuelve la cantidad de pacientes actual de Cuidados Moderados
+     * @return cuidadosModerados
+     */
     public CuidadosModerados getCuidadosModerados() {
         return cuidadosModerados;
     }
-
+    
+    /*
+    *@param cuidadosModerados
+    */
     public void setCuidadosModerados(CuidadosModerados cuidadosModerados) {
         this.cuidadosModerados = cuidadosModerados;
     }
 
+    /** Devuelve la cantidad de pacientes actual de Cuidados Terapia Intensiva
+     * @return cuidadosTerapiaIntensiva
+     */
     public CuidadosTerapiaIntensiva getCuidadosTerapiaIntensiva() {
         return cuidadosTerapiaIntensiva;
     }
 
+    /**
+     * @param cuidadosTerapiaIntensiva
+     */
     public void setCuidadosTerapiaIntensiva(CuidadosTerapiaIntensiva cuidadosTerapiaIntensiva) {
         this.cuidadosTerapiaIntensiva = cuidadosTerapiaIntensiva;
     }
-    
-    
-
     
     /**
      * Devuelve la cantidad de pacientes actual del hospital
@@ -62,71 +75,6 @@ public class Hospital {
     */
     public int getnPacientesTotal() {
         return nPacientesTotal;
-    }
-   
-    /**
-    * Aumenta la cantidad de pacientes moderados y la cantidad total de pacientes.
-    * Tambien agrega la persona indicada por parametro a la lista.
-    * @param p un objeto persona
-    * @return devuelve verdadero si se realizo la operacion y falso sino se pudo.
-    */
-    public boolean agregarPacienteModerado(Persona p){
-        if(!cuidadosModerados.agregarPaciente(p)){
-           return false;
-       } else {
-        nPacientesModerados++;
-        nPacientesTotal++;
-        personasInternadas.add(p);
-        return true;
-        } 
-    }
-    
-    /**
-    * Disminuye la cantidad de pacientes moderados y la cantidad total de pacientes.
-    * Se elimina a la persona de la lista indicada por parametro.
-    * Seteando la inmunidad de la persona a verdadero;
-    * @param p un objeto persona
-     * @throws java.lang.Exception lanza excepcion si no hay personas que remover.
-    */
-    public void darDeAltaPacienteModerado(Persona p){
-        cuidadosModerados.darDeAlta(p);
-        personasInternadas.remove(p); 
-        nPacientesModerados--;
-        nPacientesTotal--;        
-    }
-    
-    /**
-    * Disminuye la cantidad de pacientes graves y la cantidad total de pacientes.
-    * Cambia la inmunidad de la persona a verdadero. Como así también sano a verdadero 
-    * y elimina al mismo de la lista indicada por parámetro.
-    * 
-    * @param p un objeto persona
-    * @throws java.lang.Exception lanza excepcion so no hay personas que remover
-    */
-    public void darDeAltaPacienteGrave(Persona p){
-        cuidadosTerapiaIntensiva.darDeAlta(p);
-        personasInternadas.remove(p);
-        nPacientesGraves--;
-        nPacientesTotal--;        
-        
-    }
-    
-    /**
-    * Aumenta la cantidad de pacientes graves y la cantidad total de pacientes.
-    * Tambien agrega la persona indicada por parametro a la lista.
-    * @param p un objeto persona
-    * @return  devuelve verdader si se realizo la operacion y falso en caso contrario
-    */
-    public boolean agregarPacienteGrave(Persona p){
-        
-        if (!cuidadosTerapiaIntensiva.agregarPaciente(p)){
-            return false;
-        } else {
-            nPacientesGraves++;
-            nPacientesTotal++;
-            personasInternadas.add(p);
-            return true;
-        }
     }
     
     /**
@@ -153,6 +101,75 @@ public class Hospital {
     public List<Persona> mostrarInternados(){
         return personasInternadas;
     }
+   
+    
+    /***********************               FUNCIONES               ***********************/
+    
+    
+    /**
+    * Aumenta la cantidad de pacientes moderados y la cantidad total de pacientes.
+    * Tambien agrega la persona indicada por parametro a la lista.
+    * @param p un objeto persona
+    * @return devuelve verdadero si se realizo la operacion y falso sino se pudo.
+    */
+    public boolean agregarPacienteModerado(Persona p){
+        if(!cuidadosModerados.agregarPaciente(p)){
+           return false;
+       } else {
+        nPacientesModerados++;
+        nPacientesTotal++;
+        personasInternadas.add(p);
+        return true;
+        } 
+    }
+    
+    /**
+    * Aumenta la cantidad de pacientes graves y la cantidad total de pacientes.
+    * Tambien agrega la persona indicada por parametro a la lista.
+    * @param p un objeto persona
+    * @return  devuelve verdader si se realizo la operacion y falso en caso contrario
+    */
+    public boolean agregarPacienteGrave(Persona p){
+        
+        if (!cuidadosTerapiaIntensiva.agregarPaciente(p)){
+            return false;
+        } else {
+            nPacientesGraves++;
+            nPacientesTotal++;
+            personasInternadas.add(p);
+            return true;
+        }
+    }
+    
+    /**
+    * Disminuye la cantidad de pacientes moderados y la cantidad total de pacientes.
+    * Se elimina a la persona de la lista indicada por parametro.
+    * Seteando la inmunidad de la persona a verdadero;
+    * @param p un objeto persona
+     * @throws java.lang.Exception lanza excepcion si no hay personas que remover.
+    */
+    public void darDeAltaPacienteModerado(Persona p) throws Exception{
+        cuidadosModerados.darDeAlta(p);
+        personasInternadas.remove(p); 
+        nPacientesModerados--;
+        nPacientesTotal--;        
+    }
+    
+    /**
+    * Disminuye la cantidad de pacientes graves y la cantidad total de pacientes.
+    * Cambia la inmunidad de la persona a verdadero. Como así también sano a verdadero 
+    * y elimina al mismo de la lista indicada por parámetro.
+    * 
+    * @param p un objeto persona
+    * @throws java.lang.Exception lanza excepcion so no hay personas que remover
+    */
+    public void darDeAltaPacienteGrave(Persona p) throws Exception{
+        cuidadosTerapiaIntensiva.darDeAlta(p);
+        personasInternadas.remove(p);
+        nPacientesGraves--;
+        nPacientesTotal--;        
+        
+    }
     
     //actualiza el estado de sus pacientes, Si los tiene
     public void update(){
@@ -161,7 +178,7 @@ public class Hospital {
         //reviso Cuidados Moderados
         while (recorrerCuiMod.hasNext()) {
             Persona next = recorrerCuiMod.next();
-            if (next.getTiempoInfec() > 2000) {
+            if (next.getTiempoInfec() > 2500) {
                 recorrerCuiMod.remove();
             }
         }
@@ -169,7 +186,7 @@ public class Hospital {
         //reviso Cuidados Terapia intensiva
         while (recorrerTerInt.hasNext()) {
             Persona next = recorrerTerInt.next();
-            if (next.getTiempoInfec() > 2000) {
+            if (next.getTiempoInfec() > 3000) {
                 recorrerTerInt.remove();
             }
         }

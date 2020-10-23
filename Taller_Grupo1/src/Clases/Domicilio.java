@@ -23,6 +23,21 @@ public class Domicilio {
         personaDom = new ArrayList();
     }
     
+    
+    /****************        MÉTODOS DE ACCESO        *****************/
+    
+    
+    /**
+     * Muestra una lista actual de personas en cuarentena
+     * @return Lista de personas
+     */
+    public List<Persona> mostrarPersonasCuarentena(){
+        return personaDom;
+    }
+    
+    /**
+     *********************               FUNCIONES               *********************
+     **/
      
     /**
     * Aumenta la cantidad de pacientes en domicilio.
@@ -54,20 +69,4 @@ public class Domicilio {
             throw new Exception("No hay pacientes que dar de alta");
         }
     }
-    
-    
-    /*
-        Metodos de acceso
-        Getter
-    */
-    
-    
-    /**
-     * Muestra una lista actual de personas en cuarentena
-     * @return Lista de personas
-     */
-    public List<Persona> mostrarPersonasCuarentena(){
-        return personaDom;
-    }
-    
 }
