@@ -7,12 +7,14 @@ package Interfaz;
 
 import Clases.Adulto;
 import Clases.CalidadDeCuidado;
+import Clases.Escuela;
 import Clases.Hospital;
 import Clases.Informes;
 import Clases.Internacion;
 import Clases.Mayor;
 import Clases.Menor;
 import Clases.Persona;
+import Clases.Trabajo;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
@@ -44,11 +46,17 @@ public class Simulacion extends JPanel implements Runnable{
     static ArrayList<Persona> personas = new ArrayList<Persona>();
     public boolean personaAñadida = false;
     
+    //Escuela
+    public Escuela escu;
+    
     //Hospital
     public Hospital hosp;
     
     //Informes
     public Informes informe;
+    
+    //Trabajo
+    public Trabajo trab;
     
    
     
@@ -86,6 +94,8 @@ public class Simulacion extends JPanel implements Runnable{
         
         this.hosp = new Hospital();
         this.informe  = new Informes();
+        this.escu = new Escuela();
+        this.trab = new Trabajo();
         
         /**       En el bucle recorre la lista, 
          *  Si la persona que se encuentra en la posicion indicado por el índice esta sano, de ser asi lo añade 
@@ -127,12 +137,14 @@ public class Simulacion extends JPanel implements Runnable{
         Graphics2D g = (Graphics2D)pag;
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         //Aqui se dibuja
+        escu.draw(g);
+        trab.draw(g);
         for (Persona p: personas) {
             p.draw(g);
             p.drawCircle(g);
-            if (p.isCuarentena()) {
+            if (p.isCuarentena() || p.isEnCasa()) {
             p.drawRectangle(g);                
-            }
+            } 
         }
     }
     /**
@@ -144,12 +156,6 @@ public class Simulacion extends JPanel implements Runnable{
      */
     void actValores(){
         for (int i = 0; i < 100; i++) {
-            if (personas.get(i).isSano()) {
-                if (!informe.getPersonasSanas().contains(personas.get(i))) {
-                    informe.añadirPersonaSana(personas.get(i));
-                    informe.quitarPersonaContagiada(personas.get(i));
-                }
-            }
             if (!personas.get(i).isSano()) {
                 if (!informe.getPersonasContagiadas().contains(personas.get(i))) {
                     informe.añadirPersonaContagiada(personas.get(i));
@@ -201,26 +207,17 @@ public class Simulacion extends JPanel implements Runnable{
             hosp.update();
         }
         
-        //Esta sentencia da error java.util.ConcurrentModificationException
-//        if (tiempo > 2100) {
-//            for (Persona p : hosp.mostrarInternados()) {
-//                if (p.getTiempoInfec() > 2000) {
-//                    if (p.getInternacion() == Internacion.CM) {
-//                        try {
-//                            hosp.darDeAltaPacienteModerado(p);
-//                        } catch (Exception ex) {
-//                            Logger.getLogger(Simulacion.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                    } else if (p.getInternacion() == Internacion.CTI) {
-//                        try {
-//                            hosp.darDeAltaPacienteGrave(p);
-//                        } catch (Exception ex) {
-//                            Logger.getLogger(Simulacion.class.getName()).log(Level.SEVERE, null, ex);
-//                        }
-//                    }
-//                }
-//            }
-//        }
+        //Control de paseo de los mayores
+        if (tiempo % 750 == 0) {
+            for (Persona p : personas) {
+                if (p instanceof Mayor) {
+                    Mayor mayor = (Mayor) p;
+                    if (!mayor.isCuarentena()) {
+                        mayor.salirAPasear();                        
+                    }
+                }
+            }
+        }
     }
     
     
