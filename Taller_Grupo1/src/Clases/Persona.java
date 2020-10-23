@@ -611,6 +611,43 @@ public class Persona {
         //Formula de distancia 
         return Math.sqrt(Math.pow(x2-x1, 2) + Math.pow(y2-y1, 2));
     }
+        
+    /**
+     * Metodo que consulta si la persona se recupero de la enfermedad, y setea los boolean relacionados si es asi.
+     * Dependiendo del estado de la persona puede tardar mas o menos en recuperarse
+     */
+    public void recuperarse(){
+        if (this.estado == Estado.Asintomatico || this.estado == Estado.Leve){
+            if (this.tiempoInfec > 2000){
+                this.setCuarentena(false);
+                this.setSano(true);
+                this.setInmune(true);
+                this.setInternacion(null);
+            } else {
+                this.tiempoInfec++;
+            }
+        } else {
+            if (this.estado == Estado.Moderado){
+                if (this.tiempoInfec > 2500){
+                    this.setCuarentena(false);
+                    this.setSano(true);
+                    this.setInmune(true);
+                    this.setInternacion(null);
+                } else {
+                    this.tiempoInfec++;
+                }
+            } else {
+                if (this.tiempoInfec > 3000){
+                    this.setCuarentena(false);
+                    this.setSano(true);
+                    this.setInmune(true);
+                    this.setInternacion(null);
+                } else {
+                    this.tiempoInfec++;
+                }
+            }
+        }
+    }
     /**
      * Metodo encargado de "mover" a la persona
      */
@@ -623,14 +660,15 @@ public class Persona {
             this.velocidad.limit(maxVelocidad);
         }
         if (!this.isSano()) {
-            if (this.tiempoInfec > 2000) {
-                this.setCuarentena(false);
-                this.setSano(true);
-                this.setInmune(true);
-                this.setInternacion(null);
-            } else {
-                this.tiempoInfec++;
-            }
+//            if (this.tiempoInfec > 2000) {
+//                this.setCuarentena(false);
+//                this.setSano(true);
+//                this.setInmune(true);
+//                this.setInternacion(null);
+//            } else {
+//                this.tiempoInfec++;
+//            }
+            recuperarse();
         }
     }
     
