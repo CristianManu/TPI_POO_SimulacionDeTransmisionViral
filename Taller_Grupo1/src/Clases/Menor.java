@@ -27,6 +27,7 @@ public class Menor extends Persona{
         forma.lineTo(tamaño, tamaño*2);
         forma.closePath();
     }
+    private boolean asistirEscuela;
     /**
      * 
      * @param nombre
@@ -39,6 +40,7 @@ public class Menor extends Persona{
     
     public Menor(){
         super();
+        this.asistirEscuela = false;
     }
     
     public Menor(String nombre, boolean sano, String apellido, int dni, boolean cuarentena, String cuidado) {
@@ -46,7 +48,10 @@ public class Menor extends Persona{
     }
     
     
-    public void irAEscuela(){}
+    public void irAEscuela(){
+        this.asistirEscuela = true;
+    }
+    
     public void jugar(){}
 
     @Override
@@ -73,16 +78,7 @@ public class Menor extends Persona{
         super.update(); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void interaccion(ArrayList<Persona> personas) {
-        super.interaccion(personas); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Vector separacion(ArrayList<Persona> personas) {
-        return super.separacion(personas); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
     @Override
     public Vector cohesion(ArrayList<Persona> personas) {
         return super.cohesion(personas); //To change body of generated methods, choose Tools | Templates.
