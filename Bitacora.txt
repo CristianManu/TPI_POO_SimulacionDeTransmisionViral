@@ -88,9 +88,17 @@ a las personas que superaron la infeccion. Se modificaron las condiciones de con
 
 Actualizamos el UML para que se corresponda con los cambios.
 
+21/10/2020 ---  9: 00 hs
+
+Se agrego el constructor por defecto a la clase Informes, para instanciar las clases.  En la clase Simulacion se  realizo el método actValores(), donde actualizo los valores de las listas.
+
 22/10/2020 --- 16:00hs
 
 Se intentaron implementar varias recomendaciones de los profesores, se crearon distintos tipos de Persona (adulto menor y mayor) en la simulacion. Nos topamos con un error del tipo: java.util.ConcurrentModificationExceptio. Buscando en google logramos solucionar el problema(Fuente https://stackoverflow.com/questions/8104692/how-to-avoid-java-util-concurrentmodificationexception-when-iterating-through-an). Se actualizo gran parte del UML para incluir las clases de la simulacion.
+
+16: 00 hs 
+
+Se actualizó el Javadoc del proyecto.
 
 22:00hs
 
