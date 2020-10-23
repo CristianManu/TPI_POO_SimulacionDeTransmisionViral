@@ -104,3 +104,10 @@ Se actualizó el Javadoc del proyecto.
 
 Se modifico los metodos de update() en Persona y Hospital para dar representacion a los distintos tiempos de recuperacion segun el estado de las personas.
 
+23/10/2020 --- 16:00 hs
+
+Bautista:
+Se actualizaron los tiempo de infeccion apra que concuerden con los dias transcurridos en la simulacion. Se actualizo el UML con los ultimos cambios realizados.
+
+
+
