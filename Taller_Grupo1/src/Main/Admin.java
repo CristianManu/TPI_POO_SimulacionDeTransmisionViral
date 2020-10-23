@@ -30,6 +30,12 @@ public class Admin {
         frame2.setLocation(1024,0);
         frame1.setPreferredSize(new Dimension(1024, 768));
         frame2.setPreferredSize(new Dimension(400,300));
+        //Seteado de la simulacion
+        Simulacion.setearDiaLimite(50);
+        Simulacion.setearPeriodoDeChequeo(1000);
+        Simulacion.setearPeriodoDeChequeoHospital(100);
+        Simulacion.setearControlPaseoMayores(750);
+        //Creacion de una Simulacion
         Simulacion sim = new Simulacion();
         VentanaInforme vi = new VentanaInforme(sim.informe, sim.hosp);
         Thread hilosim = new Thread(sim);
@@ -44,9 +50,6 @@ public class Admin {
         frame2.setVisible(true);
         hilosim.start();
         hilovi.start();
-        if (!hilosim.isAlive()) {
-            hilovi.stop();
-        }
     }
 
 }

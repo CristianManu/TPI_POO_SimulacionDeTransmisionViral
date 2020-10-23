@@ -171,7 +171,7 @@ public class VentanaInforme extends Container implements Runnable {
     
     @Override
     public void run(){
-        while (true) {
+        while (Simulacion.getDia() < Simulacion.getDiaLimite()) {
             System.out.println("Ventana informe funcionando");
             actValores();
             this.repaint();

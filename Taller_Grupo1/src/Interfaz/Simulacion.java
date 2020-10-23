@@ -33,6 +33,11 @@ public class Simulacion extends JPanel implements Runnable{
     private static int tiempo = 0;
     private static int horario = 0;
     private static int dia = 1;
+    private static int diaLimite = 0;
+    private static int perioCheq;
+    private static int perioCheqHosp;
+    private static int controlPaseoMayores;
+    
 //    private static int hora = 0;
     
     /**
@@ -192,7 +197,7 @@ public class Simulacion extends JPanel implements Runnable{
     
     @Override
     public void run(){
-        while (dia < 90) {
+        while (dia < diaLimite) {
             System.out.println("Funcionando");
             System.out.println("Persona posicion " + personas.get(0).getPosicion().getX() + " - " +  personas.get(0).getPosicion().getY());
             System.out.println("Contador: " + contador);
@@ -220,6 +225,42 @@ public class Simulacion extends JPanel implements Runnable{
     private void setearDia(){
         dia++;
     }
+
+    public static int getDia() {
+        return dia;
+    }
+    
+    public static void setearDiaLimite(int dia){
+        diaLimite = dia;
+    }
+    
+    public static int getDiaLimite(){
+        return diaLimite;
+    }
+    
+    public static void setearPeriodoDeChequeo(int perio){
+        perioCheq = perio;
+    }
+    
+    public static int getPeriodoDeChequeo(){
+        return perioCheq;
+    }
+    
+    public static void setearPeriodoDeChequeoHospital(int perio){
+        perioCheqHosp = perio;
+    }
+    
+    public static int getPeriodoDeChequeoHospital(){
+        return perioCheqHosp;
+    }
+    
+    public static void setearControlPaseoMayores(int tiempo){
+        controlPaseoMayores = tiempo;
+    }
+    
+    public static int getControlPaseoMayores(){
+        return controlPaseoMayores;
+    }
     
     private void controlTiempo(){
         if (horario % 100 == 0) {
@@ -228,7 +269,7 @@ public class Simulacion extends JPanel implements Runnable{
         }
         
         //Este if controla la periodicidad del chequeo de personas, el cual es aleatorio
-        if (contador > 1000) {
+        if (contador > perioCheq) {
             for (int i = 0; i < personas.size(); i++) {
                 switch((int)(Math.round(Math.random()))){
                     case 0: break;
@@ -238,12 +279,12 @@ public class Simulacion extends JPanel implements Runnable{
                 contador = 0;
         }
         //Este if controla la periodicidad en el que el hospital revisa a sus pacientes.
-        if (tiempo % 100 == 0) {
+        if (tiempo % perioCheqHosp == 0) {
             hosp.update();
         }
         
         //Control de paseo de los mayores
-        if (tiempo % 750 == 0) {
+        if (tiempo % controlPaseoMayores == 0) {
             for (Persona p : personas) {
                 if (p instanceof Mayor) {
                     Mayor mayor = (Mayor) p;
