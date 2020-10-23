@@ -10,7 +10,6 @@ import Clases.CalidadDeCuidado;
 import Clases.Escuela;
 import Clases.Hospital;
 import Clases.Informes;
-import Clases.Internacion;
 import Clases.Mayor;
 import Clases.Menor;
 import Clases.Persona;
@@ -18,15 +17,12 @@ import Clases.Trabajo;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
-import java.awt.event.*;
-import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  *
  * @author Grupo1
  */
 public class Simulacion extends JPanel implements Runnable{
+    //Atributos
     private static final long serialVersionUID = -8716187417647724411L;    
     private static final int poblacion = 100;  //Poblacion de la ciudad.
     private static int contador = 0;

@@ -11,7 +11,7 @@ package Clases;
  */
 public class Adulto extends Persona {
     /**
-     * Invoca al constructor por defecto de la clase Persona
+     * Invoca al constructor por defecto de la superclase Persona
      * 
      */
     public Adulto(){
@@ -19,7 +19,7 @@ public class Adulto extends Persona {
     }
     
     /**
-     * Invoca al constructor parametrizado de la clase Persona
+     * Invoca al constructor parametrizado de la superclase Persona
      * @param nombre
      * @param sano
      * @param apellido
@@ -32,9 +32,9 @@ public class Adulto extends Persona {
         super(nombre, sano, apellido, dni, cuarentena, cuidado);
     }
     
-    /***********************               FUNCIONES               ***********************/
+    /***********************               FUNCIONES               ************************/
     
-    void irATrabajar(){}
+    public void irATrabajar(){}
     
-    void irAEstudiar(){}
+    public void irAEstudiar(){}
 }

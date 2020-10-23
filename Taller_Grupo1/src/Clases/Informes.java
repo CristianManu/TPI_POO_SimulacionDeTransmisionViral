@@ -22,7 +22,7 @@ public class Informes {
     List<Persona> personasCuidadoBajo;
 
     /**
-    *Constructor por defecto
+    * Constructor por defecto
     * Crea listas de personas contagiadas, sanas, con cuidado Alto, Medio y Bajo.
     */
     public Informes() {

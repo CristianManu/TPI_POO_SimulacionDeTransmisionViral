@@ -8,18 +8,20 @@ import java.awt.*;
 import java.awt.geom.*;
 /**
  *
- * @author cristian
+ * @author Grupo1
  */
 public class Escuela {
+    //Atributos
     Vector posicion;
     
     private int tamaño = 80;
     
-    
+    /**Constructor por defecto*/
     public Escuela(){
         this.posicion = new Vector(50, 50);
     }
 
+    /*****************        MÉTODOS DE ACCESO        *****************/
     public Vector getPosicion() {
         return posicion;
     }
@@ -29,7 +31,13 @@ public class Escuela {
     }
     
     
+    /***********************               FUNCION               ***********************/
     
+    /**
+     * Método que crea la forma del establecimiento escolar a visualizarse en la pantalla
+     *
+     * @param g
+     */
     public void draw(Graphics2D g){
         AffineTransform save = g.getTransform();
         g.translate((int) this.posicion.getX(), (int) this.posicion.getY());

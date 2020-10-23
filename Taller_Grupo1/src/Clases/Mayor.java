@@ -5,10 +5,6 @@
  */
 package Clases;
 
-import Interfaz.Simulacion;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Random;
 import java.awt.*;
 import java.awt.geom.*;
 
@@ -40,7 +36,7 @@ public class Mayor extends Persona{
     
    
     /**
-     * Invoca al constructor por defecto de la clase Persona.
+     * Invoca al constructor por defecto de la superclase Persona.
      * 
      */
     
@@ -50,14 +46,33 @@ public class Mayor extends Persona{
         this.tiempopaseo = 0;
     }
     
+    /**
+     * Invoca al constructor parametrizado de la superclase Persona
+     * @param nombre
+     * @param sano
+     * @param apellido
+     * @param dni
+     * @param cuarentena
+     * @param cuidado
+     */
     public Mayor(String nombre, boolean sano, String apellido, int dni, boolean cuarentena, String cuidado) {
         super(nombre, sano, apellido, dni, cuarentena, cuidado);
     }
+    
+    /****************        FUNCIONES        *****************/
+    
+    
     public void salirAPasear(){
         this.tiempopaseo = 0;
         this.setEnCasa(false);
     }
 
+    /**
+     * Actualiza
+     * Llama al método update() de la superclase 
+     * Si el tiempo del paseo es menor a 300 aumenta el tiempo de paseo 
+     * sino si, no es inmune setea enCasa a verdadero
+     */
     @Override
     public void update() {
         super.update();

@@ -33,13 +33,13 @@ public class Vector {
 
     public void setY(double y) {this.y = y;}
     
-    void setValores(double x, double y) {
+    public void setValores(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
     
-    /***********************               FUNCIONES               ***********************/
+    /************************               FUNCIONES               ***********************/
     
     /**
      * @return  
@@ -71,24 +71,37 @@ public class Vector {
         this.y *= (nMagnitud/aMagnitud);
         return this;
     }
-    
-    void sumar(Vector padre) {
+    /**
+     * @param padre
+     */
+    public void sumar(Vector padre) {
         this.x += padre.getX();
         this.y += padre.getY();
     }
 
-    void restar(Vector padre) {
+    /**
+     *
+     * @param padre
+     */
+    public void restar(Vector padre) {
         this.x -= padre.getX();
         this.y -= padre.getY();
     }
 
-    void multiplicar(double producto) {
+    /**
+     *
+     * @param producto
+     */
+    public void multiplicar(double producto) {
         this.x *= producto;
         this.y *= producto;
     }
 
-    
-    void dividir(double denominador) {
+    /**
+     *
+     * @param denominador
+     */
+    public void dividir(double denominador) {
         this.x /= denominador;
         this.y /= denominador;
     }
@@ -96,14 +109,14 @@ public class Vector {
     /**
      * @return  la arcotangente del cociente entre x e y
      */
-    double dir() {
+    public double dir() {
         return Math.atan2(this.y, this.x);
     }
 
     /**
      * @return Resultado de producto entre x e y
      */
-    double movimiento() {
+    public double movimiento() {
         return this.x+this.y;
     }
     

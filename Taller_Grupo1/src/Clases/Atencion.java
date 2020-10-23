@@ -40,19 +40,20 @@ public class Atencion {
      *********************               FUNCIONES               *********************
      **/
     
+    
      /**
      * Si la persona no esta sana, dependiendo de su estado se la derivará a una de las dos salas o a su domicilio
      */
 
     public void atencionPorCovid(){
         if (persona.isSano() == false) {
-            if(persona.getEstado() == "Asintomatico" || persona.getEstado() == "Leve"){
+            if(persona.getEstado().equals("Asintomatico") || persona.getEstado().equals("Leve") ){
                 this.enviarADomicilio();
             } else{
-                if (persona.getEstado()== "Moderado") {
+                if (persona.getEstado().equals("Moderado")) {
                     this.enviarACuidadosModerados();
                 }
-                if (persona.getEstado() == "Grave") {
+                if (persona.getEstado().equals("Bajo")) {
                     this.enviarATerapiaIntensiva();
                 }
             }

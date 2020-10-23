@@ -23,14 +23,16 @@ import javax.swing.border.Border;
 public class VentanaInforme extends Container implements Runnable {
 
     /**
-     *
+     * Crea un atributo de tipo info
      */
     public Informes info;
 
     /**
-     * 
+     * Crea un atributo de tipo Hospital
      */
     public Hospital hosp;
+    
+    //Atributos de la interfaz
     private JPanel panelIzq, panelDer;
     private JLabel displayInfec, displaySano, displayAlto, displayMedio, displayBajo,
             displayIntDom, displayCuiMod, displayTerInt;
@@ -46,19 +48,26 @@ public class VentanaInforme extends Container implements Runnable {
      * @param hosp
      */
     public VentanaInforme(Informes info, Hospital hosp) {
+        //Construye el panel izquierdo
         panelIzq = new JPanel();
+        
+        //Construye el panel derecho
         panelDer = new JPanel();
+        //Propieddes del contenedor 
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         panelIzq.setLayout(new BoxLayout(panelIzq, BoxLayout.Y_AXIS));
         panelDer.setLayout(new BoxLayout(panelDer, BoxLayout.Y_AXIS));
+        this.setBackground(Color.LIGHT_GRAY);
+        this.setPreferredSize(new Dimension(400, 300));
+        this.setFocusable(true);
+        
+        
+       // Adicion de los controles al contenedor
         this.add(Box.createRigidArea(new Dimension(12, 0)));
         this.add(panelIzq);
         this.add(Box.createHorizontalGlue());
         this.add(panelDer);
         this.add(Box.createRigidArea(new Dimension(12, 0)));
-        this.setBackground(Color.LIGHT_GRAY);
-        this.setPreferredSize(new Dimension(400, 300));
-        this.setFocusable(true);
         
         this.info = info;
         this.hosp = hosp;
@@ -182,7 +191,7 @@ public class VentanaInforme extends Container implements Runnable {
         }
     }
     
-    void actValores(){
+    public void actValores(){
         numSanos.setText(" " + info.getPersonasSanas().size()  + " ");
         numInfec.setText(" " + info.getPersonasContagiadas().size()  + " ");
         numAlto.setText(" " + info.getPersonasCuidadoAlto().size()  + " ");

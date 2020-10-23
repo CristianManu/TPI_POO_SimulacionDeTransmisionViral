@@ -8,18 +8,22 @@ import java.awt.*;
 import java.awt.geom.*;
 /**
  *
- * @author cristian
+ * @author Grupo1
  */
 public class Trabajo {
 
-    Vector posicion;
+    public Vector posicion;
 
     private int tamaño = 80;
-    
+    /**
+     * Constructor por defecto
+     * Instancia el vector.
+     */
     public Trabajo(){
         this.posicion = new Vector(300,300);
     }
     
+    /*****************        MÉTODOS DE ACCESO        *****************/
     public Vector getPosicion() {
         return posicion;
     }
@@ -28,8 +32,14 @@ public class Trabajo {
         this.posicion = posicion;
     }
     
+    /***********************               FUNCIONES               ***********************/
     
     
+    /**
+     * Método que crea la forma del establecimiento de trabajo a visualizarse en la pantalla
+     *
+     * @param g
+     */
     public void draw(Graphics2D g){
         AffineTransform save = g.getTransform();
         g.translate((int) this.posicion.getX(), (int) this.posicion.getY());
