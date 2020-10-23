@@ -224,7 +224,7 @@ public class Simulacion extends JPanel implements Runnable{
     }
     
     private void controlTiempo(){
-        if (horario % 10 == 0) {
+        if (horario % 4 == 0) {
             setearHoraDia();
             horario = 0;
         }
