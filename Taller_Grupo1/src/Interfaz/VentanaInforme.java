@@ -189,14 +189,22 @@ public class VentanaInforme extends Container implements Runnable {
         numMedio.setText(" " + info.getPersonasCuidadoMedio().size()  + " ");
         numBajo.setText(" " + info.getPersonasCuidadoBajo().size()  + " ");
         
-        
         //Mostrar personas en internacion domiciliaria
         int contdom = 0;
-        for (Persona p : info.getPersonasContagiadas()) {
-            if (p.getInternacion() == Internacion.DOM) {
+        Iterator<Persona> recorrerPC = info.getPersonasContagiadas().iterator();
+        while (recorrerPC.hasNext()) {
+            Persona next = recorrerPC.next();
+            if (next.getInternacion() == Internacion.DOM) {
                 contdom++;
             }
         }
+//        //Mostrar personas en internacion domiciliaria
+//        int contdom = 0;
+//        for (Persona p : info.getPersonasContagiadas()) {
+//            if (p.getInternacion() == Internacion.DOM) {
+//                contdom++;
+//            }
+//        }
         numIntDom.setText(" " + contdom + " ");
         
         numCuiMod.setText(" " + hosp.getnPacientesModerado() + " ");
