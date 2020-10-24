@@ -19,11 +19,11 @@ import java.awt.geom.*;
 public class Persona {
 
     //Atributos Interfaz
-    Vector posicion;
-    Vector velocidad;
-    Vector aceleracion;
+    public Vector posicion;
+    public Vector velocidad;
+    public Vector aceleracion;
 
-    static int rangoVision = 120;
+    public static int rangoVision = 120;
     private int tamaño = 3;
     private Path2D forma = new Path2D.Double();
 
@@ -59,7 +59,7 @@ public class Persona {
     private boolean fueDiagnosticado;
     private int tiempoInfec;
     private boolean enCasa;
-    static boolean hayInfectados = false;
+    public static boolean hayInfectados = false;
     
 
     /**
@@ -476,22 +476,22 @@ public class Persona {
      * para la interaccion de los objetos con la interfaz
      *  Tambien contiene atributos estaticos que interactuaran con la misma
      */
-    static double maxFuerza = 0.2;
-    static double maxVelocidad = 2;
+    public static double maxFuerza = 0.2;
+    public static double maxVelocidad = 2;
 
-    static final double forzarCambioFuerza = 1;
+    private static final double forzarCambioFuerza = 1;
 
-    static double alinePercRadio = 50;
-    static double cohesiPercRadio = 100;
-    static double separPercRadio = 100;
-    static double separMaxVelocidad = maxVelocidad;
-    static double separMaxFuerza = maxFuerza;
+    private static double alinePercRadio = 50;
+    private static double cohesiPercRadio = 100;
+    private static double separPercRadio = 100;
+    private static double separMaxVelocidad = maxVelocidad;
+    private static double separMaxFuerza = maxFuerza;
 
-    static void aumentarSeparacionMaxFuerza() {
+    private static void aumentarSeparacionMaxFuerza() {
         Persona.separMaxFuerza += forzarCambioFuerza;
     }
 
-    static void disminuirSeparacionMaxFuerza() {
+    private static void disminuirSeparacionMaxFuerza() {
         Persona.separMaxFuerza -= forzarCambioFuerza;
     }
 

@@ -10,7 +10,6 @@ import Clases.CalidadDeCuidado;
 import Clases.Escuela;
 import Clases.Hospital;
 import Clases.Informes;
-import Clases.Internacion;
 import Clases.Mayor;
 import Clases.Menor;
 import Clases.Persona;
@@ -18,15 +17,12 @@ import Clases.Trabajo;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
-import java.awt.event.*;
-import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  *
  * @author Grupo1
  */
 public class Simulacion extends JPanel implements Runnable{
+    //Atributos
     private static final long serialVersionUID = -8716187417647724411L;    
     private static final int poblacion = 100;  //Poblacion de la ciudad.
     private static int contador = 0;
@@ -55,18 +51,38 @@ public class Simulacion extends JPanel implements Runnable{
         
     //Lista de personas que forman parte de la simulacion.
     static ArrayList<Persona> personas = new ArrayList<Persona>();
+
+    /**
+     *
+     */
     public boolean personaAñadida = false;
     
     //Escuela
+
+    /**
+     *
+     */
     public Escuela escu;
     
     //Hospital
+
+    /**
+     *
+     */
     public Hospital hosp;
     
     //Informes
+
+    /**
+     *
+     */
     public Informes informe;
     
     //Trabajo
+
+    /**
+     *
+     */
     public Trabajo trab;
     
    
@@ -226,38 +242,74 @@ public class Simulacion extends JPanel implements Runnable{
         dia++;
     }
 
+    /**
+     *
+     * @return dia actual
+     */
     public static int getDia() {
         return dia;
     }
     
+    /**
+     *
+     * @param dia
+     */
     public static void setearDiaLimite(int dia){
         diaLimite = dia;
     }
     
+    /**
+     *
+     * @return diaLimite
+     */
     public static int getDiaLimite(){
         return diaLimite;
     }
     
+    /**
+     *
+     * @param perio
+     */
     public static void setearPeriodoDeChequeo(int perio){
         perioCheq = perio;
     }
     
+    /**
+     *
+     * @return el perído de chequeo actual
+     */
     public static int getPeriodoDeChequeo(){
         return perioCheq;
     }
     
+    /**
+     *
+     * @param perio
+     */
     public static void setearPeriodoDeChequeoHospital(int perio){
         perioCheqHosp = perio;
     }
     
+    /**
+     *
+     * @return periodo de chequeo de Hospital
+     */
     public static int getPeriodoDeChequeoHospital(){
         return perioCheqHosp;
     }
     
+    /**
+     *
+     * @param tiempo
+     */
     public static void setearControlPaseoMayores(int tiempo){
         controlPaseoMayores = tiempo;
     }
     
+    /**
+     *
+     * @return control de paseo de mayores 
+     */
     public static int getControlPaseoMayores(){
         return controlPaseoMayores;
     }

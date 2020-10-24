@@ -5341,23 +5341,6 @@
 										},
 										{
 											"_type": "UMLOperationView",
-											"_id": "AAAAAAF0X9IVEz7A+cE=",
-											"_parent": {
-												"$ref": "AAAAAAF0VW00eBKETvU="
-											},
-											"model": {
-												"$ref": "AAAAAAF0X9IU3T6xpTk="
-											},
-											"font": "Arial;13;0",
-											"left": 877,
-											"top": 982,
-											"width": 274.22509765625,
-											"height": 13,
-											"text": "+getNPersonasCuarentena(): int",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
 											"_id": "AAAAAAF0X9KXbT8wj18=",
 											"_parent": {
 												"$ref": "AAAAAAF0VW00eBKETvU="
@@ -5365,9 +5348,10 @@
 											"model": {
 												"$ref": "AAAAAAF0X9KXSD8hPbA="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 877,
-											"top": 997,
+											"top": 982,
 											"width": 274.22509765625,
 											"height": 13,
 											"text": "+setNPersonasCuarentena(npersonas: int)",
@@ -5384,7 +5368,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 877,
-											"top": 1012,
+											"top": 982,
 											"width": 274.22509765625,
 											"height": 13,
 											"text": "+mostrarPersonasCuarentena(): List<Persona>",
@@ -5401,7 +5385,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 877,
-											"top": 1027,
+											"top": 997,
 											"width": 274.22509765625,
 											"height": 13,
 											"text": "+darDeAltaPersonaDomicilio(Persona persona)",
@@ -5412,7 +5396,7 @@
 									"left": 872,
 									"top": 962,
 									"width": 284.22509765625,
-									"height": 83
+									"height": 53
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -15418,25 +15402,6 @@
 									"type": {
 										"$ref": "AAAAAAF0F/3S33atJmU="
 									}
-								}
-							]
-						},
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAF0X9IU3T6xpTk=",
-							"_parent": {
-								"$ref": "AAAAAAF0VW00dxJ7rUI="
-							},
-							"name": "getNPersonasCuarentena",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAF0X9VC20UQvZE=",
-									"_parent": {
-										"$ref": "AAAAAAF0X9IU3T6xpTk="
-									},
-									"type": "int",
-									"direction": "return"
 								}
 							]
 						},

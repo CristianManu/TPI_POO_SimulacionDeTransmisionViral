@@ -37,10 +37,11 @@ public class Menor extends Persona{
         forma.lineTo(tamaño, tamaño*2);
         forma.closePath();
     }
+    
     private boolean asistirEscuela;
     private int tiempoEnEscuela;
     /**
-     * Invoca el constructor por defecto de la clase Persona
+     * Invoca el constructor por defecto de la super clase Persona
      */
     public Menor(){
         super();
@@ -48,11 +49,19 @@ public class Menor extends Persona{
         this.tiempoEnEscuela = 0;
     }
     
+    /**
+     *  Invoca el constructor parametrizado de la super clase persona
+     * @param nombre
+     * @param sano
+     * @param apellido
+     * @param dni
+     * @param cuarentena
+     * @param cuidado*/
     public Menor(String nombre, boolean sano, String apellido, int dni, boolean cuarentena, String cuidado) {
         super(nombre, sano, apellido, dni, cuarentena, cuidado);
     }
     
-    
+    /***********************               FUNCIONES               ***********************/
     public void irAEscuela(){
         this.asistirEscuela = true;
     }
