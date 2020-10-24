@@ -110,6 +110,9 @@ Se modifico los metodos de update() en Persona y Hospital para dar representacio
 Bautista:
 Se actualizaron los tiempo de infeccion apra que concuerden con los dias transcurridos en la simulacion. Se actualizo el UML con los ultimos cambios realizados.
 
+18/10/2020 --- 23/10/2020 
+Cristian:
+Durante este periodo me dedique a toda la parte de la interfaz. Todo lo que es representacion de los objetos a mostrar, su interaccion con otros objetos, ya sean iguales o no, en el mismo espacio y la representacion del tiempo.
 
 
 
