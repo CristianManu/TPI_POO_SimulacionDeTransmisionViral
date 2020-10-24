@@ -12,7 +12,8 @@ import java.awt.geom.*;
  */
 public class Trabajo {
 
-    public Vector posicion;
+    private Vector posicion;
+    private Vector centro;
 
     private int tamaño = 80;
     /**
@@ -21,9 +22,18 @@ public class Trabajo {
      */
     public Trabajo(){
         this.posicion = new Vector(700,200);
+        this.centro = new Vector(700+(tamaño/2), 200+(tamaño/2));
+    }
+
+    /*****************        MÉTODOS DE ACCESO        *****************/
+    public Vector getCentro() {    
+        return centro;
     }
     
-    /*****************        MÉTODOS DE ACCESO        *****************/
+    public void setCentro(Vector centro) {
+        this.centro = centro;
+    }
+
     public Vector getPosicion() {
         return posicion;
     }
@@ -45,7 +55,7 @@ public class Trabajo {
 //        g.translate((int) this.posicion.getX(), (int) this.posicion.getY());
         g.setColor(Color.WHITE);
         g.drawRect((int)this.posicion.getX(), (int)this.posicion.getY(), tamaño, tamaño);
-        g.drawRect((int)this.posicion.getX(), (int)this.posicion.getY(), 1, 1);
+        g.drawRect((int)this.centro.getX(), (int)this.centro.getY(), 1, 1);
         g.drawString("      Trabajo", (int)this.posicion.getX(), (int)this.posicion.getY() - 7);
         g.setTransform(save);    
     }

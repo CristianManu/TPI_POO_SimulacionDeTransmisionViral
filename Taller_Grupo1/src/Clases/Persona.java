@@ -738,7 +738,7 @@ public class Persona {
         } else {
             g.setColor(Color.ORANGE);
         }
-        g.fillOval(-7, -7, tamaño + 1, tamaño + 1);
+        g.fillOval(-7, -7, tamaño + 2, tamaño + 2);
         g.setTransform(save);
     }
 

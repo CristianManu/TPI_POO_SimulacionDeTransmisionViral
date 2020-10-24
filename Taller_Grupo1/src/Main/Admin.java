@@ -40,7 +40,7 @@ public class Admin {
         frame2.setPreferredSize(new Dimension(400,300));
         
         //Seteado de la simulacion
-        Simulacion.setearDiaLimite(50);
+        Simulacion.setearDiaLimite(35);
         Simulacion.setearPeriodoDeChequeo(1000);
         Simulacion.setearPeriodoDeChequeoHospital(100);
         Simulacion.setearControlPaseoMayores(750);

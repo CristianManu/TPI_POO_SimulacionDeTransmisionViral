@@ -13,15 +13,26 @@ import java.awt.geom.*;
 public class Escuela {
     //Atributos
     Vector posicion;
+    Vector centro;
     
     private int tamaño = 80;
     
     /**Constructor por defecto*/
     public Escuela(){
         this.posicion = new Vector(200, 200);
+        this.centro = new Vector(200+(tamaño/2), 200+(tamaño/2));
     }
 
     /*****************        MÉTODOS DE ACCESO        *****************/
+    
+    public Vector getCentro() {    
+        return centro;
+    }
+    
+    public void setCentro(Vector centro) {
+        this.centro = centro;
+    }
+    
     public Vector getPosicion() {
         return posicion;
     }
@@ -43,7 +54,7 @@ public class Escuela {
 //        g.translate((int) this.posicion.getX(), (int) this.posicion.getY());
         g.setColor(Color.WHITE);
         g.drawRect((int)this.posicion.getX(), (int)this.posicion.getY(), tamaño, tamaño);
-        g.drawRect((int)this.posicion.getX(), (int)this.posicion.getY(), 1, 1);
+        g.drawRect((int)this.centro.getX(), (int)this.centro.getY(), 1, 1);
         g.drawString("      Escuela", ((int)this.posicion.getX()),(int)this.posicion.getY() - 7);
         g.setTransform(save);    
     }

@@ -69,7 +69,7 @@ public class Menor extends Persona{
     public void jugar(){}
     
     private Vector viajarEscuela(Escuela escu){
-        Vector direccion = new Vector(escu.getPosicion().getX(),escu.getPosicion().getY());
+        Vector direccion = new Vector(escu.getCentro().getX(),escu.getCentro().getY());
             direccion.restar(this.posicion);
             direccion.setMagnitud(maxVelocidad);
             direccion.restar(this.velocidad);

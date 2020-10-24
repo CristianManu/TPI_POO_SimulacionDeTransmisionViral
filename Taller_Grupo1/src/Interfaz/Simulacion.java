@@ -213,7 +213,7 @@ public class Simulacion extends JPanel implements Runnable{
     
     @Override
     public void run(){
-        while (dia < diaLimite) {
+        while (dia <= diaLimite) {
             System.out.println("Funcionando");
             System.out.println("Persona posicion " + personas.get(0).getPosicion().getX() + " - " +  personas.get(0).getPosicion().getY());
             System.out.println("Contador: " + contador);

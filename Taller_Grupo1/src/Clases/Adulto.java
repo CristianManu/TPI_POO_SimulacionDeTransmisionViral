@@ -47,7 +47,7 @@ public class Adulto extends Persona {
     }
     
     private Vector viajarTrabajo(Trabajo trab){
-        Vector direccion = new Vector(trab.getPosicion().getX(),trab.getPosicion().getY());
+        Vector direccion = new Vector(trab.getCentro().getX(),trab.getCentro().getY());
             direccion.restar(this.posicion);
             direccion.setMagnitud(maxVelocidad);
             direccion.restar(this.velocidad);
