@@ -26,18 +26,34 @@ public class Trabajo {
     }
 
     /*****************        MÉTODOS DE ACCESO        *****************/
+    
+    /**
+     * @return un centro
+     */
     public Vector getCentro() {    
         return centro;
     }
     
+    /**
+     *
+     * @param centro
+     */
     public void setCentro(Vector centro) {
         this.centro = centro;
     }
 
+    /**
+     *
+     * @return
+     */
     public Vector getPosicion() {
         return posicion;
     }
 
+    /**
+     *
+     * @param posicion
+     */
     public void setPosicion(Vector posicion) {
         this.posicion = posicion;
     }

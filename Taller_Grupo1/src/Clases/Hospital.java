@@ -48,9 +48,10 @@ public class Hospital {
         return cuidadosModerados;
     }
     
-    /*
-    *@param cuidadosModerados
-    */
+    /**
+     * setea el Objeto cuidados moderados en Hospital
+     * @param cuidadosModerados
+     */
     public void setCuidadosModerados(CuidadosModerados cuidadosModerados) {
         this.cuidadosModerados = cuidadosModerados;
     }
@@ -171,7 +172,9 @@ public class Hospital {
         
     }
     
-    //actualiza el estado de sus pacientes, Si los tiene
+    /**
+     * Actualiza el estado de sus pacientes, si los tiene
+     */
     public void update(){
         Iterator<Persona> recorrerCuiMod = this.cuidadosModerados.mostrarPacientes().iterator();
         Iterator<Persona> recorrerTerInt = this.cuidadosTerapiaIntensiva.mostrarPacientes().iterator();

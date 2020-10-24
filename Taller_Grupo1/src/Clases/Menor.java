@@ -65,7 +65,9 @@ public class Menor extends Persona{
     public void irAEscuela(){
         this.asistirEscuela = true;
     }
-    
+    /**
+     * Envia a los menores a jugar
+     */
     public void jugar(){}
     
     private Vector viajarEscuela(Escuela escu){
@@ -76,7 +78,12 @@ public class Menor extends Persona{
             direccion.limit(maxFuerza);        
         return direccion;
     }
-
+    /**
+     * Contorla la interaccion con las personas
+     * @param  personas lista de personas
+     * @param escu objeto Escuela
+     * @param trab objeto Trabajo
+     */
     @Override
     public void interaccion(ArrayList<Persona> personas, Escuela escu, Trabajo trab) {
         if (!this.asistirEscuela) {

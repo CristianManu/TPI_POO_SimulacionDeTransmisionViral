@@ -19,17 +19,48 @@ import java.awt.geom.*;
 public class Persona {
 
     //Atributos Interfaz
+
+    /**
+     * Vector posicion
+     */
     public Vector posicion;
+
+    /**
+     * Vector velocidad
+     */
     public Vector velocidad;
+
+    /**
+     * Vector aceleracion
+     */
     public Vector aceleracion;
 
+    /**
+     *
+     */
     public static int rangoVision = 120;
     private int tamaño = 3;
     private Path2D forma = new Path2D.Double();
 
+    /**
+     *
+     */
     public Color colRectan = Color.WHITE;
+
+    /**
+     *
+     */
     public Color colCircul = Color.cyan;
-    public int contColor, contColorTiempo;
+
+    /**
+     *
+     */
+    public int contColor,
+
+    /**
+     *
+     */
+    contColorTiempo;
     
     /**
      * Creación de un triángulo
@@ -59,6 +90,10 @@ public class Persona {
     private boolean fueDiagnosticado;
     private int tiempoInfec;
     private boolean enCasa;
+
+    /**
+     *
+     */
     public static boolean hayInfectados = false;
     
 
@@ -100,14 +135,14 @@ public class Persona {
     }
 
     /**
-     * Constructor parametrizado
+     * Constructor parametrizado de la clase Persona
      *
-     * @param nombre
-     * @param sano
-     * @param apellido
-     * @param dni
-     * @param cuarentena
-     * @param cuidado
+     * @param nombre el nombre de la persona
+     * @param sano si esta enfermo o no
+     * @param apellido apellido de la persona
+     * @param dni el dni de la persona
+     * @param cuarentena si esta en cuarentena o no
+     * @param cuidado tipo de cuidado
      */
     public Persona(String nombre, boolean sano, String apellido, int dni, boolean cuarentena, String cuidado) {
         //Inicializacion de atributos Interfaz
@@ -309,10 +344,18 @@ public class Persona {
         this.cuarentena = cuarentena;
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean isEnCasa(){
         return enCasa;
     }
     
+    /**
+     *
+     * @param enCasa
+     */
     public void setEnCasa(boolean enCasa){
         this.enCasa = enCasa;
     }
@@ -336,8 +379,8 @@ public class Persona {
     }
             
    /**
-    * retorna una lista de comorbilidades
-    * @return List<Comorbilidad>
+    * 
+    * @return lista de comorbilidades
     */
     public List<Comorbilidad> getComorbilidad(){
         return comorlist;
@@ -477,6 +520,10 @@ public class Persona {
      *  Tambien contiene atributos estaticos que interactuaran con la misma
      */
     public static double maxFuerza = 0.2;
+
+    /**
+     *
+     */
     public static double maxVelocidad = 2;
 
     private static final double forzarCambioFuerza = 1;
@@ -495,6 +542,9 @@ public class Persona {
         Persona.separMaxFuerza -= forzarCambioFuerza;
     }
 
+    /**
+     * una pausa para los hilos
+     */
     public static void pause() {
         try {
             Thread.sleep(3000);
@@ -605,8 +655,10 @@ public class Persona {
     }
     
     /**
-     *
-     * @param personas
+     * Se encarga de la interaccion de las personas
+     * @param personas lista de personas
+     * @param escu un objeto Escuela
+     * @param trab un objeto Trabajo
      */
     public void interaccion(ArrayList<Persona> personas, Escuela escu, Trabajo trab){
         this.aceleracion.setValores(0, 0);

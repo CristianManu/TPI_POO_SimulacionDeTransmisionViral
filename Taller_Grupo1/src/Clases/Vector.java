@@ -10,14 +10,33 @@ package Clases;
  * @author Grupo1
  */
 public class Vector {
-    public double x,y;
+
+    /**
+     *
+     */
+    public double x,
+
+    /**
+     *
+     */
+    y;
     
     //constructor por defecto, adopta valores aleatorios
+
+    /**
+     * Constructor por defecto de Vector
+     */
     public Vector(){
         this.x = Math.random() -0.5;
         this.y = Math.random() -0.5;
     }
     //constructor parametrizado donde se le pasan los valores
+
+    /**
+     *
+     * @param x
+     * @param y
+     */
     public Vector(double x, double y){
         this.x = x;
         this.y = y;
@@ -27,12 +46,29 @@ public class Vector {
 
     public double getX() {return x;}
 
+    /**
+     *
+     * @param x
+     */
     public void setX(double x) {this.x = x;}
 
+    /**
+     *
+     * @return
+     */
     public double getY() {return y;}
 
+    /**
+     *
+     * @param y
+     */
     public void setY(double y) {this.y = y;}
     
+    /**
+     *
+     * @param x
+     * @param y
+     */
     public void setValores(double x, double y) {
         this.x = x;
         this.y = y;

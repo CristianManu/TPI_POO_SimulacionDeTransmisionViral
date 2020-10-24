@@ -20,6 +20,10 @@ public class Adulto extends Persona {
     private boolean asistirTrabajo;
     private int tiempoTrabajo;
     
+    
+    /**
+     * Constructor Por defecto de la clase Adulto
+     */
     public Adulto(){
         super();
         this.asistirTrabajo = false;
@@ -65,7 +69,12 @@ public class Adulto extends Persona {
             this.tiempoTrabajo = 0;
         }        
     }
-
+    /**
+     *Controla la interacción entre los objetos. Separación, dirección, cohesión, alineación, etc...
+     * @param personas Lista de personas
+     * @param escu Objeto de tipo escuela
+     * @param trab Objeto de tipo trabajo
+     */
     @Override
     public void interaccion(ArrayList<Persona> personas, Escuela escu, Trabajo trab) {
         if (!this.asistirTrabajo) {

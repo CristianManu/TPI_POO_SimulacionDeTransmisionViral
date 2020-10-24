@@ -19,7 +19,7 @@ public class Atencion {
     /**
      * Constructor parametrizado
      * @param persona
-     * @param hospital 
+     * @param hospital
      */
     public Atencion(Persona persona, Hospital hospital) {
         this.persona = persona;
