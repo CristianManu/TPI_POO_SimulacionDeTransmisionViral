@@ -17,7 +17,7 @@ public class Trabajo {
     private int tamaño = 80;
     
     public Trabajo(){
-        this.posicion = new Vector(300,300);
+        this.posicion = new Vector(700,200);
     }
     
     public Vector getPosicion() {
@@ -32,11 +32,11 @@ public class Trabajo {
     
     public void draw(Graphics2D g){
         AffineTransform save = g.getTransform();
-        g.translate((int) this.posicion.getX(), (int) this.posicion.getY());
+//        g.translate((int) this.posicion.getX(), (int) this.posicion.getY());
         g.setColor(Color.WHITE);
-        g.drawRect(centrar((int)this.posicion.getX()), centrar((int)this.posicion.getY()), tamaño, tamaño);
+        g.drawRect((int)this.posicion.getX(), (int)this.posicion.getY(), tamaño, tamaño);
         g.drawRect((int)this.posicion.getX(), (int)this.posicion.getY(), 1, 1);
-        g.drawString("      Trabajo", (centrar((int)this.posicion.getX())), centrar((int)this.posicion.getY()) - 7);
+        g.drawString("      Trabajo", (int)this.posicion.getX(), (int)this.posicion.getY() - 7);
         g.setTransform(save);    
     }
     

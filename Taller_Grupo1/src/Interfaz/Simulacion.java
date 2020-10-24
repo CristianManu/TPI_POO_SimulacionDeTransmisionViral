@@ -284,14 +284,26 @@ public class Simulacion extends JPanel implements Runnable{
         }
         
         //Control de paseo de los mayores
-        if (tiempo % controlPaseoMayores == 0) {
-            for (Persona p : personas) {
+        if (tiempo != 0 && (tiempo % controlPaseoMayores == 0)) {
+            Iterator<Persona> per = personas.iterator();
+            while (per.hasNext()) {
+                Persona p = per.next();
                 if (p instanceof Mayor) {
                     Mayor mayor = (Mayor) p;
                     if (!mayor.isCuarentena()) {
                         mayor.salirAPasear();                        
                     }
-                }
+                } else if (p instanceof Menor) {
+                    Menor menor = (Menor) p;
+                    if (!menor.isCuarentena()) {
+                        menor.irAEscuela();
+                    }
+                } else{
+                    Adulto adulto = (Adulto) p;
+                    if (!adulto.isCuarentena()) {
+                        adulto.irATrabajar();
+                    }
+                }                
             }
         }
     }
@@ -303,7 +315,7 @@ public class Simulacion extends JPanel implements Runnable{
     private void personasGrafica() {
         for (int i = 0; i < personas.size(); i++) {
             personas.get(i).bordes();
-            personas.get(i).interaccion(personas);
+            personas.get(i).interaccion(personas, escu, trab);
             personas.get(i).update();
             if (!(personas.get(i).isSano())) {
                 personas.get(i).contagiar(personas);

@@ -38,12 +38,14 @@ public class Menor extends Persona{
         forma.closePath();
     }
     private boolean asistirEscuela;
+    private int tiempoEnEscuela;
     /**
      * Invoca el constructor por defecto de la clase Persona
      */
     public Menor(){
         super();
         this.asistirEscuela = false;
+        this.tiempoEnEscuela = 0;
     }
     
     public Menor(String nombre, boolean sano, String apellido, int dni, boolean cuarentena, String cuidado) {
@@ -56,7 +58,47 @@ public class Menor extends Persona{
     }
     
     public void jugar(){}
+    
+    private Vector viajarEscuela(Escuela escu){
+        Vector direccion = new Vector(escu.getPosicion().getX(),escu.getPosicion().getY());
+            direccion.restar(this.posicion);
+            direccion.setMagnitud(maxVelocidad);
+            direccion.restar(this.velocidad);
+            direccion.limit(maxFuerza);        
+        return direccion;
+    }
 
+    @Override
+    public void interaccion(ArrayList<Persona> personas, Escuela escu, Trabajo trab) {
+        if (!this.asistirEscuela) {
+            this.aceleracion.setValores(0, 0);
+            Vector alineacion = this.alinear(personas);
+            Vector cohesion = this.cohesion(personas);
+            Vector separacion = this.separacion(personas);
+            this.aceleracion.sumar(alineacion);
+            this.aceleracion.sumar(separacion);
+            this.aceleracion.sumar(cohesion); //To change body of generated methods, choose Tools | Templates.            
+        } else{
+            this.aceleracion.sumar(this.viajarEscuela(escu));
+        }
+    }
+
+    @Override
+    public void update() {
+        super.update();
+        if (tiempoEnEscuela < 500) {
+            this.tiempoEnEscuela++;
+        } else{
+            this.asistirEscuela = false;
+            this.tiempoEnEscuela = 0;
+        }
+    }
+
+    
+
+    
+    
+    
     /**
      * Metodo que crea la forma del menor a visualizarse en la pantalla
      * @param g 

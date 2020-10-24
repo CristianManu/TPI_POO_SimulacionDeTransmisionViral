@@ -17,7 +17,7 @@ public class Escuela {
     
     
     public Escuela(){
-        this.posicion = new Vector(50, 50);
+        this.posicion = new Vector(200, 200);
     }
 
     public Vector getPosicion() {
@@ -32,11 +32,11 @@ public class Escuela {
     
     public void draw(Graphics2D g){
         AffineTransform save = g.getTransform();
-        g.translate((int) this.posicion.getX(), (int) this.posicion.getY());
+//        g.translate((int) this.posicion.getX(), (int) this.posicion.getY());
         g.setColor(Color.WHITE);
-        g.drawRect(centrar((int)this.posicion.getX()), centrar((int)this.posicion.getY()), tamaño, tamaño);
+        g.drawRect((int)this.posicion.getX(), (int)this.posicion.getY(), tamaño, tamaño);
         g.drawRect((int)this.posicion.getX(), (int)this.posicion.getY(), 1, 1);
-        g.drawString("      Escuela", (centrar((int)this.posicion.getX())), centrar((int)this.posicion.getY()) - 7);
+        g.drawString("      Escuela", ((int)this.posicion.getX()),(int)this.posicion.getY() - 7);
         g.setTransform(save);    
     }
     

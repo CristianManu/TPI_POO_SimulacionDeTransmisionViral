@@ -5,6 +5,8 @@
  */
 package Clases;
 
+import java.util.ArrayList;
+
 /**
  * @author Grupo1
  * @version 
@@ -14,8 +16,14 @@ public class Adulto extends Persona {
      * Invoca al constructor por defecto de la clase Persona
      * 
      */
+    
+    private boolean asistirTrabajo;
+    private int tiempoTrabajo;
+    
     public Adulto(){
         super();
+        this.asistirTrabajo = false;
+        this.tiempoTrabajo = 0;
     }
     
     /**
@@ -34,7 +42,42 @@ public class Adulto extends Persona {
     
     /***********************               FUNCIONES               ***********************/
     
-    void irATrabajar(){}
+    public void irATrabajar(){
+        this.asistirTrabajo = true;
+    }
     
-    void irAEstudiar(){}
-}
+    private Vector viajarTrabajo(Trabajo trab){
+        Vector direccion = new Vector(trab.getPosicion().getX(),trab.getPosicion().getY());
+            direccion.restar(this.posicion);
+            direccion.setMagnitud(maxVelocidad);
+            direccion.restar(this.velocidad);
+            direccion.limit(maxFuerza);        
+        return direccion;
+    }
+
+    @Override
+    public void update() {
+        super.update(); //To change body of generated methods, choose Tools | Templates.
+        if (tiempoTrabajo < 500) {
+            this.tiempoTrabajo++;
+        } else{
+            this.asistirTrabajo = false;
+            this.tiempoTrabajo = 0;
+        }        
+    }
+
+    @Override
+    public void interaccion(ArrayList<Persona> personas, Escuela escu, Trabajo trab) {
+        if (!this.asistirTrabajo) {
+            this.aceleracion.setValores(0, 0);
+            Vector alineacion = this.alinear(personas);
+            Vector cohesion = this.cohesion(personas);
+            Vector separacion = this.separacion(personas);
+            this.aceleracion.sumar(alineacion);
+            this.aceleracion.sumar(separacion);
+            this.aceleracion.sumar(cohesion); //To change body of generated methods, choose Tools | Templates.            
+        } else{
+            this.aceleracion.sumar(this.viajarTrabajo(trab));
+        }
+    }
+    }

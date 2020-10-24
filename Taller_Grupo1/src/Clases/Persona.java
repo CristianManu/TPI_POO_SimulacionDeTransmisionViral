@@ -608,7 +608,7 @@ public class Persona {
      *
      * @param personas
      */
-    public void interaccion(ArrayList<Persona> personas){
+    public void interaccion(ArrayList<Persona> personas, Escuela escu, Trabajo trab){
         this.aceleracion.setValores(0, 0);
         Vector alineacion = this.alinear(personas);
         Vector cohesion = this.cohesion(personas);
@@ -679,14 +679,6 @@ public class Persona {
         }
         //tiempoInfec empieza a contar apenas se infecta
         if (!this.isSano()) {
-//            if (this.tiempoInfec > 2000) {
-//                this.setCuarentena(false);
-//                this.setSano(true);
-//                this.setInmune(true);
-//                this.setInternacion(null);
-//            } else {
-//                this.tiempoInfec++;
-//            }
             recuperarse();
         }
     }
