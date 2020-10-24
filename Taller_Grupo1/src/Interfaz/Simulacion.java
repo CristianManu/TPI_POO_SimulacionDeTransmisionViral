@@ -322,11 +322,12 @@ public class Simulacion extends JPanel implements Runnable{
         
         //Este if controla la periodicidad del chequeo de personas, el cual es aleatorio
         if (contador > perioCheq) {
+            Random ran = new Random();
             for (int i = 0; i < personas.size(); i++) {
-                switch((int)(Math.round(Math.random()))){
-                    case 0: break;
-                    case 1: personas.get(i).irAlHospital(hosp);
-                }                    
+                int prob = ran.nextInt(100);
+                if (prob < 25) {
+                personas.get(i).irAlHospital(hosp);                     
+                }              
             }
                 contador = 0;
         }
